@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cheztrap</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='check.css') }}">
+    </head>
+
+    <body>
+        <!--
+        <div class="try_label" id="try_it">Try It!!!</div>
+        <div class="try_desc">Enter link here to determine if it's a scam or not:</div>
+        <input id="try_input">
+        -->
+        <p>Enter link here to determine if it's a scam or not:<p>
+
+            <form action="/check/result" method="GET">
+                <label for="link">Enter the link:</label>
+                <section id="link">
+                    <input type="url" id="link" name="link" required>
+                </section>
+                <section id="submit">
+                    <button type="submit">Check</button>
+                </section>
+            </form>
+        <h1>Scrape link</h1>
+        <p><a href="https://www.urlvoid.com/">https://www.urlvoid.com/</a></p>
+    </body>
+
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>test scrape</title>
+</head>
+<body>
+    <h1>Scraped Quotes</h1>
+    <ul>
+        {% for quotes_with_author in quotes_with_authors %}
+            <li>{{ quotes_with_author }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

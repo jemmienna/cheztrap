@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Result</title>
+</head>
+<body>
+    <h1>Check Result for {{ url }}</h1>
+    <p>{{ message }}</p>
+
+    <h2>Scraped Content</h2>
+    <ul>
+        {% for userInput in userInputs %}
+            <li>{{ userInput|safe }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

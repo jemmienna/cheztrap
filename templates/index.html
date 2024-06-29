@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cheztrap</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="head_bar">
+            <div class="logo_bar">
+                <div class="logo_img"><img src="/static/images/chez_logo.png" style="width:75px;height:75px;"></div>
+                <div class="name_bar">cheztrap</div>
+            </div>
+            <div class="click_bar">
+                <div class="download_bar padding01"><a href="#download"><span>Download</span></a></div>
+                <div class="work_bar padding01"><a href="#how_it_works"><span>How It Works</span></a></div>
+                <div class="contact_bar padding01"><a href="#contact_us"><span>Contact Us</span></a></div>
+                <div class="try_bar padding01"><a href="#try_it"><span>Try It!</span></a></div>
+            </div>
+        </div>
+
+        <div class="main_content">
+            <div class="purpose_box">
+                <div class="purpose_label" id="download">HEADER ABOUT PURPOSE</div>
+                <div class="purpose_desc">Smaller description explaining in depth about the purpose</div>
+            </div>
+            
+            <div class="rat_img"><img src="/static/images/rat.png" style="width:420px;height:auto;"></div>
+        </div>
+
+        <div class="buttons">
+            <button class="download01">Download here</button>
+            <button class="download02">Not for iPhone</button>
+        </div>
+
+        <div class="work_label">
+            <p class="work_title" id="how_it_works">HOW IT WORKS</p>
+            <div class="demonstration">
+                <div class="step1">
+                    <div class="steps">1.</div>
+                    <div class="circle">circle 1</div>
+                    <div class="step_explanation">- Download the app</div>
+                </div>
+                <div class="step2">
+                    <div class="steps">2.</div>
+                    <div class="circle">circle 2</div>
+                    <div class="step_explanation">- Go on any messaging platform</div>
+                </div>
+                <div class="step3">
+                    <div class="steps">3.</div>
+                    <div class="circle">circle 3</div>
+                    <div class="step_explanation">- An alert will show up if a rat is<br>caught sniffing around before<br>clicking the link</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="facts1">
+            <div class="facts1img">factsimg1</div>
+            <div class="facts1label">
+                <div class="facts1header">REAL-TIME ALERTS<br>KEEP OUT THE RAT</div>
+                <div class="facts1desc">short description elaborating on the<br>above header</div>
+            </div>
+        </div>
+        <div class="facts2">
+            <div class="facts2label">
+                <div class="facts2header">DETECTS THE RAT<br>WITHOUT CLICKING<br>THE LINK</div>
+                <div class="facts2desc">short description elaborating on the<br>above header</div>
+            </div>
+            <div class="facts2img">factsimg2</div>
+        </div>
+
+        <div class="contact" id="contact_us">Contact Us</div>
+        <div class="contact_form">
+            <form action="/" method="post">
+
+                <div class="top_input">
+                    <input type="text" id="name" name="user_name" placeholder="Name"/>
+                    <input type="email" id="mail" name="user_email" placeholder="Email"/><br>
+                </div>
+                <textarea id="msg" name="user_message" placeholder="Message"></textarea><br>
+                <div class="submit">
+                    <div class="submit_label">SUBMIT</div>
+                    <button type="submit" class="submit_button"><img src="https://cdn-icons-png.flaticon.com/512/408/408161.png" class="submit_icon"/></button>
+                </div>
+            </form>
+        </div>
+        
+    </body>
+</html>
