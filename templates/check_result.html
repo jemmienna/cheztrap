@@ -5,14 +5,14 @@
 </head>
 <body>
     <h1>Check Result for {{ url }}</h1>
-    <p>{{ message }}</p>
 
-    <h2>Scraped Content</h2>
-    <ul>
-        {% for userInput in userInputs %}
-            <li>{{ userInput|safe }}</li>
-        {% endfor %}
-    </ul>
+    {% if detection_count == '0/40' %}
+    <p> Safe site! </p>
+    {% endif %} 
+
+    {% if detection_count != '0/40' %}
+        <p> Could be dangerous </p>
+    {% endif %}
 
 </body>
 </html>
