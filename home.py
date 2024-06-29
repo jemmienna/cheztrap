@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
+#this was for something....
 def check_website(url):
     return True
 
@@ -25,10 +26,7 @@ def result():
 
     userInputs = soup.findAll("div", attrs={"class":"table-responsive"})
     
-    for userInput in userInputs:
-        print(userInput)
-    
-    return render_template('check_result.html')
+    return render_template('check_result.html', userInputs=userInputs)
 
 
 @app.route('/test')
