@@ -2,16 +2,25 @@ html{
     scroll-behavior: smooth;
 }
 
+.bg{
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
 body {
-    background-image: url("/static/images/chez_bg.png");
     background-repeat: repeat;
+    background-color: #0d031b;
     margin: 0;
     padding: 0;
     width: 100%;
     text-align: center;
     color: white;
     font-family: arial;
-    padding-bottom: 50%;
+    padding-bottom: 10%;
   }
 
 a{
@@ -87,7 +96,7 @@ a{
 }
 
 .rat_img{
-    margin-top: -1%;
+    margin-top: -5%;
 }
 
 .buttons{
@@ -112,7 +121,6 @@ a{
 }
 
 .download01:hover{
-    color: #5759d6;
     transform: translateY(-2px);
 }
 
@@ -121,7 +129,7 @@ a{
 }
 
 .download02{
-    background-color: #000435;
+    background-color: #1e1e24;
     color: white;
     cursor: pointer;
     font-size: 20px;
@@ -153,7 +161,7 @@ a{
     height: 400px;
     width: 400px;
     border-radius: 50%;
-    background-color: #A7C7E7;
+    background-color: #bdbcc0;
 }
 
 .step_explanation{
@@ -177,7 +185,7 @@ a{
 .facts1img{
     height: 550px;
     width: 750px;
-    background-color: #e0d6ff;
+    background-color: #bdbcc0;
     border-radius: 20%;
     justify-content: flex-start;
 }
@@ -199,10 +207,6 @@ a{
     font-family: Arial Narrow, sans-serif;
 }
 
-.facts2{
-    padding-bottom: 13%;
-}
-
 .facts2label{
     padding-right: 6%;
     padding-top: 7%;
@@ -211,21 +215,20 @@ a{
 .facts2img{
     height: 550px;
     width: 750px;
-    background-color: #e0d6ff;
+    background-color: #bdbcc0;
     border-radius: 20%;
     justify-content: flex-end;
 }
 
-.contact{
-    font-size: 50px;
-    font-weight: bold;
-    padding-bottom: 2.5%;
+.github_link{
+    font-size: 25px;
 }
 
-.contact_form{
-    padding-bottom: 17%;
-    font-size: 29px;
-    font-family: Arial Narrow, sans-serif;
+.github{
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: -4%;
+    padding-bottom: 2.5%;
 }
 
 .top_input{
@@ -297,4 +300,51 @@ a{
 #try_input{
     height: 30px;
     width: 70%;
+}
+
+.scam_title{
+    margin-top: -3.5%;
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 4%;
+}
+
+.thanks_label{
+    font-size: 50px;
+    font-weight: bold;
+    padding-bottom: 4%;
+}
+
+.url_input{
+    margin-top: -2%;
+    height: 30px;
+    width: 700px;
+    padding: 1%;
+    border-radius: 30px;
+    font-size: 20px;
+}
+
+.check_button_section{
+    padding-top: 2%;
+}
+
+.result_box{
+    background-color: red;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 80%;
+}
+
+.display_url{
+    font-size: 56px;
+    font-weight: bolder;
+    margin-top: -4%;
+    color: rgb(228, 209, 253);
+}
+
+.display_result{
+    font-size: 48px;
+    font-weight: bold;
+    padding-bottom: 2%; 
 }

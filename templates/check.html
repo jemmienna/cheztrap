@@ -2,28 +2,76 @@
 <html>
     <head>
         <title>cheztrap</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='check.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        <style>
+            /* Loading overlay styles */
+            .loading-overlay {
+                display: none; /* Hidden by default */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+                text-align: center;
+            }
+            
+            .loading-overlay img {
+                margin-top: 20%;
+                width: 100px;
+                height: 100px;
+            }
+        </style>
     </head>
 
     <body>
-        <!--
-        <div class="try_label" id="try_it">Try It!!!</div>
-        <div class="try_desc">Enter link here to determine if it's a scam or not:</div>
-        <input id="try_input">
-        -->
-        <p>Enter link here to determine if it's a scam or not:<p>
+        <img class="bg" src="/static/images/purp.png" alt="">
+        <div class="head_bar">
+            <div class="logo_bar">
+                <div class="logo_img"><a href="{{ url_for('home') }}"><img src="/static/images/logo.png" style="width:55px;height:55px;padding-right:3px;padding-top:8%;"></a></div>
+                <div class="name_bar"><a href="{{ url_for('home') }}">cheztrap</a></div>
+            </div>
+            <div class="click_bar">
+                <div class="download_bar padding01"><a href="{{ url_for('home') }}#download"><span>Download</span></a></div>
+                <div class="work_bar padding01"><a href="{{ url_for('home') }}#how_it_works"><span>How It Works</span></a></div>
+                <div class="try_bar padding01"><a href="{{ url_for('checker') }}"><span>Try It!</span></a></div>
+                <div class="github_bar padding01"><a href="{{ url_for('github') }}"><span>Github</span></a></div>
+            </div>
+        </div>
 
-            <form action="/check/result" method="GET">
-                <label for="url_title">Enter the link:</label>
-                <section id="url">
-                    <input type="text" id="url" name="url" required>
+        <div class="scam_title">
+            Is the link safe?
+        </div>
+
+        <div class="check_form">
+            <form action="/check/result" method="GET" id="form">
+                <section id="url_section">
+                    <input type="text" id="url" name="url" class="url_input" placeholder="Enter link here..." required>
                 </section>
-                <section id="submit">
-                    <button type="submit">Check</button>
+                <section id="submit" class="check_button_section">
+                    <button type="submit" class="submit_button"><img src="https://cdn-icons-png.flaticon.com/512/408/408161.png" class="submit_icon"/></button>
                 </section>
+                <p id="error" style="display:none;">Invalid url</p>
             </form>
-        <h1>Scrape link</h1>
-        <p><a href="https://www.urlvoid.com/">https://www.urlvoid.com/</a></p>
-    </body>
+        </div>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const errorMessage = document.getElementById('error');
+
+            if (error === 'invalid_url') {
+                errorMessage.style.display = 'block';
+                // Redirect back to /check after a delay
+                setTimeout(() => {
+                    window.location.href = '/check';
+                }, 3000); // 3 seconds delay
+            }
+            });
+
+        </script>
+    </body>
 </html>
