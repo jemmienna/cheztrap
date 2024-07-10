@@ -20,6 +20,7 @@
         </div>
     </div>
 
+
     <div class="result_box">
         <div class="display_url_div">
             <p class="display_url">{{ url }}</p>
@@ -27,15 +28,20 @@
 
         <div class="display_result_div">
         {% if detection_count == '0/40' %}
-            <p class="display_result"> Safe site! </p>
+            <p class="display_result">Safe site!</p>
+            <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
+        {% elif detection_count == '1/40' %}
+            <p class="display_result">Generally a safe site!</p>
+            <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
         {% else %}
-            <p class="display_result"> Could be dangerous </p>
+            <p class="display_result">Could be dangerous</p>
+            <img src="/static/images/side_eye.gif" class="happy_cat" style="height:200px;width:auto;padding-top:1.5%;padding-bottom:3%;">
         {% endif %} 
         </div>
 
         <div class="check_back_button_section">
             <a href="{{ url_for('checker') }}">
-                <button class="check_back_button">Go back!</button>
+                <button class="submit_button"><img src="/static/images/left.png" class="submit_icon" style="width:80px;height:auto;"></button>
             </a>
         </div>
     </div>

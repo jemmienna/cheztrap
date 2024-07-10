@@ -260,7 +260,7 @@ a{
 .submit_button{
     background-color: transparent;
     border: none;
-    padding-top: 0.3%;
+    padding-top: 3%;
     appearance: none;
 }
 
@@ -309,10 +309,26 @@ a{
     padding-bottom: 4%;
 }
 
-.thanks_label{
-    font-size: 50px;
-    font-weight: bold;
-    padding-bottom: 4%;
+.check_form{
+    display: flex;
+    justify-content: center;
+}
+
+.error_box{
+    padding-left: 2%;
+    position: absolute;
+    top: 300px;
+    left: 350px;
+    text-align: center;
+}
+
+#error{
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: red;
+    margin-bottom: -6%;
 }
 
 .url_input{
@@ -324,27 +340,32 @@ a{
     font-size: 20px;
 }
 
-.check_button_section{
-    padding-top: 2%;
-}
-
 .result_box{
-    background-color: red;
-    display: flex;
     margin: auto;
-    justify-content: center;
     width: 80%;
 }
 
-.display_url{
-    font-size: 56px;
-    font-weight: bolder;
+.check_back_button_section{
     margin-top: -4%;
-    color: rgb(228, 209, 253);
+}
+
+.display_url{
+    padding: 1%;
+    border-radius: 50px;
+    background-color: white;
+    font-size: 35px;
+    font-weight: bolder;
+    margin-top: -6%;
+    margin-bottom: -3.5%;
+    color: rgb(0, 0, 0);
 }
 
 .display_result{
-    font-size: 48px;
+    font-size: 80px;
     font-weight: bold;
     padding-bottom: 2%; 
+}
+
+.happy_cat{
+    margin-top: -8%;
 }
