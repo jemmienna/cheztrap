@@ -50,10 +50,10 @@
                 <section id="url_section">
                     <input type="text" id="url" name="url" class="url_input" placeholder="Enter link here..." required>
                 </section>
+                <div class="error_box"><p id="error" style="display:none;">Invalid URL !</p></div>
                 <section id="submit" class="check_button_section">
                     <button type="submit" class="submit_button"><img src="https://cdn-icons-png.flaticon.com/512/408/408161.png" class="submit_icon"/></button>
                 </section>
-                <p id="error" style="display:none;">Invalid url</p>
             </form>
         </div>
 
@@ -68,7 +68,7 @@
                 // Redirect back to /check after a delay
                 setTimeout(() => {
                     window.location.href = '/check';
-                }, 3000); // 3 seconds delay
+                }, 2000); // message shows up for 2 seconds
             }
             });
 
