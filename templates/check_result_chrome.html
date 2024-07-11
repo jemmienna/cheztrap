@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>cheztrap</title>
+        <link rel="stylesheet" href="/static/popup.css">
+    </head>
+    <body>
+        <div class="display_result_div">
+            {% if detection_count == '0/40' %}
+                <p class="display_result">{{ url }} is a Safe site!</p>
+                <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
+            {% elif detection_count == '1/40' %}
+                <p class="display_result">{{ url }} is Generally a safe site!</p>
+                <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
+            {% else %}
+                <p class="display_result">Could be dangerous</p>
+                <img src="/static/images/side_eye.gif" class="happy_cat" style="height:200px;width:auto;padding-top:1.5%;padding-bottom:3%;">
+            {% endif %} 
+            </div>
+    </body>
+</html>
