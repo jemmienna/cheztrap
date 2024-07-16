@@ -5,11 +5,11 @@
     </head>
     <body>
         <div class="display_result_div">
-            {% if detection_count == '0/40' %}
-                <p class="display_result">{{ url }} is a Safe site!</p>
+            {% if score == 2 %}
+                <p class="display_result">Safe site!</p>
                 <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
-            {% elif detection_count == '1/40' %}
-                <p class="display_result">{{ url }} is Generally a safe site!</p>
+            {% elif score == 1 %}
+                <p class="display_result">Generally a safe site!</p>
                 <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
             {% else %}
                 <p class="display_result">Could be dangerous</p>
