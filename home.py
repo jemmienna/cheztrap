@@ -12,6 +12,7 @@ app = Flask(__name__)
 #grabs openai api from .env into home.py
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
+urlvoid_api_key = os.getenv("URLVOID_API_KEY")
 
 def get_completion(prompt, model="gpt-4o"):
     # Prepare the messages for the API call
@@ -66,34 +67,29 @@ def result():
     prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and value is boolean. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
     ai_response = get_completion(prompt)
     print("ai response: ", ai_response)
+
     #gets chatgpt's response
     data = json.loads(ai_response)
     is_safe_in_chatgpt = data.get('is_safe')
 
-    #sends the form input to urlvoid
-    data = {
-        'site': stripped_url
-    }
+    urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
+    response = requests.get(urlvoid_endpoint)
+    urlvoid_data = response.json()
 
-    page_to_scrape = requests.post('https://www.urlvoid.com', data=data)
-    soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
-    detections = 0
-    detections = soup.findAll("span", attrs={"class":"label"})
-    #if length of detections is equal to 0, an error will pop up because the list is empty
-    if len(detections) == 0:
+    #if url is invalid it'll redirect to error page
+    if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
         return redirect('/check?error=invalid_url')
-    detection_count = detections[0].text
 
-    safe_detection_counts = {"0/40", "1/40"}
-    is_safe_in_urlvoid = (detection_count in safe_detection_counts) 
+    #retrieving detection count in urlvoid api
+    detection_count = urlvoid_data['data']['report']['blacklists']['detections']
     
     # if score == 2, it means its super safe. score == 0 means dangerous
     score = 0
     if is_safe_in_chatgpt:
-        score = score + 1
-
-    if is_safe_in_urlvoid:
-        score = score + 1
+        score += 1
+    if detection_count == 0 or detection_count == 1:
+        score += 1
+    print(score)
 
     return render_template('check_result.html', detection_count=detection_count, url=stripped_url, score=score)
 
@@ -116,32 +112,24 @@ def chrome_result():
     data = json.loads(ai_response)
     is_safe_in_chatgpt = data.get('is_safe')
 
-    #sends the form input to urlvoid
-    data = {
-        'site': stripped_url
-    }
+    urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
+    response = requests.get(urlvoid_endpoint)
+    urlvoid_data = response.json()
 
-    page_to_scrape = requests.post('https://www.urlvoid.com', data=data)
-
-    soup = BeautifulSoup(page_to_scrape.text, 'html.parser')
-
-    detections = 0
-    detections = soup.findAll("span", attrs={"class":"label"})
-    #if length of detections is equal to 0, an error will pop up because the list is empty
-    if len(detections) == 0:
+    #if url is invalid it'll redirect to error page
+    if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
         return redirect('/check?error=invalid_url')
-    detection_count = detections[0].text
 
-    safe_detection_counts = {"0/40", "1/40"}
-    is_safe_in_urlvoid = (detection_count in safe_detection_counts) 
+    #retrieving detection count in urlvoid api
+    detection_count = urlvoid_data['data']['report']['blacklists']['detections']
     
     # if score == 2, it means its super safe. score == 0 means dangerous
     score = 0
     if is_safe_in_chatgpt:
-        score = score + 1
+        score += 1
 
-    if is_safe_in_urlvoid:
-        score = score + 1
+    if detection_count == 0 or detection_count == 1:
+        score += 1
     print(score)
 
     return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
