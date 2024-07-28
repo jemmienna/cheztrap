@@ -1,6 +1,9 @@
 body{
-    width: 400px;
-    height: 250px;
+    width: 425px;
+    height: 225px;
+    background-color: antiquewhite;
+    color: #d5a385;
+    font-weight: bold;
 }
 
 .head_bar{
@@ -9,10 +12,11 @@ body{
 }
 
 .name_bar{
-    padding-top: 1.5%;
+    padding-top: 0.75%;
     padding-left: 1.5%;
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 15px;
+    font-size: 25px;
+    margin-bottom: 5px;
 }
 
 .detect_box{
@@ -23,17 +27,6 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.url_holder{
-    margin-top: 2%;
-    padding: 1.5%;
-    background-color: antiquewhite;
-    border-radius: 50px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.reaction{
-    margin-top: 2%;
-    display: flex;
-    justify-content: space-evenly;
+iframe {
+    border: 0;
 }

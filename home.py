@@ -33,7 +33,10 @@ def strip_scheme(url):
     netloc = parsed_url.netloc
     if netloc.startswith('www.'):
         netloc = netloc[4:]
-    return netloc + parsed_url.path
+    output = netloc + parsed_url.path
+    url_parts = output.split('/')
+    output = url_parts[0]
+    return output
 
 @app.route('/')
 def home():
@@ -63,6 +66,7 @@ def result():
     url = request.args.get('url')
     stripped_url = strip_scheme(url)
 
+    print('hellooodsf')
     #asks chatgpt is the website is trustable or not
     prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and value is boolean. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
     ai_response = get_completion(prompt)
@@ -101,8 +105,11 @@ def go_back():
 def chrome_result():
     #sets the url query param
     #/check/result?url=
+    print("This is jeina ele")
     url = request.args.get('url')
     stripped_url = strip_scheme(url)
+    
+    print("stripped", stripped_url)
 
     #asks chatgpt is the website is trustable or not
     prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and value is boolean. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
@@ -115,10 +122,11 @@ def chrome_result():
     urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
     response = requests.get(urlvoid_endpoint)
     urlvoid_data = response.json()
+    print("urlvodd data", urlvoid_data)
 
     #if url is invalid it'll redirect to error page
     if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
-        return redirect('/check?error=invalid_url')
+        return redirect('/check/result/chrome?error=invalid_url')
 
     #retrieving detection count in urlvoid api
     detection_count = urlvoid_data['data']['report']['blacklists']['detections']

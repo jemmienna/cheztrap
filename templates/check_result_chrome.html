@@ -1,20 +1,20 @@
 <html>
     <head>
         <title>cheztrap</title>
-        <link rel="stylesheet" href="/static/popup.css">
+        <link rel="stylesheet" href="/static/check_result_chrome.css">
     </head>
     <body>
         <div class="display_result_div">
             {% if score == 2 %}
-                <p class="display_result">Safe site!</p>
-                <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
+                <p>This is a safe site!</p>
+                <img src="/static/images/happy_cat.gif" class="cat">
             {% elif score == 1 %}
-                <p class="display_result">Generally a safe site!</p>
-                <img src="/static/images/happy_cat.gif" class="happy_cat" style="height:200px;width:auto;">
+                <p>Generally a safe site!</p>
+                <img src="/static/images/happy_cat.gif" class="cat">
             {% else %}
-                <p class="display_result">Could be dangerous</p>
-                <img src="/static/images/side_eye.gif" class="happy_cat" style="height:200px;width:auto;padding-top:1.5%;padding-bottom:3%;">
+                <p>Could be dangerous</p>
+                <img src="/static/images/side_eye.gif" class="cat">
             {% endif %} 
-            </div>
+        </div>
     </body>
 </html>
