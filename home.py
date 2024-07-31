@@ -101,6 +101,10 @@ def result():
 def go_back():
     return redirect('/check')
 
+@app.route('/gmail')
+def gmail():
+    return render_template('gmail.html')
+
 @app.route('/check/result/chrome')
 def chrome_result():
     #sets the url query param
