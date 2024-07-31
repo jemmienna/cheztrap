@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cheztrap</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+        <img class="bg" src="/static/images/purp.png" alt="">
+        <div class="head_bar">
+            <div class="logo_bar">
+                <div class="logo_img"><a href="{{ url_for('home') }}"><img src="/static/images/logo.png" style="width:55px;height:55px;padding-right:3px;padding-top:8%;"></a></div>
+                <div class="name_bar"><a href="{{ url_for('home') }}">cheztrap</a></div>
+            </div>
+            <div class="click_bar">
+                <div class="download_bar padding01"><a href="{{ url_for('home') }}"><span>Download</span></a></div>
+                <div class="work_bar padding01"><a href="{{ url_for('home') }}#how_it_works"><span>How It Works</span></a></div>
+                <div class="try_bar padding01"><a href="{{ url_for('checker') }}"><span>Try It!</span></a></div>
+                <div class="github_bar padding01"><a href="{{ url_for('github') }}"><span>Github</span></a></div>
+            </div>
+        </div>
+        
+        <div class="github" id="github_us">GMAIL</div>
+        
+    </body>
+
+</html>
