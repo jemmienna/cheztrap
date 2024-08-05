@@ -147,4 +147,4 @@ def chrome_result():
     return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=8000)

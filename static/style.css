@@ -88,11 +88,12 @@ a{
     font-size: 50px;
     font-weight: bold;
     padding-bottom: 4%;
+    font-family: Palatino, URW Palladio L, serif;
 }
 
 .purpose_desc{
     font-size: 29px;
-    font-family: Arial Narrow, sans-serif;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 .rat_img{
@@ -145,11 +146,13 @@ a{
     font-size: 50px;
     font-weight: bold;
     padding-bottom: 2%;
+    font-family: Palatino, URW Palladio L, serif;
 }
 
 .steps{
-    font-size: 25px;
+    font-size: 35px;
     padding-bottom: 5%;
+    font-family: Palatino, URW Palladio L, serif;
 }
 
 .demonstration{
@@ -167,10 +170,9 @@ a{
 .step_explanation{
     padding-top: 7%;
     padding-bottom: 50%;
-    font-size: 21px;
-    letter-spacing: 0.8px;
+    font-size: 26px;
     line-height: 28px;
-    font-family: sans-serif;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 .facts1, .facts2{
@@ -197,14 +199,14 @@ a{
 
 .facts1header, .facts2header{
     font-size: 40px;
-    font-family: Arial, sans-serif;
+    font-family: Palatino, URW Palladio L, serif;
     font-weight: bold;
     padding-bottom: 6%;
 }
 
 .facts1desc, .facts2desc{
     font-size: 29px;
-    font-family: Arial Narrow, sans-serif;
+    font-family: Trebuchet MS, sans-serif;
 }
 
 .facts2label{
@@ -293,7 +295,7 @@ a{
 
 .try_desc{
     font-size: 29px;
-    font-family: Arial Narrow, sans-serif; 
+    font-family: Trebuchet MS, sans-serif;
     padding-bottom: 2%; 
 }
 
