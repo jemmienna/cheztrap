@@ -114,11 +114,11 @@ a{
     font-size: 20px;
     width: 200px;
     height: 65px;
-    margin-right: 2%;
+    margin-left: -20%;
+    margin-right: 20%;
     border-radius: 30px;
     border: none;
     transition: 0.3s ease-in-out;
-    
 }
 
 .download01:hover{
@@ -136,7 +136,7 @@ a{
     font-size: 20px;
     width: 200px;
     height: 65px;
-    margin-left: 2%;
+    margin-left: 30%;
     border-radius: 30px;
     border: none;
     transition: 0.3s ease-in-out;
@@ -145,7 +145,6 @@ a{
 .work_title{
     font-size: 50px;
     font-weight: bold;
-    padding-bottom: 2%;
     font-family: Palatino, URW Palladio L, serif;
 }
 
@@ -168,11 +167,11 @@ a{
 }
 
 .step_explanation{
-    padding-top: 7%;
-    padding-bottom: 50%;
-    font-size: 26px;
-    line-height: 28px;
     font-family: Trebuchet MS, sans-serif;
+    padding-top: 5%;
+    padding-bottom: 50%;
+    font-size: 25.3px;
+    margin: auto;
 }
 
 .facts1, .facts2{
@@ -222,15 +221,25 @@ a{
     justify-content: flex-end;
 }
 
-.github_link{
-    font-size: 25px;
-}
-
 .github{
+    font-family: Palatino, URW Palladio L, serif;
     font-size: 50px;
     font-weight: bold;
     margin-top: -4%;
-    padding-bottom: 2.5%;
+    padding-bottom: 1.5%;
+}
+
+.github_link{
+    padding-top: 1%;
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 25px;
+    text-decoration: underline;
+    transition: 0.3s ease-in-out;
+    color: rgb(59, 211, 211);
+}
+
+.github_link:hover{
+    transform: translateY(-2px);
 }
 
 .top_input{
@@ -305,6 +314,7 @@ a{
 }
 
 .scam_title{
+    font-family: Palatino, URW Palladio L, serif;
     margin-top: -3.5%;
     font-size: 50px;
     font-weight: bold;
@@ -326,10 +336,10 @@ a{
 
 #error{
     text-align: left;
-    font-family: sans-serif;
+    font-family: Trebuchet MS, sans-serif;
     font-size: 30px;
     font-weight: 900;
-    color: red;
+    color: rgb(180, 21, 21);
     margin-bottom: -6%;
 }
 
@@ -363,6 +373,7 @@ a{
 }
 
 .display_result{
+    font-family: Trebuchet MS, sans-serif;
     font-size: 80px;
     font-weight: bold;
     padding-bottom: 2%; 

@@ -19,10 +19,11 @@
     "service_worker": "background.js"
     },
     "permissions": [
+    "activeTab",
+    "scripting",
     "storage",
     "tabs",
-    "activeTab",
-    "scripting"
+    "webNavigation"
     ],
     "content_scripts": [
       {

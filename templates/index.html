@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <img class="bg" src="/static/images/gray.png" alt="">
+        <img class="bg" src="/static/images/background.png" alt="">
         <div class="head_bar">
             <div class="logo_bar">
                 <div class="logo_img"><a href="{{ url_for('home') }}"><img src="/static/images/logo.png" style="width:55px;height:55px;padding-right:3px;padding-top:8%;"></a></div>
@@ -19,55 +19,55 @@
                 <div class="github_bar padding01"><a href="{{ url_for('github') }}"><span>Github</span></a></div>
             </div>
         </div>
-
+        
         <div class="main_content">
             <div class="purpose_box">
                 <div class="purpose_label" id="download"><span style="text-transform:uppercase;">Your internet guardian</span></div>
                 <div class="purpose_desc">A Google Chrome extension that checks the safety of any website and gmail. Make your life safe and easy with cheztrap.</div>
             </div>
             
-            <div class="rat_img"><img src="/static/images/rat.png" style="width:420px;height:auto;"></div>
+            <div class="rat_img"><img src="/static/images/rat2.png" style="width:420px;height:auto;"></div>
         </div>
 
         <div class="buttons">
-            <button class="download01">Download here</button>
-            <button class="download02">Not for iPhone</button>
+            <a href="https://www.youtube.com/" target="_blank"><button class="download01">Download here</button></a>
+            <a href="{{ url_for('checker') }}"><button class="download02">Try It!</button></a>
         </div>
 
         <div class="work_label">
-            <p class="work_title" id="how_it_works">HOW IT WORKS</p>
+            <p class="work_title" id="how_it_works">How it Works</p>
             <div class="demonstration">
                 <div class="step1">
                     <div class="steps">1.</div>
-                    <div class="circle">circle 1</div>
+                    <img src="/static/images/circle_1.png" style="width:400px;height:400px;">
                     <div class="step_explanation">- A dropdown appears next to a URL<br>to check its safety</div>
                 </div>
                 <div class="step2">
                     <div class="steps">2.</div>
-                    <div class="circle">circle 2</div>
-                    <div class="step_explanation">- A dropdown also appears next to any gmail</div>
+                    <img src="/static/images/circle_2.png" style="width:400px;height:400px;">
+                    <div class="step_explanation">- A dropdown also appears next to<br>any gmail to check its safety</div>
                 </div>
                 <div class="step3">
                     <div class="steps">3.</div>
-                    <div class="circle">circle 3</div>
+                    <img src="/static/images/circle_3.png" style="width:400px;height:400px;">
                     <div class="step_explanation">- An alert will show up if the URL<br>or gmail is caught to be<br>suspicious!</div>
                 </div>
             </div>
         </div>
 
         <div class="facts1">
-            <div class="facts1img">factsimg1</div>
+            <img src="/static/images/mouse.gif" style="width:750px;height:550px;border-radius:20%;">
             <div class="facts1label">
-                <div class="facts1header">REAL-TIME ALERTS<br>KEEP OUT THE RAT</div>
-                <div class="facts1desc">short description elaborating on the<br>above header</div>
+                <div class="facts1header"><span style="text-transform:uppercase;">fast and easy way<br>to keep out the rat</span></div>
+                <div class="facts1desc">In just two simple steps, you will be<br>scam free!</div>
             </div>
         </div>
         <div class="facts2">
             <div class="facts2label">
-                <div class="facts2header">DETECTS THE RAT<br>WITHOUT CLICKING<br>THE LINK</div>
-                <div class="facts2desc">short description elaborating on the<br>above header</div>
+                <div class="facts2header"><span style="text-transform:uppercase;">life is easy with<br> QOL chrome extension</span></div>
+                <div class="facts2desc">Never have to worry about another scam<br>as cheztrap does all the checking for you.<br>(But it's still good to be cautious)</div>
             </div>
-            <div class="facts2img">factsimg2</div>
+            <img src="/static/images/caught.gif" style="width:750px;height:550px;border-radius:20%;">
         </div>
         
     </body>
