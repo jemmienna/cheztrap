@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            text-align: center;
+            color: #d5a385;
+            background-color: antiquewhite;
+            font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 18px; /* Adjust font size as needed */
+        }
+        p {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% if is_safe_in_chatgpt %}
+        <p>This gmail is safe!</p>
+    {% else %}
+        <p>This gmail may not be safe!<br>Be careful!</p>
+    {% endif %}
+</body>
+</html>
