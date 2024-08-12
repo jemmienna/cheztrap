@@ -1,3 +1,5 @@
+const hostname = "https://www.cheztrap.com";
+
 // Function to get the page title and email body
 function getPageDetails() {
   const title = document.title;
@@ -76,7 +78,7 @@ function getPageDetails() {
               const { title, bodyText } = results[0].result;
               console.log("Page Title:", title);
               console.log("Email Body:", bodyText);
-              iframe.src = "http://192.168.12.210:8000/check/result/gmail?title="+title+"&bodyText="+bodyText+"";
+              iframe.src = hostname+"/check/result/gmail?title="+title+"&bodyText="+bodyText+"";
             }
           }
         );
@@ -87,13 +89,12 @@ function getPageDetails() {
           !currentUrl.startsWith("https://") &&
           !currentUrl.startsWith("chrome://") &&
           !currentUrl.startsWith("http://192.168") &&
-          !currentUrl.startsWith("http://127.") &&
-          !currentUrl.startsWith("http://192.168.12.210:8000/")
+          !currentUrl.startsWith("http://127.")
       ) {
-        iframe.src = "http://127.0.0.1:8000/error";
+        iframe.src = hostname+"/error";
         console.log("URL is not fine");
       } else {
-        iframe.src = "http://127.0.0.1:8000/check/result/chrome?url=" + encodeURIComponent(currentUrl);
+        iframe.src = hostname+"/check/result/chrome?url=" + encodeURIComponent(currentUrl);
         console.log("URL is fine");
       }
     }
