@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cheztrap</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+        <img class="bg" src="/static/images/background.png" alt="">
+        <div class="head_bar">
+            <div class="logo_bar">
+                <div class="logo_img"><a href="{{ url_for('home') }}"><img src="/static/images/logo.png" style="width:55px;height:55px;padding-right:3px;padding-top:8%;"></a></div>
+                <div class="name_bar"><a href="{{ url_for('home') }}">cheztrap</a></div>
+            </div>
+            <div class="click_bar">
+                <div class="download_bar padding01"><a href="{{ url_for('home') }}"><span>Download</span></a></div>
+                <div class="work_bar padding01"><a href="{{ url_for('home') }}#how_it_works"><span>How It Works</span></a></div>
+                <div class="try_bar padding01"><a href="{{ url_for('checker') }}"><span>Try It!</span></a></div>
+                <div class="github_bar padding01"><a href="{{ url_for('privacy_policy') }}"><span>Privacy</span></a></div>
+            </div>
+        </div>
+        
+        <h1 class="privacy_header">CHEZTRAP PRIVACY POLICY</h1>
+
+        <p class="privacy_text1">
+            Effective Date: August 25, 2024<br><br>
+            Last Updated: August 25, 2024
+        </p>
+
+        <div class="privacy_div_content">
+            <p class="privacy_welcome">Welcome!</p>
+            <p class="privacy_text2">
+                Cheztrap is committed to safeguarding your privacy. 
+                This privacy policy outlines how we handle information in connection with our Chrome extension, Cheztrap.
+            </p>
+            <p class="privacy_title">1. Information We Collect</p>
+            <p class="privacy_text2">
+                Cheztrap does not collect, store, or share any personal information from users. 
+                We do not gather data about your browsing activity, personal identifiers, or any other private information.
+            </p>
+            <p class="privacy_title">2. How We Use Your Data</p>
+            <p class="privacy_text2">
+                Since we do not collect personal data, we do not use or process personal information in any way. 
+                The extension operates locally and performs its functions without sending any data to external servers.
+            </p>
+            <p class="privacy_title">3. Data Sharing</p>
+            <p class="privacy_text2">
+                Cheztrap does not share any user data with third parties. 
+                There are no external parties with whom user data is shared as we do not collect or handle personal information.
+            </p>
+            <p class="privacy_title">4. Permissions Used</p>
+            <p class="privacy_text2">
+                Cheztrap requires certain permissions to function properly:
+                <li class="privacy_text2">`activeTab`: It is used to give cheztrap a temporary access to the current tab (URL) the user is currently viewing. This gives the chrome extension permission to check its safety.</li>
+                <br><br>
+                <li class="privacy_text2">`scripting`: It gives cheztrap permission to inject and manage JavaScript and CSS into chrome. It also analyzes gmail contents which allows the extension to determine its safety.</li>
+            </p>
+            <p class="privacy_title">5. Data Security</p>
+            <p class="privacy_text2">
+                Since Cheztrap does not handle personal data, there is no data to secure or store. 
+                However, we adhere to industry-standard practices to ensure that any information processed is handled securely.
+            </p>
+            <p class="privacy_title">6. Third-Party Services</p>
+            <p class="privacy_text2">
+                Cheztrap does not integrate with or use third-party services that collect personal data. 
+                Our extension functions independently and does not transmit user data to external entities.
+            </p>
+            <p class="privacy_title">7. Changes to This Privacy Policy</p>
+            <p class="privacy_text2">
+                We may update this privacy policy occasionally to reflect changes in our practices or for other operational, legal, or regulatory reasons. 
+                Any updates will be posted on this page with the revised effective date.
+            </p>
+            <p class="privacy_title">8. Contact Us</p>
+            <p class="privacy_text2">
+                If you have any questions or concerns about this privacy policy or the operation of our extension, please contact us at:
+                <br><br>
+                Email: december0two@gmail.com
+            </p>
+        </div>
+    </body>
+
+</html>
