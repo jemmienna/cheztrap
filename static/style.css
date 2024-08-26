@@ -382,3 +382,38 @@ a{
 .happy_cat{
     margin-top: -8%;
 }
+
+.privacy_header{
+    font-family: Palatino, URW Palladio L, serif;
+    margin-top: -2%;
+    font-size: 45px;
+}
+
+.privacy_text1{
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 27px;
+}
+
+.privacy_div_content{
+    padding-top: 1.5%;
+    margin: auto;
+    width: 50%;
+}
+
+.privacy_welcome{
+    font-family: Palatino, URW Palladio L, serif;
+    font-size: 40px;
+}
+
+.privacy_text2{
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 24px;
+    line-height: 200%;
+}
+
+.privacy_title{
+    font-weight: bolder;
+    padding-top: 5%;
+    font-size: 35px;
+    font-family: Palatino, URW Palladio L, serif;
+}

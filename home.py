@@ -115,9 +115,9 @@ def result():
 def go_back():
    return redirect('/check')
 
-@app.route('/gmail')
-def gmail():
-   return render_template('gmail.html')
+@app.route('/privacy')
+def privacy_policy():
+   return render_template('privacy.html')
 
 @app.route('/check/result/chrome')
 def chrome_result():
@@ -156,9 +156,7 @@ def chrome_result():
         score += 1
     print(score)
 
-
     return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
-
 
 if __name__ == "__main__":
    app.run(debug=True, host="0.0.0.0", port=8000)
