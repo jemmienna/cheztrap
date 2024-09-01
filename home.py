@@ -79,24 +79,19 @@ def result():
    #sets the url query param
    #/check/result?url=
    url = request.args.get('url')
-   print("url: ", url)
    stripped_url = strip_scheme(url)
-   print("stripped_url: ", stripped_url)
 
    #asks chatgpt is the website is trustable or not
    prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and value is boolean. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
    ai_response = get_completion(prompt)
-   print("ai response: ", ai_response)
 
    #gets chatgpt's response
    data = json.loads(ai_response)
-   print("data: ", data)
    is_safe_in_chatgpt = data.get('is_safe')
 
    urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
    response = requests.get(urlvoid_endpoint)
    urlvoid_data = response.json()
-   print("urlvoid_data: ", urlvoid_data)
 
    #if url is invalid it'll redirect to error page
    if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
@@ -104,7 +99,6 @@ def result():
 
    #retrieving detection count in urlvoid api
    detection_count = urlvoid_data['data']['report']['blacklists']['detections']
-   print("detection_count", detection_count)
 
    # if score == 2, it means its super safe. score == 0 means dangerous
    score = 0
@@ -112,7 +106,6 @@ def result():
        score += 1
    if detection_count == 0 or detection_count == 1:
        score += 1
-   print("score", score)
 
    return render_template('check_result.html', detection_count=detection_count, url=stripped_url, score=score)
 
@@ -159,7 +152,7 @@ def chrome_result():
 
     if detection_count == 0 or detection_count == 1:
         score += 1
-    print(score)
+    print("score: ", score)
 
     return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
 
