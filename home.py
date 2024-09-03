@@ -129,8 +129,6 @@ def result():
    #asks chatgpt if the website is trustable or not
    prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and value is boolean. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
    ai_response = get_completion(prompt)
-   print("ai response: ", ai_response)
-   print(type(ai_response))
 
    #gets chatgpt's response
    data = json.loads(ai_response)
@@ -203,7 +201,7 @@ def chrome_result():
 
     if detection_count == 0 or detection_count == 1:
         score += 1
-    print(score)
+    print("score: ", score)
 
     return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
 
