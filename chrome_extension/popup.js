@@ -1,44 +1,40 @@
-const hostname = "https://www.cheztrap.com";
+const hostname = "http://127.0.0.1:8000";
 
-// Function to get the page title and email body
-function getPageDetails() {
-  const title = document.title;
-  // Attempt to capture the email body using various common containers
-  const possibleSelectors = [
-    ".email-body",
-    ".ii.gt",
-    ".a3s.aXjCH",
-    "div[role='main']"
-  ];
-  let emailBodyElement = null;
-  for (const selector of possibleSelectors) {
-    emailBodyElement = document.querySelector(selector);
-    if (emailBodyElement) {
-      break;
+jQuery(document).ready(function () {
+  function getPageDetails() {
+    const title = document.title;
+    const possibleSelectors = [
+      ".email-body",
+      ".ii.gt",
+      ".a3s.aXjCH",
+      "div[role='main']",
+      "body", // Add body as a fallback for general websites
+    ];
+
+    let emailBodyElement = null;
+    for (const selector of possibleSelectors) {
+      emailBodyElement = document.querySelector(selector);
+      if (emailBodyElement) {
+        break;
+      }
     }
+
+    if (!emailBodyElement) {
+      emailBodyElement = Array.from(
+        document.querySelectorAll("div, span, p")
+      ).find((el) => el.textContent.length > 100);
+    }
+
+    const bodyText = emailBodyElement
+      ? emailBodyElement.innerText.trim()
+      : "No body found";
+    return { title, bodyText };
   }
-   // If no specific selector is found, fallback to common tags
-  if (!emailBodyElement) {
-    emailBodyElement = Array.from(document.querySelectorAll("div, span, p")).find(el => {
-      return el.textContent.length > 100;
-    });
-  }
-  const bodyText = emailBodyElement ? emailBodyElement.innerText.trim() : "No body found";
-  return { title, bodyText };
- }
- 
- 
- document.addEventListener('DOMContentLoaded', () => {
+
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const currentTab = tabs[0];
     const currentUrl = currentTab.url;
-    const iframe = document.getElementById('iframe');
-  
-    if (!iframe) {
-      console.error('Element with ID "iframe" is not found.');
-      return;
-    }
-  
+
     const gmailSections = [
       "#inbox",
       "#starred",
@@ -48,55 +44,80 @@ function getPageDetails() {
       "#important",
       "#chats",
       "#spam",
-      "#trash"
+      "#trash",
     ];
-  
-    // Check if a section page
-    let isGmailSection = gmailSections.some(section => currentUrl.startsWith("https://mail.google.com") && currentUrl.endsWith(section));
-  
-    // Check if a detail page
-    let isDetailPage = currentUrl.startsWith("https://mail.google.com") && !isGmailSection;
-    // console.log(typeof(isGmailSection))
-  
-    if (isDetailPage) {
-      console.log("This is the detail page for Gmail");
-      document.getElementById('message').style.display = 'block';
+
+    let isGmailSection = gmailSections.some(
+      (section) =>
+        currentUrl.startsWith("https://mail.google.com") &&
+        currentUrl.endsWith(section)
+    );
+
+    let isGmailDetailPage =
+      currentUrl.startsWith("https://mail.google.com") && !isGmailSection;
+
+    if (isGmailDetailPage) {
+      console.log("This gmail detail page is valid");
+
       setTimeout(() => {
-        console.log("test")
         chrome.scripting.executeScript(
           {
             target: { tabId: currentTab.id },
-            func: getPageDetails
+            func: getPageDetails,
           },
           (results) => {
-            console.log("test2  ")
             if (chrome.runtime.lastError) {
-              console.error("Error executing script:", chrome.runtime.lastError);
+              console.error(
+                "Error executing script:",
+                chrome.runtime.lastError
+              );
               return;
             }
+
             if (results && results[0] && results[0].result) {
               const { title, bodyText } = results[0].result;
+
               console.log("Page Title:", title);
-              console.log("Email Body:", bodyText);
-              iframe.src = hostname+"/check/result/gmail?title="+title+"&bodyText="+bodyText+"";
+              console.log("Page Body:", bodyText);
+
+              const mainElement = $("#main");
+
+              $.post(
+                hostname + "/api/check/result/gmail",
+                { title: title, bodyText: bodyText },
+                function (output) {
+                  if (output.is_secure) {
+                    mainElement.html("safe");
+                  } else {
+                    mainElement.html("danger");
+                  }
+                }
+              );
+
             }
           }
         );
-      }, 3000)
-    } else {
-      // Handle other cases
-      if (!currentUrl.startsWith("http://") &&
-          !currentUrl.startsWith("https://") &&
-          !currentUrl.startsWith("chrome://") &&
-          !currentUrl.startsWith("http://192.168") &&
-          !currentUrl.startsWith("http://127.")
-      ) {
-        iframe.src = hostname+"/error";
-        console.log("URL is not fine");
-      } else {
-        iframe.src = hostname+"/check/result/chrome?url=" + encodeURIComponent(currentUrl);
-        console.log("URL is fine");
-      }
+      }, 3000);
+    } else if (
+      currentUrl.startsWith("http://") ||
+      currentUrl.startsWith("https://") ||
+      currentUrl.startsWith("chrome://") ||
+      currentUrl.startsWith("http://192.168") ||
+      currentUrl.startsWith("http://127.")
+    ) {
+      const mainElement = $("#main");
+
+      $.post(
+        hostname + "/api/check/website",
+        { url: currentUrl },
+        function (output) {
+          if (output.is_secure) {
+            mainElement.html("website safe");
+          } else {
+            mainElement.html("website danger");
+          }
+        }
+      );
     }
   });
- });
+});

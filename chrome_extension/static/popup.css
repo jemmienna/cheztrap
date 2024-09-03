@@ -6,6 +6,11 @@ body{
     font-weight: bold;
 }
 
+#main{
+    display: flex;
+    justify-content: center;
+}
+
 .head_bar{
     display: flex;
     justify-content: center;
