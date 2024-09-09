@@ -87,9 +87,9 @@ jQuery(document).ready(function () {
                 { title: title, bodyText: bodyText },
                 function (output) {
                   if (output.is_secure) {
-                    mainElement.html("safe");
+                    mainElement.html("<div style='margin-top: -15px;'><p style='font-size: 20px'>This gmail is safe</p><img src='/static/images/happy_cat.gif' style='width: 200px'></div>");
                   } else {
-                    mainElement.html("danger");
+                    mainElement.html("<div style='font-size: 17.5px;'>This gmail may not be safe. Be careful!</div>");
                   }
                 }
               );
@@ -112,9 +112,9 @@ jQuery(document).ready(function () {
         { url: currentUrl },
         function (output) {
           if (output.is_secure) {
-            mainElement.html("website safe");
+            mainElement.html("<div style='margin-top: -15px;'><p style='font-size: 20px'>This website is safe</p><img src='/static/images/happy_cat.gif' style='width: 200px'></div>");
           } else {
-            mainElement.html("website danger");
+            mainElement.html("<div style='font-size: 17.5px;'>This website may not be safe. Be careful!</div>");
           }
         }
       );
