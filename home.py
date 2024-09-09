@@ -38,7 +38,7 @@ def strip_scheme(url):
    output = url_parts[0]
    return output
 
-@app.route('/api/check/result/gmail', methods = ["POST"])
+@app.route('/api/check/result/gmail', methods = ["POST"])   
 def check_result_gmail():
 
     title = request.form.get("title")
@@ -144,10 +144,11 @@ def result():
    #if url is invalid it'll redirect to error page
    if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
        return redirect('/check?error=invalid_url')
-
+   
+   print(urlvoid_data)
    #retrieving detection count in urlvoid api
    detection_count = urlvoid_data['data']['report']['blacklists']['detections']
-  
+
    # if score = 2, it means its super safe. score = 0 means dangerous
    score = 0
    if is_safe_in_chatgpt:
