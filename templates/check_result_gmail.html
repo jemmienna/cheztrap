@@ -16,7 +16,10 @@
 </head>
 <body>
     {% if is_safe_in_chatgpt %}
-        <p>This gmail is safe!</p>
+    <div style='margin-top: -15px;'>
+        <p style='font-size: 20px'>This website is safe</p>
+        <img src='/static/images/happy_cat.gif' style='width: 200px'>
+    </div>
     {% else %}
         <p>This gmail may not be safe!<br>Be careful!</p>
     {% endif %}
