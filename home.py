@@ -88,10 +88,13 @@ def check_website():
    # if score = 2, it means its super safe. score = 0 means dangerous
    score = 0
    if is_safe_in_chatgpt and (detection_count == 0 or detection_count == 1):
+       print(score)
        score = 2
-   if not is_safe_in_chatgpt:
+   elif not is_safe_in_chatgpt:
+       print(score)
        score = 0
    else:
+       print(score)
        score = 1
    print("website safety score", score)
 
@@ -152,10 +155,13 @@ def result():
    # if score = 2, it means its super safe. score = 0 means dangerous
    score = 0
    if is_safe_in_chatgpt and (detection_count == 0 or detection_count == 1):
+       print(score)
        score = 2
-   if not is_safe_in_chatgpt:
+   elif not is_safe_in_chatgpt:
+       print(score)
        score = 0
    else:
+       print(score)
        score = 1
 
    print("website safety score", score)
