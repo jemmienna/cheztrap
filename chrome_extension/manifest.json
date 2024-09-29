@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "cheztrap",
   "description": "Automatically determines the safety of emails and websites.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icons": {
     "48": "static/images/logo48.png",
     "128": "static/images/logo128.png"

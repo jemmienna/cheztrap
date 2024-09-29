@@ -1,4 +1,5 @@
 const hostname = "https://cheztrap.com/";
+//const hostname = "http://127.0.0.1:8000/";
 
 jQuery(document).ready(function () {
   function getPageDetails() {
