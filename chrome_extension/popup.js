@@ -106,14 +106,22 @@ jQuery(document).ready(function () {
       currentUrl.startsWith("http://192.168") ||
       currentUrl.startsWith("http://127.")
     ) {
-      const mainElement = $("#main");
+
+      const websiteNameDisplay = $("#website_name")
+      const isSafeDisplay = $("#is_safe");
 
       $.post(
         hostname + "/api/check/website",
         { url: currentUrl },
         function (output) {
+          console.log("url", currentUrl)
           if (output.is_secure) {
-            mainElement.html("<div style='margin-top: -15px;'><p style='font-size: 20px'>This website is safe</p><img src='/static/images/happy_cat.gif' style='width: 200px'></div>");
+            const urlElement = document.createElement('a');
+            urlElement.href = currentUrl
+            console.log(urlElement)
+            websiteNameDisplay.html("<div style='margin-bottom: 10px; font-size: 20px;'>" + urlElement.hostname + "<br> is a safe website</div>") 
+            console.log("thisl oaded but is still ading scren")
+            isSafeDisplay.html("<img src='https://cdn2.iconfinder.com/data/icons/greenline/512/check-128.png' style='width: 35px'><div style='margin-top: -15px;'><img src='/static/images/happy_cat.gif' style='width: 200px'></div>");
           } else {
             mainElement.html("<div style='font-size: 17.5px;'>This website may not be safe. Be careful!</div>");
           }
