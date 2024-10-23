@@ -55,6 +55,7 @@ def check_result_gmail():
     output = {'is_secure': is_safe_in_chatgpt}
     return output
     # return render_template('/check_result_gmail.html', is_safe_in_chatgpt=is_safe_in_chatgpt)
+    
 
 @app.route('/api/check/website', methods=['POST'])
 def check_website():
@@ -87,17 +88,12 @@ def check_website():
   
    # if score = 2, it means its super safe. score = 0 means dangerous
    score = 0
-   if is_safe_in_chatgpt and (detection_count == 0 or detection_count == 1):
-       print(score)
-       score = 2
-   elif not is_safe_in_chatgpt:
-       print(score)
-       score = 0
-   else:
-       print(score)
-       score = 1
+   if is_safe_in_chatgpt:
+       score += 1
+   if detection_count == 0 or detection_count == 1:
+       score += 1
    print("website safety score", score)
-
+   
    output = {'is_secure': is_safe_in_chatgpt}
    return output
 
@@ -140,6 +136,7 @@ def result():
    print(data)
    print(type(data))
 
+
    urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
    response = requests.get(urlvoid_endpoint)
    urlvoid_data = response.json() 
@@ -154,19 +151,11 @@ def result():
 
    # if score = 2, it means its super safe. score = 0 means dangerous
    score = 0
-   if is_safe_in_chatgpt and (detection_count == 0 or detection_count == 1):
-       print(score)
-       score = 2
-   elif not is_safe_in_chatgpt:
-       print(score)
-       score = 0
-   else:
-       print(score)
-       score = 1
-
+   if is_safe_in_chatgpt:
+       score += 1
+   if detection_count == 0 or detection_count == 1:
+       score += 1
    print("website safety score", score)
-   print("ChatGPT response:", is_safe_in_chatgpt)
-   print("Detection count from URLVoid:", detection_count)
    
    return render_template('check_result.html', url=stripped_url, score=score)
 
@@ -208,15 +197,15 @@ def chrome_result():
     
     # if score == 2, it means its super safe. score == 0 means dangerous
     score = 0
-    if is_safe_in_chatgpt and (detection_count == 0 or detection_count == 1):
-       score = 2
-    if not is_safe_in_chatgpt:
-       score = 0
-    else:
-       score = 1
+    if is_safe_in_chatgpt:
+        score += 1
+
+    if detection_count == 0 or detection_count == 1:
+        score += 1
     print("score: ", score)
 
     return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
 
 if __name__ == "__main__":
    app.run(debug=True, host="0.0.0.0", port=8000)
+
