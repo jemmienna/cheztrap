@@ -56,6 +56,7 @@ def check_result_gmail():
     output = {'is_secure': is_safe_in_chatgpt, 'reason': reason_in_chatgpt}
     return output
     # return render_template('/check_result_gmail.html', is_safe_in_chatgpt=is_safe_in_chatgpt)
+    
 
 
 @app.route('/api/check/website', methods=['POST'])
