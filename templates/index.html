@@ -393,7 +393,7 @@
                 $('.load_img').show();
 
                 // change to cheztrap.com
-                $.post('http://cheztrap.com/api/check/website', { url: url}, function(res){
+                $.post('https://cheztrap.com/api/check/website', { url: url}, function(res){
                     console.log('result', res);
 
                     if (res.is_safe === true) {
