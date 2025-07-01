@@ -58,7 +58,6 @@ jQuery(document).ready(function () {
     const websiteNameDisplay = $("#website_name");
     const isSafeDisplay = $("#is_safe");
 
-
     let isGmailDetailPage =
       currentUrl.startsWith("https://mail.google.com") && !isGmailSection;
 
