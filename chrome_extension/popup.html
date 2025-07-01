@@ -4,19 +4,31 @@
         <link rel="stylesheet" href="/static/popup.css">
         <script src="/static/jquery.js"></script>
         <script src="popup.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     </head>
+
     <body>
-        <div class="container" style="border-radius: 50%">
-            <div class="head_bar">
-                <div class="logo_img"><img src="/static/images/logo.png" style="width:33px; height:33px; padding-right:3px; padding-top:8%;"></div>
-                <div class="name_bar " style="font-size: 29px;">cheztrap</div>
-            </div>
-    
-            <div class="reaction" style="padding: 25px;">
-                <div id="website_name" style="text-align: center"></div>
-                <div id="is_safe" style="text-align: center; ">
-                    <img src="/static/images/spinner.png" style="margin-top: 10px; width: 100px">
+        <div class="popup_content">
+            <div class="container">
+                <div class="head_bar">
+                    <div class="logo_img"><img src="/static/images/logo.svg" style="width:30px; height:30px; padding-right:2px; padding-top:8%;"></div>
+                    <div class="name_bar" style="font-size: 24px;">Cheztrap</div>
                 </div>
+        
+                <div class="reaction" style="padding: 25px;padding-bottom:0;">
+                    <div id="is_safe" class="is_safe_box" style="padding-bottom:0;">
+                        <div class="load_img1"><img src="/static/images/rat_load.png"></div>
+                        <div class="load_img2"><img src="/static/images/loading.gif" style="margin-top: 10px; width: 100px"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reaction1" style="padding: 25px;padding-top: 0;padding-bottom: 0;">
+                <div id="website_name" style="text-align: center"></div>
             </div>
         </div>
     </body>

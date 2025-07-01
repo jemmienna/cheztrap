@@ -1,0 +1,195 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: roboto;
+    background-color: #FFFFED;
+}
+
+
+
+
+/* MENU */
+.menu{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    height: 95px;
+    z-index: 998;
+    top: 0;
+    background-image: url(/static/images/chez7.svg);
+    background-repeat: repeat-x;
+}
+
+.menu_logo{
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 999;
+    padding-top: 0.6rem;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    width: 16%;
+}
+
+.menu_logo img{
+    width: 16%;
+    padding-right: 1.2%;
+}
+
+.logo{
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    font-family: "Solway", serif;
+    font-weight: 700;
+    letter-spacing: -0.1rem;
+}
+
+.menu_left, .menu_right{
+    padding: 1rem 3%;
+}
+
+.menu_abt, .menu_contact, .menu_faq, .menu_get{
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.menu_abt, .menu_contact{
+    margin-right: 3rem;
+}
+
+.menu_abt:hover, .menu_faq:hover, .menu_contact:hover, .menu_get:hover{
+    font-family: "Solway", serif;
+    font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .menu_abt, .menu_contact {
+    margin-right: 1rem;
+  }
+  .menu_logo{
+    width: 100%;
+    padding-right: 12%;
+  }
+  .menu_logo img{
+    width: 9%;
+  }
+}
+
+
+
+
+
+
+.container{
+    margin: 0 auto;
+    justify-content: center;
+    width: 80%;
+    padding-top: 12vh;
+    padding-bottom: 5%;
+}
+
+.terms_header{
+    font-family: "Solway", serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: -0.1rem;
+}
+
+.terms_div_content{
+    margin: 0 auto;
+    width: 60%;
+    font-size: 1.2rem;
+}
+
+.ov_t{
+    padding-bottom: 6%;
+}
+
+.terms_title{
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.terms_text2{
+    margin-top: 4%;
+}
+
+
+
+
+
+
+
+/* FOOTER */
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 3% 0;
+    list-style-type: none;
+}
+
+.footer_logo{
+    text-align: left;
+    font-family: "Solway", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 2rem;
+    padding-bottom: 1.5%;
+    color: #ffd000;
+}
+
+.footer_content_left, .footer_content_right{
+    font-family: "Solway", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2rem;
+}
+
+.footer_content_left{
+    padding-left: 3%;
+    line-height: 225%;
+}
+
+.footer_contact{
+    display: flex;
+    text-align: left;
+}
+
+.footer_contact img{
+  width: 7%;
+  height: auto;
+  padding-right: 2%;
+}
+
+.footer_content_right{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10%;
+    width: 30%;
+    line-height: 275%;
+    text-align: left;
+}
+
+.footer_content_left li:hover, .footer_content_right li:hover{
+  text-decoration: underline;
+}
+
+.fb{
+    line-height: 10%;
+}
+
+.footer_link{
+  color: white;
+}

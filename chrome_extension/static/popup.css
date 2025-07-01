@@ -1,9 +1,9 @@
 body{
-    width: 425px;
-    height: 225px;
-    background-color: antiquewhite;
-    color: #d5a385;
-    font-weight: bold;
+    margin: 0;
+    width: 23rem;
+    height: 34rem;
+    border: 2px solid;
+    font-family: sans-serif;
 }
 
 #main{
@@ -14,24 +14,150 @@ body{
 .head_bar{
     display: flex;
     justify-content: center;
+    background-color: #ffd000;
+    border-bottom: 2px solid;
 }
 
 .name_bar{
     padding-top: 0.75%;
     padding-left: 1.5%;
-    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 25px;
+    font-family: "Solway", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1rem;
     margin-bottom: 5px;
+    letter-spacing: -1.8;
 }
+
+.reaction{
+    display: flex;
+}
+
+.is_safe{
+    margin: 0;
+    display: flex;
+    width: 100%;
+}
+
+.is_safe_box{
+    width: 100%;
+}
+
+.load_img1, .load_img2{
+    text-align: center;
+}
+
+.load_img1 img{
+    margin-top: 5rem;
+    width: 50%;
+}
+
+
 
 .detect_box{
     display: flex;
     justify-content: center;
     margin-top: 2%;
-    font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 iframe {
     border: 0;
+}
+
+
+
+.popup_content{
+    max-height: 500px;
+    overflow: scroll;
+}
+
+
+
+
+/* screen after loading screen */
+.website_title{
+    font-weight: bold;
+    margin-bottom: 10px; 
+    padding: 2%;
+    font-size: 1.4rem;
+    border: solid 2px;
+    border-radius: 10rem;
+    margin-top: 1rem;
+}
+
+.result_container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.gmail_result_container{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 12%;
+    left: 0;
+    width: 100%;
+    padding-bottom: 10%;
+}
+
+.result_header{
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-top: 2.5%; 
+    padding-left: 3%;
+}
+
+.reason_desc{
+    padding-top: 3%;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.gmail_reason_desc{
+    padding-top: 8%;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* table */
+.table_title{
+    margin-top: 8%;
+    padding-bottom: 2%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
 }

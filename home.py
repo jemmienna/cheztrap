@@ -53,23 +53,21 @@ def check_result_gmail():
     reason_in_chatgpt = data.get('reason')
     print(is_safe_in_chatgpt)
 
-    output = {'is_secure': is_safe_in_chatgpt, 'reason': reason_in_chatgpt}
+    output = {'is_safe': is_safe_in_chatgpt, 'reason': reason_in_chatgpt}
     return output
     # return render_template('/check_result_gmail.html', is_safe_in_chatgpt=is_safe_in_chatgpt)
     
-
-
 @app.route('/api/check/website', methods=['POST'])
 def check_website():
-
    url = request.form.get('url')
    stripped_url = strip_scheme(url)
 
    # asks chatgpt if the website is trustable or not
-   prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and type is boolean, and key is reason and type is string where it explains the reason why it thinks it is safe or not. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
+   prompt = build_prompt(stripped_url)
    ai_response = get_completion(prompt)
+
    print("ai response: ", ai_response)
-   print(type(ai_response))
+   print("output:", type(ai_response))
 
    # gets chatgpt's response
    data = json.loads(ai_response)
@@ -82,10 +80,6 @@ def check_website():
    response = requests.get(urlvoid_endpoint)
    urlvoid_data = response.json()
 
-   # if url is invalid it'll redirect to error page
-   if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
-       return redirect('/check?error=invalid_url')
-
    # retrieving detection count in urlvoid api
    detection_count = urlvoid_data['data']['report']['blacklists']['detections']
 
@@ -97,7 +91,7 @@ def check_website():
        score += 1
    print("website safety score", score)
 
-   output = {'is_secure': is_safe_in_chatgpt, 'reason': reason_in_chatgpt}
+   output = data
    return output
 
 
@@ -105,63 +99,10 @@ def check_website():
 def home():
    return render_template('index.html')
 
-@app.route('/try')
-def try_me():
-   return redirect('/check')
-
-@app.route('/github')
-def github():
-   return render_template('github.html')
-
-@app.route('/github')
-def github_home():
-   return redirect('/')
-
 @app.route('/check')
 def checker():
    error = request.args.get('error')
    return render_template('check.html', error=error)
-
-@app.route('/check/result')
-def result():
-   #sets the url query param
-   #/check/result?url=
-   url = request.args.get('url')
-   stripped_url = strip_scheme(url)
-
-   #asks chatgpt if the website is trustable or not
-   prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and type is boolean, and key is reason and type is string where it explains the reason why it thinks it is safe or not. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
-   ai_response = get_completion(prompt)
-
-   #gets chatgpt's response
-   data = json.loads(ai_response)
-   is_safe_in_chatgpt = data.get('is_safe')
-   reason_in_chatgpt = data.get('reason')
-   print(data)
-   print(type(data))
-
-
-   urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
-   response = requests.get(urlvoid_endpoint)
-   urlvoid_data = response.json()
-
-   #if url is invalid it'll redirect to error page
-   if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
-       return redirect('/check?error=invalid_url')
-
-   print(urlvoid_data)
-   #retrieving detection count in urlvoid api
-   detection_count = urlvoid_data['data']['report']['blacklists']['detections']
-
-   # if score = 2, it means its super safe. score = 0 means dangerous
-   score = 0
-   if is_safe_in_chatgpt:
-       score += 1
-   if detection_count == 0 or detection_count == 1:
-       score += 1
-   print("website safety score", score)
-
-   return render_template('check_result.html', url=stripped_url, score=score, reason=reason_in_chatgpt)
 
 @app.route('/check?error=invalid_url')
 def go_back():
@@ -171,44 +112,38 @@ def go_back():
 def privacy_policy():
    return render_template('privacy.html')
 
-@app.route('/check/result/chrome')
-def chrome_result():
-    #sets the url query param
-    #/check/result?url=
-    url = request.args.get('url')
-    stripped_url = strip_scheme(url)
-    print("stripped", stripped_url)
+@app.route('/terms')
+def terms_of_service():
+    return render_template('terms.html')
 
-    #asks chatgpt is the website is trustable or not
-    prompt = f"Answer in a JSON format boolean. Is {stripped_url} a scam website? respond in a format where key is: is_safe and value is boolean. Return it without the ``` json. Start with just the curly brackets. If it's a popular website always return true."
-    ai_response = get_completion(prompt)
-    print("ai response: ", ai_response)
+@app.route('/about')
+def about_us():
+    return render_template('about.html')
 
-    #gets chatgpt's response
-    data = json.loads(ai_response)
-    is_safe_in_chatgpt = data.get('is_safe')
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
-    urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
-    response = requests.get(urlvoid_endpoint)
-    urlvoid_data = response.json()
-
-    #if url is invalid it'll redirect to error page
-    if "error" in urlvoid_data and urlvoid_data["error"] == "Host is not valid":
-        return redirect('/check/result/chrome?error=invalid_url')
-
-    #retrieving detection count in urlvoid api
-    detection_count = urlvoid_data['data']['report']['blacklists']['detections']
-
-    # if score == 2, it means its super safe. score == 0 means dangerous
-    score = 0
-    if is_safe_in_chatgpt:
-        score += 1
-
-    if detection_count == 0 or detection_count == 1:
-        score += 1
-    print("score: ", score)
-
-    return render_template('check_result_chrome.html', detection_count=detection_count, url=stripped_url, score=score)
+def build_prompt(stripped_url: str) -> str:
+    return (
+        f"Return a JSON object with detailed information about the domain '{stripped_url}'.\n\n"
+        "- is_safe: boolean — Is this a scam website?\n"
+        "- reason: string — Explanation why it is or isn't safe.\n"
+        "- registrar: string — Domain registrar name.\n"
+        "- domain_created: string — Domain creation date.\n"\
+        "- domain_registrant: string — Name of the domain registrant.\n"
+        "- domain_location: string — Geographical region or country of registration.\n"
+        "- hq: string — Geographical region or country of the company headquarter.\n"
+        "- website_type: string — Type or category of the website (e.g., social media, ecommerce).\n"
+        "If the domain is for a popular/trusted website, always set is_safe to true.\n\n"
+        "- founded_year: integer — Year the company was founded.\n"
+        "- founders: array of strings — Names of the company founders.\n"
+        "monthly_visits: integer — Approximate number of monthly visits.\n"
+        "traffic_level: string — One of: 'very low', 'low', 'medium', 'high', 'very high'.\n"
+        "- money_raised: string — Total amount of money the company has raised (e.g., \"$11.5M\").\n"
+        "- fun_fact: string — A fun or surprising fact about the website or company.\n\n"
+        "Respond using only raw JSON, starting with '{' and without any backticks or explanation. Don't add ```json in the beginning and the closing."
+    )
 
 if __name__ == "__main__":
    app.run(debug=True, host="0.0.0.0", port=8000)

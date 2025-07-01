@@ -1,16 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "cheztrap",
-  "description": "Automatically determines the safety of emails and websites.",
-  "version": "1.0.1",
+  "name": "Cheztrap",
+  "description": "Automatically determine the safety of Gmails and websites.",
+  "version": "2.0",
   "icons": {
-    "48": "static/images/logo48.png",
-    "128": "static/images/logo128.png"
+    "16": "static/images/favicon/favicon-16x16.png",
+    "32": "static/images/favicon/favicon-32x32.png"
   },
   "action": {
     "default_icon": {
-      "48": "static/images/logo48.png",
-      "128": "static/images/logo128.png"
+      "16": "static/images/favicon/favicon-16x16.png",
+      "32": "static/images/favicon/favicon-32x32.png"
     },
     "default_popup": "popup.html"
   },

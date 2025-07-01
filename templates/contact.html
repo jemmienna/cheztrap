@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cheztrap</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <!--MENU HEADER-->
+        <div class="menu_logo">
+            <a href="http://127.0.0.1:8000/">
+                <img src="/static/images/logo.svg">
+                <span class="logo">Cheztrap</span>
+            </a>
+        </div>
+
+        <div class="menu">
+            <div class="menu_left">
+                <span class="menu_abt"><a href="http://127.0.0.1:8000/about">About</a></span>
+                <span class="menu_faq"><a href="{{ url_for('home') }}#faq">FAQ</a></span>
+            </div>
+            <div class="menu_right">
+                <span class="menu_contact"><a href="http://127.0.0.1:8000/contact">Contact</a></span>
+                <span class="menu_get"><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Get Now!</a></span>
+            </div>
+        </div>
+        
+
+ 
+
+        <!--CONTACT CONTENT STARTS HERE-->
+        <div class="container">
+            <!--TITLE-->
+            <div class="contact_header">Questions or Feedback?<br> We're Listening!</div>
+            <div class="contact_desc">Please don't hesitate to reach out! We're happy to answer any questions you have. Your feedback helps make Cheztrap even stronger, and we truly appreciate every suggestion.</div>
+            
+
+            <!--CONTACT FORM CODE-->
+            <form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation" novalidate>
+                <input type="hidden" name="access_key" value="84cf2b10-0abb-460d-bc42-9abf81be21b5">
+                <input type="hidden" name="subject" value="New Submission from Web3Forms">
+                <input type="checkbox" name="botcheck" style="display:none;">
+
+
+                <div class="form-group">
+                    <label for="topic">Topic *</label>
+                    <select name="topic" id="topic" required>
+                        <option value="">Question/Feedback</option>
+                        <option value="question">Question</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <div class="empty-feedback">Please select a topic.</div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="message">Question/Feedback *</label>
+                    <textarea rows="10" name="message" id="message" placeholder="Your Message" required></textarea>
+                    <div class="empty-feedback">Please enter your message.</div>
+                </div>
+
+                <div class="form-row name">
+                    <div class="form-group"> 
+                        <label for="first_name">First Name *</label>
+                        <input type="text" name="name" id="first_name" placeholder="John" required>
+                        <div class="empty-feedback">Please provide your first name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name *</label>
+                        <input type="text" name="last_name" id="lname" placeholder="Doe" required>
+                        <div class="empty-feedback">Please provide your last name.</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
+                        <div class="empty-feedback">Please provide your email address.</div>
+                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                    </div>
+                </div>
+
+                <button type="submit">Click to Submit!</button>
+                <p id="result"></p>
+                </form>
+        </div>
+
+
+
+
+
+
+        <!--SECTION 8 footer-->
+        <div class="footer">
+            <div class="footer_content_left">
+                <div class="footer_logo">Cheztrap</div>
+                            
+                <div class="footer_contact">
+                    <div class="footer_contact_stuff">
+                        <div class="footer_email">Email: december0two@gmail.com</div>
+                        <img src="/static/images/footer_rat1.svg">
+                        <img src="/static/images/footer_rat2.svg">
+                        <img src="/static/images/footer_rat3.svg">
+                    </div>
+                </div>
+            </div>
+            <div class="footer_content_right">
+                <div class="footer_content_right_col1">
+                    <li><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank" class="footer_link">DOWNLOAD</a></li>
+                    <li><a href="http://127.0.0.1:8000/about" class="footer_link">ABOUT</a></li>
+                    <li><a href="http://127.0.0.1:8000/contact" class="footer_link">CONTACT</a></li>
+                </div>
+                <div class="footer_content_right_col2">
+                    <li><a href="http://127.0.0.1:8000/terms" class="footer_link">TERMS</a></li>
+                    <li><a href="http://127.0.0.1:8000/privacy" class="footer_link">PRIVACY</a></li>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    <!--JAVASCRIPT-->
+    <script>
+        (function () {
+      "use strict";
+      const forms = document.querySelectorAll(".needs-validation");
+      const result = document.getElementById("result");
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+              form.querySelectorAll(":invalid")[0].focus();
+            } else {
+              const formData = new FormData(form);
+              event.preventDefault();
+              event.stopPropagation();
+              const object = {};
+              formData.forEach((value, key) => {
+                object[key] = value;
+              });
+              const json = JSON.stringify(object);
+              result.innerHTML = "Please wait...";
+              result.style.color = "#6b7280";
+
+              fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json"
+                },
+                body: json
+              })
+                .then(async (response) => {
+                  let json = await response.json();
+                  if (response.status == 200) {
+                    result.innerHTML = json.message;
+                    result.style.color = "#16a34a";
+                  } else {
+                    result.innerHTML = json.message;
+                    result.style.color = "#dc2626";
+                  }
+                })
+                .catch((error) => {
+                  result.innerHTML = "Something went wrong!";
+                  result.style.color = "#dc2626";
+                })
+                .then(function () {
+                  form.reset();
+                  form.classList.remove("was-validated");
+                  setTimeout(() => {
+                    result.style.display = "none";
+                  }, 5000);
+                });
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+    </script>
+    </body>
+
+</html>

@@ -1,5 +1,5 @@
 const hostname = "https://cheztrap.com/";
-// const hostname = "http://127.0.0.1:8000/";
+//const hostname = "http://127.0.0.1:8000/";
 
 jQuery(document).ready(function () {
   function getPageDetails() {
@@ -58,6 +58,7 @@ jQuery(document).ready(function () {
     const websiteNameDisplay = $("#website_name");
     const isSafeDisplay = $("#is_safe");
 
+
     let isGmailDetailPage =
       currentUrl.startsWith("https://mail.google.com") && !isGmailSection;
 
@@ -91,24 +92,32 @@ jQuery(document).ready(function () {
                 hostname + "/api/check/result/gmail",
                 { title: title, bodyText: bodyText },
                 function (output) {
-                  if (output.is_secure) {
-                    websiteNameDisplay.html(
-                      "<div style='margin-top: -15px;'><p style='font-size: 20px'>This gmail is safe</p></div>"
-                    );
+                  if (output.is_safe) {
                     isSafeDisplay.html(
-                      "<img src='https://cdn2.iconfinder.com/data/icons/greenline/512/check-128.png' style='width: 35px'><div style='margin-top: -15px;'><img src='/static/images/happy_cat.gif' style='width: 200px'></div><div style='font-size: 17.5px;'>" +
-                        output.reason +
-                        "</div>"
+                      "<div class='gmail_result_container'>" +
+                      "<div class='result_img'><img src='/static/images/insurance.png' style='width: 2.8rem;'></div>" + 
+                      "<div class='result_header'>This Gmail is Safe!</div>" + 
+                      "</div>" 
                     );
+                    websiteNameDisplay.html(
+                      "<div><img src='/static/images/rat.svg' style='width: 200px; padding-top:20%;'></div>" +
+                      "<div class='gmail_reason_desc'>" + output.reason +
+                      "</div>"
+                    );
+
                   } else {
-                    websiteNameDisplay.html(
-                      "<div style='font-size: 17.5px; margin-bottom: 10px;'>This gmail may not be safe. Be careful!</div>"
-                    );
                     isSafeDisplay.html(
-                      "<img src='/static/images/bad.png' style='width: 35px;'><div style='font-size: 17.5px; margin-top: 10px;'>" +
-                        output.reason +
-                        "</div>"
+                      "<div class='result_container'>" +
+                      "<div class='result_img'><img src='/static/images/warning.png' style='width: 2.8rem;'></div>" + 
+                      "<div class='result_header'>This Gmail may NOT be safe!</div>" +
+                      "</div>"
                     );
+                    websiteNameDisplay.html(
+                      "<div style='margin-top: -15px;'><img src='/static/images/bad_rat.svg' style='width: 300px; padding-top:7%;'></div>" +
+                      "<div class='gmail_reason_desc'>" + output.reason +
+                      "</div>"
+                    );
+                    
                   }
                 }
               );
@@ -126,33 +135,118 @@ jQuery(document).ready(function () {
       $.post(
         hostname + "/api/check/website",
         { url: currentUrl },
-        function (output) {
+        function (output) { 
           console.log("output", output);
 
           console.log(urlElement);
-          if (output.is_secure) {
-            websiteNameDisplay.html(
-              "<div style='margin-bottom: 10px; font-size: 20px;'>" +
-                urlElement.hostname +
-                "<br> is a safe website</div>"
-            );
-            console.log("thisl oaded but is still ading scren");
+          if (output.is_safe) {
             isSafeDisplay.html(
-              "<img src='https://cdn2.iconfinder.com/data/icons/greenline/512/check-128.png' style='width: 35px'><div style='margin-top: -15px;'><img src='/static/images/happy_cat.gif' style='width: 200px'></div><div style='font-size: 17.5px;'>" +
-                output.reason +
-                "</div>"
+              "<div class='result_container'>" +
+              "<div class='result_img'><img src='/static/images/insurance.png' style='width: 2.8rem;'></div>" + 
+              "<div class='result_header'>Website is Safe!</div>" + 
+              "</div>"
             );
+            websiteNameDisplay.html(
+              "<div class='website_title'>" +
+                urlElement.hostname + "</div>" + 
+                "<div class='reason_desc'>" + output.reason +
+                "</div>" + 
+
+               
+
+                //table
+                "<div class='table_title'>More About This Site</div>" +
+                "<table id='customers'>" +
+                  "<tr>" +
+                    "<td>Website Type</td>" + 
+                    "<td>" + output.website_type + "</td>" +
+                  "</tr>" +
+                  "<tr>" +
+                    "<td>Founders</td>" +
+                    "<td>" + output.founders.join(', ') + "</td>" +
+                  "</tr>" +
+                  "<tr>" +
+                    "<td>Founded Year</td>" +
+                    "<td>" + output.founded_year + "</td>" +
+                  "</tr>" +
+                  "<tr>" +
+                    "<td>HQ</td>" +
+                    "<td>" + output.hq + "</td>" +
+                  "</tr>" +
+                  "<tr>" +
+                    "<td>Traffic Level</td>" +
+                    "<td>" + output.traffic_level + "- " + output.monthly_visits + " monthly visits" + "</td>" +
+                  "</tr>" +
+                  "<tr>" +
+                    "<td>Money Raised</td>" +
+                    "<td>" + output.money_raised + "</td>" +
+                  "</tr>" +
+                  "<tr>" +
+                    "<td>Fun Fact</td>" +
+                    "<td>" + output.fun_fact + "</td>" +
+                  "</tr>" +
+                "</table>"
+            );
+
           } else {
-            websiteNameDisplay.html(
-              "<div style='margin-bottom: 10px; font-size: 20px;'>" +
-                urlElement.hostname
-            );
             isSafeDisplay.html(
-              "<div><img src='/static/images/bad.png' style='width: 35px'></div><div style='font-size: 17.5px;'>This website may not be safe. Be careful!</div>" +
-                "<div style='font-size: 17.5px;margin-top: 10px;'>" +
-                output.reason +
-                "</div>"
+              "<div class='result_container'>" +
+              "<div class='result_img'><img src='/static/images/warning.png' style='width: 2.8rem;'></div>" + 
+              "<div class='result_header'>BE CAUTIOUS!</div>" +
+              "</div>"
             );
+            let html = 
+            "<div class='website_title'>" + urlElement.hostname + "</div>" +
+            "<div class='reason_desc'>" + output.reason + "</div>" +
+
+            "<div class='table_title'>More About This Site</div>" +
+            "<table id='customers'>";
+
+            // Add Website Type row if exists
+            if (output.website_type) {
+              html += "<tr><td>Website Type</td><td>" + output.website_type + "</td></tr>";
+            }
+
+            // Add Founders row if exists
+            if (output.founders && output.founders!="" && output.founders.join(', ')!=="John Doe, Jane Smith") {
+              html += "<tr><td>Founders</td><td>" + output.founders.join(', ') + "</td></tr>";
+            }
+
+            // Add Founded Year row if exists
+            if (output.founded_year) {
+              html += "<tr><td>Founded Year</td><td>" + output.founded_year + "</td></tr>";
+            }
+
+            // Add HQ row if exists
+            if (output.hq) {
+              html += "<tr><td>HQ</td><td>" + output.hq + "</td></tr>";
+            }
+
+            if (output.traffic_level) {
+              html += "<tr><td>Traffic Level</td><td>" + output.traffic_level + "- " + output.monthly_visits + " monthly visits" + "</td></tr>";
+            }
+
+            if (output.registrar) {
+              html += "<tr><td>Registrar</td><td>" + output.registrar + "</td></tr>";
+            }
+
+            if (output.domain_created) {
+              html += "<tr><td>Domain Created</td><td>" + output.domain_created + "</td></tr>";
+            }
+
+            if (output.domain_registrant) {
+              html += "<tr><td>Domain Registrant</td><td>" + output.domain_registrant + "</td></tr>";
+            }
+
+            // Add Money Raised row if exists
+            if (output.money_raised) {
+              html += "<tr><td>Money Raised</td><td>" + output.money_raised + "</td></tr>";
+            }
+
+            html += "</table>";
+
+            websiteNameDisplay.html(html);
+
           }
         }
       );

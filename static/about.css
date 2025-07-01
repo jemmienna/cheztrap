@@ -1,0 +1,489 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: roboto;
+    background-color: #ffde4c;
+}
+
+
+
+
+/* MENU */
+.menu{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    height: 95px;
+    z-index: 998;
+    top: 0;
+    background-image: url(/static/images/chez7.svg);
+    background-repeat: repeat-x;
+}
+
+.menu_logo{
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 999;
+    padding-top: 0.6rem;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    width: 16%;
+}
+
+.menu_logo img{
+    width: 16%;
+    padding-right: 1.2%;
+}
+
+.logo{
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    font-family: "Solway", serif;
+    font-weight: 700;
+    letter-spacing: -0.1rem;
+}
+
+.menu_left, .menu_right{
+    padding: 1rem 3%;
+}
+
+.menu_abt, .menu_contact, .menu_faq, .menu_get{
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.menu_abt, .menu_contact{
+    margin-right: 3rem;
+}
+
+.menu_abt:hover, .menu_faq:hover, .menu_contact:hover, .menu_get:hover{
+    font-family: "Solway", serif;
+    font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .menu_abt, .menu_contact {
+    margin-right: 1rem;
+  }
+  .menu_logo{
+    width: 100%;
+    padding-right: 12%;
+  }
+  .menu_logo img{
+    width: 9%;
+  }
+}
+
+
+
+
+
+
+
+/* CONTENT */
+
+/* first page */
+.head_container{
+    margin: 0 auto;
+    padding-top: 15vh;
+    padding-bottom: 11%;
+    background-image: url(/static/images/abt.svg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+    border-bottom: 3px solid;
+}
+
+.abt_header{
+    font-family: "Charm", cursive;
+    font-weight: 700;
+    font-size: 5rem;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.abt_logo{
+    font-family: "Solway", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 6rem;
+    text-align: center;
+    margin-top: -1%;
+    padding-bottom: 15%;
+}
+
+
+
+
+
+
+
+
+
+/* story content with jiena in box*/
+.abt_box{
+    border-bottom: 3px solid;
+}
+
+.abt_container1{
+    display: flex;
+    justify-content: center;
+    padding-top: 15%;
+    margin: 0 auto;
+    padding-bottom: 3%;
+    flex-wrap: wrap-reverse;
+}
+
+.abt_text1{
+    width: 50%;    
+    font-family: "Solway", serif;
+    font-weight: 500;
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    padding-right: 5%;
+}
+
+.me{
+    margin-top: -8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.me_box{
+    background-image: url(/static/images/me.jpg);
+    background-size: 25rem;
+    background-repeat: no-repeat;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    border: 3px solid;
+    display: flex;
+}
+
+.me_desc1 img{
+    width: 15rem;
+    height: 5rem;
+    margin-bottom: -7%;
+}
+
+.me_desc2 img{
+    margin-top: -14%;
+    width: 22rem;
+    height: 10rem;
+}
+
+
+
+
+
+/* story content with jaelen in box */
+.abt_container2{
+    display: flex;
+    justify-content: center;
+    padding-top: 12%;
+    margin: 0 auto;
+    padding-bottom: 5%;
+    flex-wrap: wrap;
+}
+
+.abt_text2{
+    width: 50%;    
+    font-family: "Solway", serif;
+    font-weight: 500;
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    padding-left: 5%;
+}
+
+.jaelen{
+    margin-top: -10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jaelen_box{
+    background-image: url(/static/images/jaelen.png);
+    background-size: 25rem;
+    background-repeat: no-repeat;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    border: 3px solid;
+    display: flex;
+}
+
+.jaelen_desc1 img{
+    width: 19rem;
+    height: 10rem;
+    margin-bottom: -16%;
+    padding-top: 8%;
+}
+
+.jaelen_desc2 img{
+    margin-top: -5%;
+    width: 15rem;
+    height: 5rem;
+    padding-bottom: 3%;
+}
+
+
+
+
+
+
+/* story content with rat in it */
+.abt_box3{
+    border-bottom: 3px solid;
+}
+
+.abt_container3{
+    
+    margin: 0 auto;
+    padding-bottom: 6%;
+    flex-wrap: wrap-reverse;
+}
+
+.rat_header{
+    padding-top: 5%;
+    text-align: center;
+    font-family: "Solway", serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 5vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: -0.2rem;
+}
+
+.rat{
+    background-image: url(/static/images/abt_rat.svg);
+    background-size: 17rem;
+    background-repeat: no-repeat;
+    width: 17rem;
+    height: 17rem;
+    margin: auto;
+}
+
+.abt_text3{
+    margin: 0 auto;
+    width: 90%;    
+    font-family: "Solway", serif;
+    font-weight: 500;
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    text-align: center;
+}
+
+
+
+
+
+/* download section */
+.download_container{
+    position: relative;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.scatter1{
+    width: 17rem;
+    position: absolute;
+    height: auto;
+    z-index: -1;
+}
+
+.scatter2{
+    width: 14rem;
+    position: absolute;
+    height: auto;
+    z-index: -1;
+}
+
+.scatter3{
+    width: 8rem;
+    position: absolute;
+    height: auto;
+    z-index: -1;
+}
+
+.scatter4{
+    width: 13rem;
+    position: absolute;
+    height: auto;
+    z-index: -1;
+}
+
+.dwnld_header{
+    text-align: center;
+    padding-top: 13%;
+    padding-bottom: 7%;
+    font-family: "Solway", serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 5vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: -0.2rem;
+    width: 90%;
+    margin: auto;
+}
+
+.btn_box{
+    text-align: center;
+}
+
+.dwnld_btn{
+    background-color: black;
+    width: 18rem;
+    height: 3.9rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    border: 3px solid;
+    transition: 0.2s ease-in-out;
+    margin: 0 1rem 30% 1rem;
+}
+
+.dwnld_btn:hover{
+    transform: translateY(-7px);
+}
+
+.btn_word{
+    font-family: "Solway", serif;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+/* mobile ver */
+@media (max-width: 800px){
+    /*first page */
+    .abt_header{
+        padding-top: 20%;
+        font-size: 4rem;
+    }
+
+    .abt_logo{
+        font-size: 5rem;
+        padding-bottom: 50%;
+    }
+
+    /* story content*/
+    .abt_text1, .abt_text2, .abt_text3{
+        width: 85%;    
+        font-family: "Solway", serif;
+        font-weight: 500;
+        font-size: clamp(1rem, 4vw, 1.8rem);
+        padding-right: 5%;
+        padding-bottom: 6%;
+    }
+    .abt_text1{
+        margin-top: -6%;
+    }
+    .abt_text3{
+        margin-top:3%;
+    }
+    .jaelen_desc1{
+        margin-top: -4%;
+    }
+    .rat_header{
+        padding-top: 15%;
+    }
+    .scatter1{
+        max-width: 10rem;
+        height: auto;
+    }
+
+    .scatter2{
+        max-width: 7rem;
+        height: auto;
+    }
+
+    .scatter3{
+        max-width: 3rem;
+        height: auto;
+    }
+
+    .scatter4{
+        max-width: 6rem;
+        height: auto;
+    }
+    .cheese_hide{
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+/* FOOTER */
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 3% 0;
+    list-style-type: none;
+}
+
+.footer_logo{
+    text-align: left;
+    font-family: "Solway", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 2rem;
+    padding-bottom: 1.5%;
+    color: #ffd000;
+}
+
+.footer_content_left, .footer_content_right{
+    font-family: "Solway", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2rem;
+}
+
+.footer_content_left{
+    padding-left: 3%;
+    line-height: 225%;
+}
+
+.footer_contact{
+    display: flex;
+    text-align: left;
+}
+
+.footer_contact img{
+  width: 7%;
+  height: auto;
+  padding-right: 2%;
+}
+
+.footer_content_right{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10%;
+    width: 30%;
+    line-height: 275%;
+    text-align: left;
+}
+
+.footer_content_left li:hover, .footer_content_right li:hover{
+  text-decoration: underline;
+}
+
+.fb{
+    line-height: 10%;
+}
+
+.footer_link{
+  color: white;
+}
