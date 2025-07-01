@@ -21,7 +21,7 @@
 
             <!--MENU HEADER-->
             <div class="menu_logo">
-                <a href="http://127.0.0.1:8000/">
+                <a href="/">
                     <img src="/static/images/logo.svg">
                     <span class="logo">Cheztrap</span>
                 </a>
@@ -29,11 +29,11 @@
 
             <div class="menu">
                 <div class="menu_left">
-                    <span class="menu_abt"><a href="http://127.0.0.1:8000/about">About</a></span>
+                    <span class="menu_abt"><a href="/about">About</a></span>
                     <span class="menu_faq"><a href="#faq">FAQ</a></span>
                 </div>
                 <div class="menu_right">
-                    <span class="menu_contact"><a href="http://127.0.0.1:8000/contact">Contact</a></span>
+                    <span class="menu_contact"><a href="/contact">Contact</a></span>
                     <span class="menu_get"><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Get Now!</a></span>
                 </div>
             </div>
@@ -299,12 +299,12 @@
                     <div class="footer_content_right">
                         <div class="footer_content_right_col1">
                             <li><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank" class="footer_link">DOWNLOAD</a></li>
-                            <li><a href="http://127.0.0.1:8000/about" class="footer_link">ABOUT</a></li>
-                            <li><a href="http://127.0.0.1:8000/contact" class="footer_link">CONTACT</a></li>
+                            <li><a href="/about" class="footer_link">ABOUT</a></li>
+                            <li><a href="/contact" class="footer_link">CONTACT</a></li>
                         </div>
                         <div class="footer_content_right_col2">
-                            <li><a href="http://127.0.0.1:8000/terms" class="footer_link">TERMS</a></li>
-                            <li><a href="http://127.0.0.1:8000/privacy" class="footer_link">PRIVACY</a></li>
+                            <li><a href="/terms" class="footer_link">TERMS</a></li>
+                            <li><a href="/privacy" class="footer_link">PRIVACY</a></li>
                         </div>
                     </div>
                 </div>
@@ -393,7 +393,7 @@
                 $('.load_img').show();
 
                 // change to cheztrap.com
-                $.post('http://127.0.0.1:8000/api/check/website', { url: url}, function(res){
+                $.post('http://cheztrap.com/api/check/website', { url: url}, function(res){
                     console.log('result', res);
 
                     if (res.is_safe === true) {
