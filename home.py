@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from flask_cors import CORS
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
@@ -8,6 +9,7 @@ from urllib.parse import urlparse
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 #grabs openai api from .env into home.py
 load_dotenv()
