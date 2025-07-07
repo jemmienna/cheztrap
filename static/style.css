@@ -632,11 +632,10 @@ body {
     font-size: clamp(2.5rem, 6vw, 4rem);
 }
 
-.sect4_step1_vid img, .sect4_step2_vid img{
-    width: clamp(27rem, 90%, 50rem);
-    height: auto;
-    border: 3px solid;
-    border-radius: 10%;
+.sect4_step1_vid video, .sect4_step2_vid video{
+  width: clamp(27rem, 90%, 50rem);
+  height: auto;
+  border: 3px solid;
 }
 
 .sect4_step1_desc, .sect4_step2_desc{
