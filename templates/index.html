@@ -4,12 +4,15 @@
     <head>
         <title>cheztrap</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='chrome.css') }}">
         <script src="/static/jquery.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/svg+xml" href="/static/images/favicon/cheese.svg">
         <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
         <link rel="manifest" href="/static/images/favicon/site.webmanifest">
@@ -19,41 +22,92 @@
 
 
 
-            <!--MENU HEADER-->
-            <div class="menu_logo">
-                <a href="/">
-                    <img src="/static/images/logo.svg">
-                    <span class="logo">Cheztrap</span>
-                </a>
-            </div>
-
-            <div class="menu">
-                <div class="menu_left">
-                    <span class="menu_abt"><a href="/about">About</a></span>
-                    <span class="menu_faq"><a href="#faq">FAQ</a></span>
-                </div>
-                <div class="menu_right">
-                    <span class="menu_contact"><a href="/contact">Contact</a></span>
-                    <span class="menu_get"><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Get Now!</a></span>
-                </div>
-            </div>
-
-
-
-
-
-
+            {% include 'partials/header.html' %}
 
             <div class="sections">
 
                 <!--SECTION 1-->
                 <div class="sect1">
-                    <div class="sect1_content">
-                        <h1 class="hero_header">Browse with confidence. Stay one step ahead.</h1>
-                        <p class="hero_desc">Cheztrap protects you at every click in your internet journey, stopping you from browsing deeper into enemy rat territory.</p>
-                        <div class="sect1_buttons">
-                            <a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank"><button class="dwnld_btn"><span class="btn_word1">Get on Chrome</span></button></a>
-                            <button id="try_btn" class="try_btn"><span class="btn_word">Try it. Click me!</span></button>
+                    <span class="h_dot h_dot1"></span>
+                    <span class="h_dot h_dot2"></span>
+
+                    <div class="sect1_inner">
+                        <div class="sect1_content">
+                            <h1 class="hero_header">Free cheese? Probably a <span class="hero_trap">trap.</span></h1>
+                            <p class="hero_desc">Cheztrap scans websites and emails for signs of scams and phishing, helping you understand the risks.</p>
+                            <div class="sect1_buttons">
+                                <a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank" class="hero_btn hero_btn_primary">Add to Chrome</a>
+                                <button type="button" id="try_btn" class="hero_btn hero_btn_ghost">See How it Works</button>
+                            </div>
+                            <p class="hero_note">Free. Works in your browser.</p>
+                        </div>
+
+                        <!--live checker: a browser window whose address bar checks the site you type-->
+                        <div class="checker">
+                            <div class="checker_box" id="checker_box">
+                                <form id="checker_form" class="hb_bar">
+                                    <span class="hb_light hb_light_red"></span>
+                                    <span class="hb_light hb_light_yellow"></span>
+                                    <span class="hb_light hb_light_green"></span>
+                                    <label class="hb_sr" for="url">Website to check</label>
+                                    <input type="text" id="url" name="url" class="hb_url" placeholder="Type or paste a website..." autocomplete="off" spellcheck="false" required>
+                                    <button type="submit" class="hb_cheese" aria-label="Check this site with Cheztrap">
+                                        <svg width="30" height="22" viewBox="0 0 54 40" aria-hidden="true"><path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#fff3a8" stroke="#2a211c" stroke-width="4" stroke-linejoin="round"/><path d="M3 17 Q27 24 51 21" fill="none" stroke="#2a211c" stroke-width="4"/></svg>
+                                    </button>
+                                </form>
+
+                                <div class="hb_page">
+                                    <svg class="hb_scene" viewBox="0 0 680 305" aria-hidden="true">
+                                        <!--wooden trap board-->
+                                        <path d="M40 216 Q340 208 650 206 L646 290 Q340 296 36 298 Z" fill="#d2a06a" stroke="#2a211c" stroke-width="6" stroke-linejoin="round"/>
+                                        <path d="M62 272 Q150 268 240 270 M330 283 Q430 279 520 280 M470 252 Q540 249 605 251" fill="none" stroke="#a87445" stroke-width="3" stroke-linecap="round"/>
+                                        <circle cx="76" cy="258" r="5.5" fill="#dfe2e6" stroke="#2a211c" stroke-width="2.5"/>
+                                        <circle cx="626" cy="256" r="5.5" fill="#dfe2e6" stroke="#2a211c" stroke-width="2.5"/>
+                                        <!--trigger plate + crumbs-->
+                                        <path d="M332 224 L540 220" stroke="#2a211c" stroke-width="7" stroke-linecap="round"/>
+                                        <path d="M334 223 L538 219" stroke="#b9bec6" stroke-width="3" stroke-linecap="round"/>
+                                        <circle cx="318" cy="225" r="4" fill="#f7d64f" stroke="#2a211c" stroke-width="1.5"/>
+                                        <circle cx="329" cy="233" r="3" fill="#f7d64f" stroke="#2a211c" stroke-width="1.5"/>
+                                        <circle cx="323" cy="216" r="2.5" fill="#f7d64f" stroke="#2a211c" stroke-width="1.5"/>
+                                        <!--cheese bait-->
+                                        <path d="M352 214 Q440 212 530 210 L520 158 Q440 186 352 214 Z" fill="#f7d64f" stroke="#2a211c" stroke-width="5" stroke-linejoin="round"/>
+                                        <ellipse cx="436" cy="202" rx="9" ry="6.5" fill="#e5b833" stroke="#2a211c" stroke-width="3"/>
+                                        <ellipse cx="478" cy="194" rx="10" ry="7.5" fill="#e5b833" stroke="#2a211c" stroke-width="3"/>
+                                        <ellipse cx="507" cy="177" rx="7" ry="8" fill="#e5b833" stroke="#2a211c" stroke-width="3"/>
+                                        <!--spring bar, set-->
+                                        <path d="M606 206 L382 18" stroke="#2a211c" stroke-width="22" stroke-linecap="round"/>
+                                        <path d="M606 206 L382 18" stroke="#c6cbd3" stroke-width="12" stroke-linecap="round"/>
+                                        <path d="M598 196 L388 20" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+                                        <circle cx="606" cy="207" r="14" fill="#9aa0a8" stroke="#2a211c" stroke-width="4"/>
+                                        <circle cx="606" cy="207" r="5" fill="#2a211c"/>
+                                        <!--mouse-->
+                                        <path d="M106 184 C76 192 56 172 64 152 C72 134 98 138 96 156 C94 168 78 164 80 154" fill="none" stroke="#2a211c" stroke-width="5" stroke-linecap="round"/>
+                                        <ellipse cx="160" cy="226" rx="17" ry="9" fill="#8f857f" stroke="#2a211c" stroke-width="4"/>
+                                        <ellipse cx="228" cy="226" rx="17" ry="9" fill="#8f857f" stroke="#2a211c" stroke-width="4"/>
+                                        <path d="M96 182 C96 136 150 124 196 128 C246 132 270 168 262 196 C254 222 210 228 168 226 C120 224 96 212 96 182 Z" fill="#8f857f" stroke="#2a211c" stroke-width="6" stroke-linejoin="round"/>
+                                        <path d="M108 196 C130 214 190 220 238 210 C226 222 196 226 168 225 C132 223 112 214 108 196 Z" fill="#e4ded6"/>
+                                        <path d="M140 146 L152 140 M168 138 L182 136 M128 166 L140 160" stroke="#6f655f" stroke-width="3" stroke-linecap="round"/>
+                                        <circle cx="216" cy="110" r="25" fill="#8f857f" stroke="#2a211c" stroke-width="5"/>
+                                        <circle cx="216" cy="110" r="14" fill="#e9a0a8"/>
+                                        <circle cx="271" cy="106" r="25" fill="#8f857f" stroke="#2a211c" stroke-width="5"/>
+                                        <circle cx="271" cy="106" r="14" fill="#e9a0a8"/>
+                                        <path d="M200 160 C200 126 226 112 254 116 C286 120 302 146 298 172 C294 198 268 208 244 206 C216 204 200 188 200 160 Z" fill="#8f857f" stroke="#2a211c" stroke-width="6" stroke-linejoin="round"/>
+                                        <ellipse class="hb_eye" cx="234" cy="152" rx="15" ry="17" fill="#fff" stroke="#2a211c" stroke-width="4"/>
+                                        <ellipse class="hb_eye" cx="266" cy="150" rx="15" ry="17" fill="#fff" stroke="#2a211c" stroke-width="4"/>
+                                        <circle class="hb_pupil" cx="234" cy="152" r="7.5" fill="#2a211c"/>
+                                        <circle class="hb_pupil" cx="266" cy="150" r="7.5" fill="#2a211c"/>
+                                        <circle cx="300" cy="167" r="8" fill="#f08fa0" stroke="#2a211c" stroke-width="3"/>
+                                    </svg>
+
+                                    <div class="hb_popup">
+                                        <div class="hb_popup_head">Cheztrap</div>
+                                        <div class="hb_popup_body" id="checker_result" aria-live="polite">
+                                            <div class="hb_title">Waiting for a site</div>
+                                            <div class="hb_text">Type an address, then click the cheese icon.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,31 +119,167 @@
 
                 <!--SECTION 2 purpose/features-->
                 <div class="sect2"> 
-                    <div class="sect2_content_top">
-                        <div class="sect2_content_top_left"><img src=/static/images/f1.svg></div>
-                        <div class="sect2_content_top_right">
-                            <p class="sect2_desc1">Protects you from suspicious websites</p>
+                    <!--"protects you" band: browser mockup with the extension popup + a rat-territory card-->
+                    <div class="protect">
+                        <span class="pv_dot pv_dot1"></span>
+                        <span class="pv_dot pv_dot2"></span>
+                        <span class="pv_dot pv_dot3"></span>
+                        <span class="pv_dot pv_dot4"></span>
+
+                        <div class="protect_inner">
+                            <div class="pv_visual" aria-hidden="true">
+                                <svg class="pv_mouse peek_mouse" viewBox="0 0 150 80" aria-hidden="true" filter="url(#peek_wob)" stroke-linecap="round" stroke-linejoin="round">
+                                    <defs><filter id="peek_wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter></defs>
+                                    <circle cx="34" cy="26" r="20" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="34" cy="26" r="10" fill="#E8A5A5"/>
+                                    <circle cx="112" cy="24" r="20" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="112" cy="24" r="10" fill="#E8A5A5"/>
+                                    <path d="M18 80C14 44 42 28 74 28C108 28 134 44 130 80Z" fill="#A89A8E" stroke="#2A2220" stroke-width="4"/>
+                                    <ellipse cx="55" cy="52" rx="11" ry="12" fill="#fff" stroke="#2A2220" stroke-width="3"/><ellipse cx="93" cy="52" rx="11" ry="12" fill="#fff" stroke="#2A2220" stroke-width="3"/>
+                                    <circle class="peek_pupil" cx="55" cy="53" r="5" fill="#2A2220"/><circle class="peek_pupil" cx="93" cy="53" r="5" fill="#2A2220"/>
+                                    <path d="M66 66C70 62 78 62 82 66C80 72 68 72 66 66Z" fill="#E27F86" stroke="#2A2220" stroke-width="3"/>
+                                </svg>
+
+                                <div class="pv_browser">
+                                    <div class="pv_bar">
+                                        <span class="pv_light pv_light_red"></span>
+                                        <span class="pv_light pv_light_yellow"></span>
+                                        <span class="pv_light pv_light_green"></span>
+                                        <div class="pv_address">github.com</div>
+                                    </div>
+                                    <div class="pv_page">
+                                        <div class="pv_signin">
+                                            <div class="pv_signin_title">Sign in</div>
+                                            <div class="pv_field"></div>
+                                            <div class="pv_field"></div>
+                                            <div class="pv_field pv_field_btn"></div>
+                                        </div>
+
+                                        <div class="pv_popup">
+                                            <div class="pv_popup_head">Cheztrap</div>
+                                            <div class="pv_popup_body">
+                                                <div class="pv_popup_verdict">
+                                                    <svg width="28" height="32" viewBox="0 0 28 32"><path d="M14 2 L26 6 V15 C26 23 20 28 14 30 C8 28 2 23 2 15 V6 Z" fill="#cbe8b9" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/><path d="M8 16 L12.5 20.5 L20 11" fill="none" stroke="#2a211c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                    Website is Safe!
+                                                </div>
+                                                <div class="pv_popup_url">github.com</div>
+                                                <div class="pv_popup_text">A well-known code hosting site. Nothing suspicious here.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pv_rat">
+                                    <div class="pv_rat_url">free-cheese-winner.xyz</div>
+                                    <div class="pv_rat_title">Rat territory</div>
+                                    <div class="pv_rat_text">This site looks malicious. Leave before you click anything.</div>
+                                </div>
+                            </div>
+
+                            <div class="pv_copy">
+                                <h2 class="pv_title">Protects you from suspicious websites</h2>
+                                <p class="pv_desc">Cheztrap checks each site you land on, and tells you what it found, in plain words.</p>
+                                <div class="pv_points">
+                                    <div class="pv_point">
+                                        <div class="pv_icon">
+                                            <!--line-art cheese wedge-->
+                                            <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#2a211c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3.5 16.5 Q4.5 12.5 9 10.8 L21.5 5.6 Q28 7.2 28.6 14 L28.4 24 Q28.3 26.8 25.6 26.9 L6.3 27.2 Q3.4 27.1 3.4 24.2 Z"/>
+                                                <path d="M3.5 16.5 Q15.5 20.8 28.6 14.6"/>
+                                                <circle cx="10" cy="22.4" r="2.2"/>
+                                                <circle cx="19.6" cy="23" r="1.5"/>
+                                                <circle cx="20.6" cy="11.4" r="1.3"/>
+                                            </svg>
+                                        </div>
+                                        <p><b>Checks every site.</b> It scans each page the moment it opens.</p>
+                                    </div>
+                                    <div class="pv_point">
+                                        <div class="pv_icon">
+                                            <!--line-art cheese wheel with a slice marked-->
+                                            <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#2a211c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3.6 12.2 C3.8 8.2 9.6 6 16.2 6.1 C22.6 6.2 28.4 8.3 28.3 12.1 C28.2 15.9 22.4 18.1 15.9 18 C9.4 17.9 3.5 16 3.6 12.2 Z"/>
+                                                <path d="M3.6 12.2 L3.7 19.8 C3.9 23.8 9.6 26 16 26 C22.4 26 28.2 23.8 28.2 19.9 L28.3 12.1"/>
+                                                <path d="M16 12.1 L24.6 16.6 M16 12.1 L27.6 9.9"/>
+                                                <circle cx="9.6" cy="21" r="1.7"/>
+                                                <circle cx="18.6" cy="22.4" r="1.3"/>
+                                                <circle cx="9.8" cy="11.4" r="1.2"/>
+                                            </svg>
+                                        </div>
+                                        <p><b>Explains the verdict.</b> Safe, suspicious, or rat territory.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="ai_container">
-                        <div class="marquee">
-                            <ul class="ai_power">
-                            <li><span class="text">Powered by AI</span></li>
-                            </ul>
-                            <ul aria-hidden="true" class="ai_power">
-                            <li>
-                                <span class="text">Powered by AI</span>
-                            </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!--"malicious emails" band: phishing email with each red flag called out-->
+                    <div class="protect protect_emails">
+                        <span class="pv_dot em_dot1"></span>
+                        <span class="pv_dot em_dot2"></span>
+                        <span class="pv_dot em_dot3"></span>
+                        <span class="pv_dot em_dot4"></span>
 
-                    <div class="sect2_content_bot">
-                        <div class="sect2_content_bot_left">
-                            <p class="sect2_desc2">...and helps you avoid malicious emails!</p>
+                        <div class="protect_inner em_inner">
+                            <div class="pv_copy">
+                                <h2 class="pv_title">...and helps you avoid malicious emails!</h2>
+                                <p class="pv_desc">Cheztrap reads the email in front of you and points out what looks off before you click.</p>
+                                <div class="em_cta_row">
+                                    <a class="em_cta" href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Add to Chrome</a>
+                                </div>
+                            </div>
+
+                            <div class="em_visual" aria-hidden="true">
+                                <svg class="pv_mouse em_mouse peek_mouse" viewBox="0 0 150 80" aria-hidden="true" filter="url(#peek_wob)" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="34" cy="26" r="20" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="34" cy="26" r="10" fill="#E8A5A5"/>
+                                    <circle cx="112" cy="24" r="20" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="112" cy="24" r="10" fill="#E8A5A5"/>
+                                    <path d="M18 80C14 44 42 28 74 28C108 28 134 44 130 80Z" fill="#A89A8E" stroke="#2A2220" stroke-width="4"/>
+                                    <ellipse cx="55" cy="52" rx="11" ry="12" fill="#fff" stroke="#2A2220" stroke-width="3"/><ellipse cx="93" cy="52" rx="11" ry="12" fill="#fff" stroke="#2A2220" stroke-width="3"/>
+                                    <circle class="peek_pupil" cx="55" cy="53" r="5" fill="#2A2220"/><circle class="peek_pupil" cx="93" cy="53" r="5" fill="#2A2220"/>
+                                    <path d="M66 66C70 62 78 62 82 66C80 72 68 72 66 66Z" fill="#E27F86" stroke="#2A2220" stroke-width="3"/>
+                                </svg>
+
+                                <div class="pv_browser em_browser">
+                                    <div class="pv_bar">
+                                        <span class="pv_light pv_light_red"></span>
+                                        <span class="pv_light pv_light_yellow"></span>
+                                        <span class="pv_light pv_light_green"></span>
+                                        <div class="pv_address">mail.example.com</div>
+                                    </div>
+                                    <div class="em_mail">
+                                        <div class="em_subject">Your account is on hold</div>
+
+                                        <div class="em_row">
+                                            <div class="em_flag em_sender">
+                                                <span class="em_avatar">S</span>
+                                                <span><b>Streamly</b> &lt;realstreamly@gmail.com&gt;<br>to me</span>
+                                            </div>
+                                            <div class="em_note em_note_r">Sender doesn't match the brand</div>
+                                        </div>
+
+                                        <div class="em_row">
+                                            <div class="em_flag em_greeting">Hi customer,</div>
+                                            <div class="em_note em_note_l">Generic greeting</div>
+                                        </div>
+
+                                        <div class="em_row">
+                                            <div class="em_flag em_body">We're having trouble with your billing details. Update them within 24 hours or your account will be closed.</div>
+                                            <div class="em_note em_note_r">Urgent, pressuring language</div>
+                                        </div>
+
+                                        <div class="em_row">
+                                            <div><span class="em_fake_btn">UPDATE ACCOUNT NOW</span></div>
+                                            <div class="em_note em_note_l">Suspicious button</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="em_warning">
+                                    <div class="em_warning_title">
+                                        <svg width="34" height="30" viewBox="0 0 34 30"><path d="M17 3 L31 27 H3 Z" fill="#f8d84e" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/><path d="M17 11 V18" stroke="#2a211c" stroke-width="3" stroke-linecap="round"/><circle cx="17" cy="22.5" r="1.8" fill="#2a211c"/></svg>
+                                        This email may NOT be safe
+                                    </div>
+                                    <div class="em_warning_text">It looks like a phishing attempt. Don't click anything.</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="sect2_content_bot_right"><img src=/static/images/f2.svg></div>
                     </div>
                 </div>
 
@@ -98,54 +288,127 @@
 
 
 
-                <!--SECTION 3 slider-->
-                <div class="sect3">
-                    <div class="container">
-                        <div class="scroll-parent">
-                            <div class="scroll-element primary">
-                                <img src=/static/images/cheese1.png/>
-                                <p>Your Internet Guardian</p>
-                                <img src=/static/images/cheese2.png/>
-                                <p>Detects Rats</p>
-                                <img src=/static/images/cheese3.png/>
-                                <p>Avoid Phishes</p>
-                                <img src=/static/images/cheese4.png/>
-                                <p>Protect Your Cheese</p>
-                            </div>
-                            <div class="scroll-element secondary">
-                                <img src=/static/images/cheese1.png/>
-                                <p>Your Internet Guardian</p>
-                                <img src=/static/images/cheese2.png/>
-                                <p>Detects Rats</p>
-                                <img src=/static/images/cheese3.png/>
-                                <p>Avoid Phishes</p>
-                                <img src=/static/images/cheese4.png/>
-                                <p>Protect Your Cheese</p>
-                            </div>
-                        </div>
+                <!--SECTION 3 ticker band-->
+                <div class="sect3 ticker" role="region" aria-label="Cheztrap highlights">
+                    <div class="tk_track">
+                        <ul class="tk_group">
+                            <li>Protect your cheese <svg class="tk_ico" aria-hidden="true"><use href="#tk_wedge"/></svg></li>
+                            <li>Your internet guardian <svg class="tk_ico" aria-hidden="true"><use href="#tk_wheel"/></svg></li>
+                            <li>Detects rats <svg class="tk_ico" aria-hidden="true"><use href="#tk_block"/></svg></li>
+                            <li>Avoid phishing <svg class="tk_ico" aria-hidden="true"><use href="#tk_wedge"/></svg></li>
+                        </ul>
                     </div>
+                    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+                        <symbol id="tk_wedge" viewBox="0 0 54 40">
+                            <path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#f9d34a" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M3 17 Q27 24 51 21" fill="none" stroke="#2a211c" stroke-width="3"/>
+                            <circle cx="16" cy="29" r="3.2" fill="#2a211c"/><circle cx="33" cy="30" r="2.4" fill="#2a211c"/><circle cx="40" cy="13" r="2.2" fill="#2a211c"/>
+                        </symbol>
+                        <symbol id="tk_wheel" viewBox="0 0 54 40">
+                            <path d="M4 18 V27 Q4 36 27 36 Q50 36 50 27 V18 Z" fill="#e8a92c" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/>
+                            <ellipse cx="27" cy="18" rx="23" ry="12" fill="#f9d34a" stroke="#2a211c" stroke-width="3"/>
+                            <circle cx="19" cy="17" r="2.6" fill="#2a211c"/><circle cx="34" cy="20" r="2.2" fill="#2a211c"/><circle cx="28" cy="13" r="1.8" fill="#2a211c"/>
+                        </symbol>
+                        <symbol id="tk_block" viewBox="0 0 54 40">
+                            <path d="M4 15 L12 6 H44 L50 15 V32 Q50 35 47 35 H7 Q4 35 4 32 Z" fill="#f9d34a" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M4 15 H50" stroke="#2a211c" stroke-width="3"/>
+                            <circle cx="16" cy="26" r="3.2" fill="#2a211c"/><circle cx="34" cy="27" r="4" fill="#2a211c"/><circle cx="43" cy="22" r="2" fill="#2a211c"/><circle cx="25" cy="10.5" r="1.8" fill="#2a211c"/>
+                        </symbol>
+                    </svg>
                 </div>
 
 
 
 
                 <!--SECTION 4 steps-->
-                <div class="sect4">
-                    <div class="sect4_header">Just Two Simple Steps!</div>
+                <div class="sect4" id="how-it-works">
+                    <span class="st_dot st_dot1"></span>
+                    <span class="st_dot st_dot2"></span>
+                    <span class="st_dot st_dot3"></span>
+
+                    <h2 class="sect4_header">Just two simple steps!</h2>
                     <div class="sect4_box">
-                        <div class="sect4_step1">
-                            <div class="sect4_step1_title">1. Download</div>
-                            <div class="sect4_step1_vid">
-                                <video src="/static/images/step_dwnld_vid.mp4" autoplay muted loop playsinline></video>
+                        <div class="st_step">
+                            <div class="st_title_row">
+                                <span class="st_num">1</span>
+                                <div class="sect4_step1_title">Add to Chrome</div>
                             </div>
-                            <div class="sect4_step1_desc">Click on the download button to head to the Chrome Web Store. Then hit "Add to Chrome". That's it!</div>
+
+                            <!--Chrome Web Store illustration-->
+                            <div class="pv_browser st_browser" aria-hidden="true">
+                                <div class="pv_bar st_bar">
+                                    <span class="pv_light pv_light_red"></span>
+                                    <span class="pv_light pv_light_yellow"></span>
+                                    <span class="pv_light pv_light_green"></span>
+                                    <div class="pv_address">chromewebstore.google.com</div>
+                                </div>
+                                <div class="st_store">
+                                    <div class="st_muted">Chrome Web Store</div>
+                                    <div class="st_listing">
+                                        <svg class="st_listing_icon" viewBox="0 0 54 40"><path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#f8d84e" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/><path d="M3 17 Q27 24 51 21" fill="none" stroke="#2a211c" stroke-width="3"/><circle cx="16" cy="29" r="3" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/><circle cx="33" cy="30" r="2.2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/><circle cx="40" cy="13" r="2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/></svg>
+                                        <div class="st_listing_name">
+                                            <div class="st_app_name">Cheztrap</div>
+                                            <div class="st_muted">cheztrap.com</div>
+                                        </div>
+                                        <div class="st_add_wrap">
+                                            <span class="st_add_btn">Add to Chrome</span>
+                                            <svg class="st_cursor st_cursor_add" width="34" height="42" viewBox="0 0 34 42"><path d="M4 3 L4 31 L11 25 L16 37 L22 34 L17 23 L27 23 Z" fill="#ffffff" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="st_tags">
+                                        <span>Extension</span>
+                                        <span>Privacy &amp; Security</span>
+                                    </div>
+                                    <div class="st_shots">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="st_desc">Hit the button to open the Chrome Web Store, then tap "Add to Chrome". That's it!</p>
                         </div>
-                        <div class="sect4_step2">
-                            <div class="sect4_step2_title">2. Open + Relax</div>
-                            <div class="sect4_step2_vid">
-                                <video src="/static/images/step_click_vid.mp4" autoplay muted loop playsinline></video>
+
+                        <div class="st_step">
+                            <div class="st_title_row">
+                                <span class="st_num">2</span>
+                                <div class="sect4_step2_title">Open + Relax</div>
                             </div>
-                            <div class="sect4_step2_desc">Navigate to your toolbar and click on the Cheztrap icon to launch the extension. We'll take care of the rest!</div>
+
+                            <!--extension popup illustration-->
+                            <div class="pv_browser st_browser" aria-hidden="true">
+                                <div class="pv_bar st_bar">
+                                    <span class="pv_light pv_light_red"></span>
+                                    <span class="pv_light pv_light_yellow"></span>
+                                    <span class="pv_light pv_light_green"></span>
+                                    <div class="pv_address">minecraft-the-best.com</div>
+                                    <span class="st_ext_icon">
+                                        <svg width="22" height="16" viewBox="0 0 54 40"><path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#fff3a8" stroke="#2a211c" stroke-width="5" stroke-linejoin="round"/></svg>
+                                        <svg class="st_cursor st_cursor_ext" width="34" height="42" viewBox="0 0 34 42"><path d="M4 3 L4 31 L11 25 L16 37 L22 34 L17 23 L27 23 Z" fill="#ffffff" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/></svg>
+                                    </span>
+                                </div>
+                                <div class="st_site">
+                                    <div class="st_skeleton">
+                                        <span class="st_sk st_sk_title"></span>
+                                        <span class="st_sk"></span>
+                                        <span class="st_sk st_sk_short"></span>
+                                        <span class="st_sk st_sk_img"></span>
+                                        <span class="st_sk st_sk_tiny"></span>
+                                    </div>
+                                    <div class="pv_popup st_popup">
+                                        <div class="pv_popup_head">Cheztrap</div>
+                                        <div class="pv_popup_body">
+                                            <div class="pv_popup_verdict">
+                                                <svg width="26" height="30" viewBox="0 0 28 32"><path d="M14 2 L26 6 V15 C26 23 20 28 14 30 C8 28 2 23 2 15 V6 Z" fill="#cbe8b9" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/><path d="M8 16 L12.5 20.5 L20 11" fill="none" stroke="#2a211c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                Website is Safe!
+                                            </div>
+                                            <div class="pv_popup_url">minecraft-the-best.com</div>
+                                            <div class="pv_popup_text">Nothing suspicious here. Browse on.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="st_desc">Click the Cheztrap icon in your toolbar. We'll check the site/email and take care of the rest!</p>
                         </div>
                     </div>
                 </div>
@@ -157,6 +420,12 @@
                 <!--SECTION 5 Chrome Features Vertical Scroll-->
                 <div class="sect5">
                      <section id="learn">
+                        <span class="lr_dot lr_dot1"></span>
+                        <span class="lr_dot lr_dot2"></span>
+                        <span class="lr_dot lr_dot3"></span>
+                        <span class="lr_dot lr_dot4"></span>
+                        <span class="lr_dot lr_dot5"></span>
+                        <span class="lr_dot lr_dot6"></span>
                         <div class="title-learn">
                             <div>
                                 <span>Cheztrap<br>provides...</span>
@@ -165,11 +434,11 @@
                         <div class="info">
                             <div class="infobox">
                                 <img src=/static/images/cheese1.png/>
-                                <p>A brief summary about the safety or risk of a given website or email</p>
+                                <p>A brief summary about the site or email</p>
                             </div>
                             <div class="infobox">
                                 <img src=/static/images/cheese2.png/>
-                                <p>The category of the website such as shopping, gaming, social media, etc</p>
+                                <p>The category of the website (i.e. shopping, gaming, social media, etc)</p>
                             </div>
                             <div class="infobox ">
                                 <img src=/static/images/cheese4.png/>
@@ -177,7 +446,7 @@
                             </div>
                             <div class="infobox">
                                 <img src=/static/images/cheese5.png/>
-                                <p>The traffic level of a website showing how many users visit the site each month</p>
+                                <p>The traffic level of a site (its monthly visitors)</p>
                             </div>
                             <div class="infobox">
                                 <img src=/static/images/cheese3.png/>
@@ -189,7 +458,7 @@
                             </div>
                             <div class="infobox">
                                 <img src=/static/images/cheese2.png/>
-                                <p>The registrar, registrant, and domain creation date after detecting a scam site</p>
+                                <p>The registrar, registrant, and domain creation date</p>
                             </div>
                         </div>
                     </section>
@@ -202,6 +471,10 @@
 
                 <!--SECTION 6 faq-->
                 <div class="sect6" id="faq">
+                    <span class="faq_dot faq_dot1"></span>
+                    <span class="faq_dot faq_dot2"></span>
+                    <span class="faq_dot faq_dot3"></span>
+                    <span class="faq_dot faq_dot4"></span>
                     <div class="sect6_box">
                         <div class="sect6_header">Frequently Asked Questions</div>
                         <section class="faq">
@@ -209,11 +482,11 @@
                                 <input type="checkbox" id="cb1">
                                 <label for="cb1" class="faq_ques">What is Cheztrap?</label>
                                 <div class="faq_ans">
-                                    <p>Cheztrap is a Chrome extension that detects whether or not a website or email is safe. 
+                                    <p>Cheztrap is a Chrome extension that tells you whether a website or email is safe.
                                         <br><br>
-                                        Why should you browse the internet in fear when it's such a major part of our lives? You shouldn't have to worry. 
+                                        The internet is a huge part of our lives. You shouldn’t have to browse it on edge.
                                         <br><br>
-                                        That's where Cheztrap comes in. This app protects you from entering personal information on malicious websites or falling for phishing emails. By letting you know if it's safe or not, Cheztrap helps you avoid impersonation emails and fake sites, helping you skip the “Is this safe?” question.</p>
+                                        Cheztrap checks sites and emails, warning you about fake sites, impersonation, and phishing attempts before you enter personal information or click anything. No more stopping to wonder, “Is this safe?”</p>
                                 </div>
                             </div>
                             <div class="feature">
@@ -221,13 +494,11 @@
                                 <label for="cb2" class="faq_ques">Why should I choose Cheztrap over other security apps?</label>
                                 <div class="faq_ans">
                                     <p>
-                                        Cheztrap offers many unique features that other security apps don't! 
+                                        Most security tools just tell you whether a site/email is “safe” or “unsafe.” Cheztrap tells you the "why."
                                         <br><br>
-                                        It uses AI to analyze websites and emails, which means you get faster and more accurate results. Plus, Cheztrap gives you detailed information about each website, such as a summary, how much money the company has raised, who its founders are, where it's located, and the site's traffic level. 
+                                        Along with its verdict, Cheztrap gives you a quick profile of each site: what the company does, who founded it, where it’s based, how much funding it has raised, and how much traffic it gets. That context helps you judge a site for yourself. A brand-new site with very little traffic, for example, deserves a closer look.
                                         <br><br>
-                                        This extra information helps you make smarter decisions regarding the safety of a site. For example, a low traffic level might mean the site is new or less trustworthy. 
-                                        <br><br>
-                                        With all this information, Cheztrap not only protects you from unsafe sites and emails, but also explains the “why,” educating you on internet safety.
+                                        Cheztrap also uses existing databases and AI to analyze sites and emails as you open them, so you get answers in seconds. And because it explains what it finds, you gradually learn to spot red flags on your own.
                                     </p>
                                 </div>
                             </div>
@@ -235,31 +506,30 @@
                                 <input type="checkbox" id="cb3">
                                 <label for="cb3" class="faq_ques">How does Cheztrap detect scam websites?</label>
                                 <div class="faq_ans">
-                                    <p>Cheztrap uses a combination of AI and trusted databases to detect scam websites and phishing emails. It looks at factors such as how popular the site is, how long it's been around, and whether it shows signs common to scams. Based on this, Cheztrap determines if a site or email is malicious, helping you stay clear from these potential risks and stay safe online.</p>
+                                    <p>Cheztrap checks each site against multiple trusted threat databases and looks for common scam signals, like how new the domain is, how much traffic it gets, and whether it matches known phishing patterns. AI then pulls the results together into a clear verdict and explains what it found, so you know not just whether a site is risky, but why.</p>
                                 </div>
                             </div>
                              <div class="feature">
                                 <input type="checkbox" id="cb4">
                                 <label for="cb4" class="faq_ques">Is Cheztrap safe? Does it collect any personal data?</label>
                                 <div class="faq_ans">
-                                    <p>Yes, Cheztrap is extremely safe to use and does not collect personal data in any way. We never track, store, or share any information about your browsing activity. Cheztrap simply analyzes websites and emails in real time without ever accessing your personal information. Your safety matters to us, and your privacy is always protected.</p>
+                                    <p>Cheztrap is built to collect as little data as possible. To check a site, it sends the site’s address to threat-intelligence services and an AI model to get a verdict and explanation. For emails, it analyzes only the content needed to run the check. [We don’t sell your data or use it for advertising.] [We don’t store your browsing history.] You can read the details in our Privacy Policy.</p>
                                 </div>
                             </div>
                              <div class="feature">
                                 <input type="checkbox" id="cb5">
-                                <label for="cb5" class="faq_ques">Is Cheztrap really free?</label>
+                                <label for="cb5" class="faq_ques">Is Cheztrap free?</label>
                                 <div class="faq_ans">
-                                    <p>Simple answer: Yes! Cheztrap is completely free to download and use. There are no hidden fees to worry about, so you can explore the web with confidence!</p>
+                                    <p>Yes! Cheztrap is free to download and use, with no subscription or hidden fees.</p>
                                 </div>
                             </div>
                             <div class="feature">
                                 <input type="checkbox" id="cb6">
                                 <label for="cb6" class="faq_ques">How can I download Cheztrap?</label>
                                 <div class="faq_ans">
-                                    <p>Luckily, downloading Cheztrap is super easy! Just search for “Cheztrap” in the Chrome Web Store 
-                                        <a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank"><span class="faq_download_ans">(or click here)</span></a> 
-                                        and hit “Add to Chrome.” <br><br> 
-                                        Once it's installed, go to your browser toolbar and click the yellow cheese logo! That's it, you've successfuly used Cheztrap for the first time!
+                                    <p><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank"><span class="faq_download_ans">Download Cheztrap Here</span></a> 
+                                        and click “Add to Chrome.” <br><br> 
+                                        Once it’s installed, click the yellow cheese icon in your browser toolbar to check any site you’re on.
                                     </p>
                                 </div>
                             </div>
@@ -267,11 +537,11 @@
                                 <input type="checkbox" id="cb7">
                                 <label for="cb7" class="faq_ques">Why is Cheztrap named Cheztrap?</label>
                                 <div class="faq_ans">
-                                    <p>Cheztrap gets its name from a play on the words “cheese trap” and “mouse trap.” 
+                                    <p>Cheztrap is a play on “cheese trap” and “mousetrap,” and scams often work like bait.
                                     <br><br>
-                                    But why a mousetrap? Before creating Cheztrap, I (Jiena) was fascinated by various scamming methods. One that caught my attention was the RAT (a Remote Access Trojan), which are malicious files disguised to seem harmless. Many Minecraft players lost their accounts to this kind of hack, so it sparked my interest in online security. 
+                                    The idea came from my early interest in online scams. I was fascinated by how Remote Access Trojans (RATs) work, which are malicious files disguised as harmless ones. Many Minecraft players lost their accounts to them, which got me interested in online security.
                                     <br><br>
-                                    Even though Cheztrap mainly focuses on phishing threats, the name reflects the idea of “trapping” dangerous rats (cyber criminals), symbolizing how the app helps catch and identify phishing sites and emails. That’s why I chose to keep the name.
+                                    Cheztrap focuses mainly on phishing, but the name stuck.
                                     </p>
                                 </div>
                             </div>
@@ -284,48 +554,56 @@
 
                 
 
-                <!--SECTION 7 download-->
-                <div class="sect7">
-                    <div class="sect7_content">
-                        <div class="sect7_header">Protect your cheese<br>from cyber rats!<br>Download now.</div>
-                        <div class="sect7_btn"><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank"><button class="dwnld_btn2"><span class="btn_word">ADD TO CHROME. IT'S FREE!</span></button></a></div>
-                    </div>
-                </div>
-                
+                <!--SECTION 7 download: closing call to action over a night city-->
+                <section class="sect7 cl">
 
+                    <svg class="cl_moon" viewBox="0 0 100 100" aria-hidden="true" filter="url(#cl_wob)">
+                        <circle cx="52" cy="52" r="42" fill="#F3D663"/>
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#FFF6C8" stroke-width="4" stroke-linecap="round" stroke-dasharray="90 20 60 14"/>
+                        <ellipse cx="38" cy="38" rx="9" ry="7" fill="#E8C24A"/><ellipse cx="66" cy="50" rx="6" ry="5" fill="#E8C24A"/>
+                        <ellipse cx="48" cy="68" rx="7" ry="5" fill="#E8C24A"/><circle cx="72" cy="28" r="4" fill="#E8C24A"/><circle cx="26" cy="60" r="4" fill="#E8C24A"/>
+                    </svg>
 
-
-
-
-
-
-
-                <!--SECTION 8 footer-->
-                <div class="footer">
-                    <div class="footer_content_left">
-                        <div class="footer_logo">Cheztrap</div>
-                            
-                        <div class="footer_contact">
-                            <div class="footer_contact_stuff">
-                                <div class="footer_email">Email: december0two@gmail.com</div>
-                                <img src="/static/images/footer_rat1.svg">
-                                <img src="/static/images/footer_rat2.svg">
-                                <img src="/static/images/footer_rat3.svg">
-                            </div>
+                    <div class="cl_in">
+                        <h2 class="cl_title">Cyber rats are after your cheese.</h2>
+                        <p class="cl_sub">Add Cheztrap to Chrome and it checks every site for you.</p>
+                        <div class="cl_row" id="cl_row">
+                            <a class="cl_btn" id="cl_btn" href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Add to Chrome, it's free</a>
+                            <svg class="cl_trap" viewBox="0 0 200 110" role="img" aria-label="A mousetrap that snaps shut" filter="url(#cl_wob)" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 78L190 75L193 104L6 106Z" fill="#D9A066" stroke="#2A2220" stroke-width="4"/>
+                                <path d="M18 90C50 86 70 94 110 90M120 99C150 95 170 100 184 96" stroke="#2A2220" stroke-opacity=".3" stroke-width="2.5" fill="none"/>
+                                <path d="M46 76L112 76L112 50Z" fill="#F3D663" stroke="#2A2220" stroke-width="4"/>
+                                <ellipse cx="96" cy="68" rx="4.5" ry="3.5" fill="#E8C24A" stroke="#2A2220" stroke-width="2"/><circle cx="76" cy="71" r="3" fill="#E8C24A" stroke="#2A2220" stroke-width="2"/>
+                                <g id="cl_tbar"><path d="M34 66C70 64 130 68 168 66L168 76C130 78 70 74 34 76C30 72 30 70 34 66Z" fill="#C9CED3" stroke="#2A2220" stroke-width="4"/><path d="M42 70L150 71" stroke="#fff" stroke-width="2.5" opacity=".85"/></g>
+                                <circle cx="168" cy="71" r="7" fill="#8E959C" stroke="#2A2220" stroke-width="3"/>
+                            </svg>
                         </div>
                     </div>
-                    <div class="footer_content_right">
-                        <div class="footer_content_right_col1">
-                            <li><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank" class="footer_link">DOWNLOAD</a></li>
-                            <li><a href="/about" class="footer_link">ABOUT</a></li>
-                            <li><a href="/contact" class="footer_link">CONTACT</a></li>
-                        </div>
-                        <div class="footer_content_right_col2">
-                            <li><a href="/terms" class="footer_link">TERMS</a></li>
-                            <li><a href="/privacy" class="footer_link">PRIVACY</a></li>
-                        </div>
-                    </div>
-                </div>
+
+                    <svg class="cl_city" viewBox="0 0 1400 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                        <defs>
+                            <filter id="cl_wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter>
+                            <symbol id="cl_m" viewBox="0 0 40 34">
+                                <circle cx="10" cy="9" r="8" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/><circle cx="30" cy="9" r="8" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/>
+                                <circle cx="10" cy="9" r="4" fill="#E8A5A5"/><circle cx="30" cy="9" r="4" fill="#E8A5A5"/>
+                                <ellipse cx="20" cy="22" rx="16" ry="12" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/>
+                                <circle cx="14" cy="20" r="2.6" fill="#2A2220"/><circle cx="26" cy="20" r="2.6" fill="#2A2220"/>
+                                <ellipse cx="20" cy="27" rx="3.2" ry="2.4" fill="#E27F86"/>
+                            </symbol>
+                        </defs>
+                        <g id="cl_city" filter="url(#cl_wob)" stroke-linecap="round" stroke-linejoin="round" fill="none"></g>
+                    </svg>
+                </section>
+
+
+
+
+
+
+
+
+
+                {% include 'partials/footer.html' %}
             </div>
 
         </div>
@@ -335,166 +613,195 @@
 
 
 
-        <!--POPUP-->
-        <div id="try_popup" class="popup">
-            <div class="popup_container">
-                <a class="close" id="try_close_btn" href="#">&times;</a>
-                <div class="link_header">Test Cheztrap's Website Detection</div>
-                <form id="form">
-                    <div class="input-wrapper">
-                        <input type="text" id="url" name="url" class="url_input" placeholder="Enter or paste link here..." required>
+        <!--JAVASCRIPT FOR TICKER: duplicate the items so the -50% slide loops seamlessly-->
+        <script>
+        (function(){
+            var g = document.querySelector('.tk_group'), c = g.cloneNode(true);
+            c.setAttribute('aria-hidden', 'true');
+            g.parentNode.appendChild(c);
+            // make the first group wide enough that one copy always fills the screen
+            while (g.scrollWidth < window.innerWidth * 1.1 && g.children.length < 40) {
+                Array.prototype.slice.call(g.children, 0, 4).forEach(function(li){ g.appendChild(li.cloneNode(true)); });
+            }
+            c.innerHTML = g.innerHTML;
+        })();
+        </script>
 
-                        <button id="try_submit_btn" type="submit" class="submit_button">
-                            <img src="/static/images/popup_search.png" style="width:30px;height:auto;border-radius:50%;"/>
-                        </button>
+        <!--JAVASCRIPT FOR CLOSING SECTION: draws the city and snaps the trap on button hover-->
+        <script>
+        (function(){
+            var B = [[-10,150,170,'f'],[150,110,250,'s'],[270,95,140,'f'],[375,130,205,'g'],[515,100,120,'f'],[625,150,275,'g'],[785,125,185,'f'],[920,140,235,'s'],[1070,110,150,'g'],[1190,125,215,'f'],[1325,110,175,'g']];
+            var G = 'stroke="#6B625C" stroke-width="4"', BG = '#2A2220', Y = '#F3D663', o = '', seed = 5;
+            function r(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+            // mice go behind buildings so the roof hides their bodies
+            o += '<use href="#cl_m" x="' + (270 + 95 / 2 - 22) + '" y="' + (340 - 140 - 26) + '" width="44" height="37"/>';
+            o += '<use href="#cl_m" x="' + (1190 + 125 / 2 - 22) + '" y="' + (340 - 215 - 26) + '" width="44" height="37" transform="rotate(8 1272 99)"/>';
+            B.forEach(function(b){
+                var x = b[0], w = b[1], h = b[2], t = b[3], top = 340 - h, p;
+                if (t == 'g') p = 'M' + x + ' 345V' + (top + 34) + 'L' + (x + w / 2) + ' ' + top + 'L' + (x + w) + ' ' + (top + 34) + 'V345Z';
+                else if (t == 's') p = 'M' + x + ' 345V' + top + 'H' + (x + w * .3) + 'V' + (top - 40) + 'L' + (x + w * .5) + ' ' + (top - 80) + 'L' + (x + w * .7) + ' ' + (top - 40) + 'V' + top + 'H' + (x + w) + 'V345Z';
+                else p = 'M' + x + ' 345V' + top + 'L' + (x + w) + ' ' + (top - 4) + 'V345Z';
+                o += '<path d="' + p + '" fill="' + BG + '" ' + G + '/>';
+                var cols = Math.max(2, Math.floor((w - 24) / 30)), rows = Math.floor((h - (t == 'g' ? 60 : 34)) / 42),
+                    ww = 12, gap = (w - 24 - cols * ww) / Math.max(1, cols - 1), y0 = top + (t == 'g' ? 58 : 22);
+                for (var a = 0; a < rows; a++) for (var c = 0; c < cols; c++) {
+                    var wx = x + 12 + c * (ww + gap) + (r() * 3 - 1.5), wy = y0 + a * 42 + (r() * 3 - 1.5), lit = r() < .2;
+                    o += '<path d="M' + wx + ' ' + wy + 'l' + ww + ' -2 1 20 -' + ww + ' 2Z" ' + (lit ? 'fill="' + Y + '" stroke="' + Y + '" stroke-width="3"' : 'stroke="#6B625C" stroke-width="3.5"') + '/>';
+                }
+            });
+            // mouse in a lit window, mouse carrying a cheese slice on a roof
+            o += '<path d="M668 112h30v34h-30Z" fill="' + Y + '" stroke="#6B625C" stroke-width="3.5"/><use href="#cl_m" x="672" y="124" width="22" height="19"/>';
+            o += '<use href="#cl_m" x="' + (785 + 40) + '" y="' + (340 - 185 - 30) + '" width="34" height="29"/><path d="M' + (785 + 78) + ' ' + (340 - 185 - 6) + 'l16 -4 -12 -14Z" fill="' + Y + '" stroke="#E8C24A" stroke-width="3"/>';
+            document.getElementById('cl_city').innerHTML = o;
 
-                        <div id="reason" class="error_message"></div>
-                    </div>
-                </form>
+            // trap snaps when the button is hovered or focused
+            var row = document.getElementById('cl_row'), btn = document.getElementById('cl_btn');
+            function on(){ row.classList.add('cl_snap'); }
+            function off(){ row.classList.remove('cl_snap'); }
+            btn.addEventListener('mouseenter', on); btn.addEventListener('mouseleave', off);
+            btn.addEventListener('focus', on); btn.addEventListener('blur', off);
+        })();
+        </script>
 
-                <!--loading... loading... loading...-->
-                <div class="load_img"><img src="/static/images/loading.gif"></div>
+        <!--JAVASCRIPT FOR PEEKING MICE: pupils follow the cursor, like the contact page's mouse-->
+        <script>
+        (function(){
+            var mice = document.querySelectorAll('.peek_mouse'), pointer = null, queued = false;
+            function look(){
+                queued = false;
+                mice.forEach(function(svg){
+                    var r = svg.getBoundingClientRect(), k = r.width / 150,
+                        dx = pointer.x - (r.left + 74 * k), dy = pointer.y - (r.top + 53 * k),
+                        d = Math.hypot(dx, dy) || 1, m = Math.min(4, d / 50),
+                        pupils = svg.querySelectorAll('.peek_pupil');
+                    pupils[0].setAttribute('cx', 55 + dx / d * m); pupils[0].setAttribute('cy', 53 + dy / d * m);
+                    pupils[1].setAttribute('cx', 93 + dx / d * m); pupils[1].setAttribute('cy', 53 + dy / d * m);
+                });
+            }
+            function aim(){ if (pointer && !queued) { queued = true; requestAnimationFrame(look); } }
+            ['pointermove', 'pointerover'].forEach(function(type){
+                document.addEventListener(type, function(e){ pointer = { x: e.clientX, y: e.clientY }; aim(); }, { passive: true });
+            });
+            window.addEventListener('scroll', aim, { passive: true });
+            // start from the cursor position saved on the last page unload (see checker script)
+            try {
+                var saved = JSON.parse(sessionStorage.getItem('cheztrap_pointer'));
+                if (saved && typeof saved.x === 'number') { pointer = saved; aim(); }
+            } catch (err) {}
+        })();
+        </script>
 
-                <div id="is_safe"></div>
-
-                <!--after button is successfuly hit, these will show up-->
-                <div id="popup_result"></div>
-            </div>
-        </div>
-
-
-        <!--JAVASCRIPT FOR TRY IT POPUP-->
+        <!--JAVASCRIPT FOR CHECKER BOX-->
         <script>
         $(document).ready(function(){
 
+            const $box = $('#checker_box');
+            const shield = '<svg width="26" height="30" viewBox="0 0 28 32" aria-hidden="true"><path d="M14 2 L26 6 V15 C26 23 20 28 14 30 C8 28 2 23 2 15 V6 Z" fill="#cbe8b9" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/><path d="M8 16 L12.5 20.5 L20 11" fill="none" stroke="#2a211c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            const warning = '<svg width="30" height="27" viewBox="0 0 34 30" aria-hidden="true"><path d="M17 3 L31 27 H3 Z" fill="#f8d84e" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/><path d="M17 11 V18" stroke="#2a211c" stroke-width="3" stroke-linecap="round"/><circle cx="17" cy="22.5" r="1.8" fill="#2a211c"/></svg>';
+
+            // fills the Cheztrap panel; kind is idle / loading / good / bad
+            function show(kind, title, text, meta){
+                const $body = $('#checker_result').attr('class', 'hb_popup_body hb_' + kind).empty();
+                const $title = $('<div class="hb_title">').text(title).appendTo($body);
+                if (kind === 'good') $title.prepend(shield);
+                if (kind === 'bad') $title.prepend(warning);
+                $('<div class="hb_text">').text(text).appendTo($body);
+                if (meta) $('<div class="hb_meta">').text(meta).appendTo($body);
+            }
+
+            // "See how it works": pop the browser and put the cursor in the address bar
             $('#try_btn').click(function(){
-                $('#try_popup').show();
-                $('.container').css('opacity', 0.3);
+                $box.removeClass('pop');
+                void $box[0].offsetWidth; // restart the animation on repeat clicks
+                $box.addClass('pop');
+
+                const rect = $box[0].getBoundingClientRect();
+                if (rect.top < 0 || rect.bottom > window.innerHeight) {
+                    $box[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                $('#url').focus({ preventScroll: true });
             })
 
-            $('#try_close_btn').click(function(e){
-                e.preventDefault();
-                $('#try_popup').hide();
-                $('.container').css('opacity', 1);
-                
-                // Reset the input field upon closing
-                $('#url').val('');
-
-                // Clear the results upon closing
-                $('#is_safe').empty();
-                $('#reason').text('');
-                $('#location').text('');
+            $box.on('animationend', function(){
+                $box.removeClass('pop');
             })
 
-            $('#try_submit_btn').click(function(e){
+            $('#checker_form').submit(function(e){
                 e.preventDefault();
-                const url = $('#url').val();
+                const url = $('#url').val().trim();
 
-                // checks if url is valid 
+                // checks if url is valid
                 const urlPattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-]*)*\/?$/;
                 if (!urlPattern.test(url)) {
-                    $('#reason').addClass('error_message').text("Please enter a valid URL.");
-
-                    setTimeout(function () {
-                        $('#reason').fadeOut(300, function () {
-                            $(this).text('').removeClass('error_message').show(); // Reset and show for next time
-                        });
-                    }, 2000);
-
+                    show('idle', "Hmm, that's not a link", 'Try something like example.com.');
                     return;
                 }
 
-                $('#is_safe').empty();
-                $('#popup_result').empty();
+                // cheztrap.com is our own site, so skip the check and mark it safe
+                const host = url.toLowerCase().replace(/^https?:\/\//, '').split('/')[0];
+                if (host === 'cheztrap.com' || host.endsWith('.cheztrap.com')) {
+                    show('good', 'Website is Safe!', "This is Cheztrap's own website! It's the home of the Cheztrap scam checker, so you're in safe paws here.", 'Online safety tool');
+                    return;
+                }
 
-                // Show loading image after entering valid url 
-                $('.load_img').show();
+                show('loading', 'Sniffing...', 'Checking ' + url + ' for rats.');
 
                 // change to cheztrap.com
-                $.post('https://cheztrap.com/api/check/website', { url: url}, function(res){
-                    console.log('result', res);
-
-                    if (res.is_safe === true) {
-                        $("#is_safe").html(
-                            "<div class='result_container'>" +
-                                "<div class='header_img'>" +
-                                    "<div class='result_img'>" +
-                                        "<img src='/static/images/insurance.png' style='width: 3.3rem;'>" +
-                                        "<div class='result_header'>Website is Safe!</div>" + 
-                                    "</div>" + 
-                                    "<div class='result_reason'>" + res.reason + "</div>" +
-                                "</div>" +
-
-                                //table
-                                "<div class='result_more'>" +
-                                    "<div class='table_title'>Learn More About This Site</div>" +
-                                    "<table id='customers'>" +
-                                    "<tr>" +
-                                        "<td>Website Type</td>" + 
-                                        "<td>" + res.website_type + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Founders</td>" +
-                                        "<td>" + res.founders.join(', ') + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>HQ</td>" +
-                                        "<td>" + res.hq + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Fun Fact</td>" +
-                                        "<td>" + res.fun_fact + "</td>" +
-                                    "</tr>" +
-                                    "</table>" +
-                                "</div>" +
-                            "</div>" +
-                            "<div class='popup_more_features'>*Download Cheztrap for more features!*</div>" 
-                            
-
-                        );
-                    } else {
-                        $("#is_safe").html(
-                            "<div class='result_container'>" +
-                                "<div class='header_img'>" +
-                                    "<div class='result_img'>" +
-                                        "<img src='/static/images/warning.png' style='width: 3.3rem;'>" +
-                                        "<div class='result_header'>WEBSITE IS UNSAFE!</div>" + 
-                                    "</div>" + 
-                                    "<div class='result_reason'>" + res.reason + "</div>" +
-                                "</div>" +
-
-                                //table
-                                "<div class='result_more'>" +
-                                    "<div class='table_title'>Learn More About This Site</div>" +
-                                    "<table id='customers'>" +
-                                    "<tr>" +
-                                        "<td>Website Type</td>" + 
-                                        "<td>" + res.website_type + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Founders</td>" +
-                                        "<td>" + res.founders.join(', ') + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>HQ</td>" +
-                                        "<td>" + res.hq + "</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td>Fun Fact</td>" +
-                                        "<td>" + res.fun_fact + "</td>" +
-                                    "</tr>" +
-                                    "</table>" +
-                                "</div>" +
-                            "</div>" +
-                            "<div class='popup_more_features'>*Download Cheztrap for more features!*</div>" 
-                        );
-                    }
-
-                    // Hide loading image after contents appear
-                    $('.load_img').hide();
-                })
+                $.post('https://cheztrap.com/api/check/website', { url: url })
+                    .done(function(res){
+                        const meta = [res.website_type, res.hq].filter(Boolean).join(' · ');
+                        if (res.is_safe === true) {
+                            show('good', 'Website is Safe!', res.reason || 'Nothing suspicious here. Browse on.', meta);
+                        } else {
+                            show('bad', 'Rat territory', res.reason || 'This site looks malicious. Leave before you click anything.', meta);
+                        }
+                    })
+                    .fail(function(){
+                        show('idle', "Couldn't check that one", 'Something went wrong on our end. Try again in a moment.');
+                    });
             })
-        })    
+
+            // the mouse's pupils follow the cursor
+            const eyes = document.querySelectorAll('.hb_eye');
+            const pupils = document.querySelectorAll('.hb_pupil');
+            let pointer = null, queued = false;
+            function lookAt(){
+                queued = false;
+                eyes.forEach(function(eye, i){
+                    const r = eye.getBoundingClientRect();
+                    const dx = pointer.x - (r.left + r.width / 2), dy = pointer.y - (r.top + r.height / 2);
+                    const dist = Math.hypot(dx, dy) || 1, reach = Math.min(5, dist / 20);
+                    pupils[i].setAttribute('cx', +eye.getAttribute('cx') + dx / dist * reach);
+                    pupils[i].setAttribute('cy', +eye.getAttribute('cy') + dy / dist * reach);
+                });
+            }
+            function aim(){
+                if (pointer && !queued) { queued = true; requestAnimationFrame(lookAt); }
+            }
+            function track(e){
+                pointer = { x: e.clientX, y: e.clientY };
+                aim();
+            }
+            // mouseover also fires when the page loads under a cursor that hasn't moved yet
+            ['pointermove', 'pointerover', 'mouseover'].forEach(function(type){
+                document.addEventListener(type, track, { passive: true });
+            });
+            // scrolling moves the mouse under a still cursor, so re-aim
+            window.addEventListener('scroll', aim, { passive: true });
+
+            // on refresh, start from where the cursor was when the page unloaded
+            try {
+                const saved = JSON.parse(sessionStorage.getItem('cheztrap_pointer'));
+                if (saved && typeof saved.x === 'number' && typeof saved.y === 'number') {
+                    pointer = saved;
+                    aim();
+                    window.addEventListener('load', aim); // re-aim once fonts/images settle the layout
+                }
+            } catch (err) {}
+            window.addEventListener('pagehide', function(){
+                try { if (pointer) sessionStorage.setItem('cheztrap_pointer', JSON.stringify(pointer)); } catch (err) {}
+            });
+        })
         </script>
     </body>
 </html>

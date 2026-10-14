@@ -1,321 +1,280 @@
-a{
-    text-decoration: none;
-    color: black;
-}
-
-body {
+/* CONTACT PAGE */
+body{
     margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    background-color: #ffde4c;
+    background: #F3D663;
 }
 
-
-
-
-/* MENU */
-.menu{
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    width: 100%;
-    height: 95px;
-    z-index: 998;
-    top: 0;
-    background-image: url(/static/images/chez7.svg);
-    background-repeat: repeat-x;
+/* cheese spots, like the main page's yellow sections */
+.ct_page{
+    position: relative;
+    overflow: clip;
 }
 
-.menu_logo{
-    position: fixed;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 999;
-    padding-top: 0.6rem;
+.ct_dot{
+    position: absolute;
+    border-radius: 50%;
+    background: #E9C44A;
+}
+
+.ct_dot1{ left: -80px; top: 150px; width: 260px; height: 260px; }
+.ct_dot2{ right: 8%; top: 22%; width: 70px; height: 70px; }
+.ct_dot3{ right: -90px; top: 38%; width: 280px; height: 280px; }
+.ct_dot4{ left: 6%; top: 55%; width: 56px; height: 56px; }
+.ct_dot5{ left: -100px; bottom: 6%; width: 240px; height: 240px; }
+.ct_dot6{ right: 12%; bottom: 10%; width: 80px; height: 80px; }
+
+@media (max-width: 860px){
+    .ct_dot2, .ct_dot4, .ct_dot6{
+        display: none;
+    }
+    .ct_dot{
+        transform: scale(.7);
+    }
+}
+
+.ct{
+    --ct-yellow: #F3D663;
+    --ct-ink: #2A2220;
+    --ct-cream: #FFFDEA;
+    position: relative;
     display: grid;
-    justify-content: center;
-    text-align: center;
-    width: 16%;
-}
-
-.menu_logo img{
-    width: 16%;
-    padding-right: 1.2%;
-}
-
-.logo{
-    font-size: clamp(1.5rem, 6vw, 2.2rem);
-    font-family: "Solway", serif;
-    font-weight: 700;
-    letter-spacing: -0.1rem;
-}
-
-.menu_left, .menu_right{
-    padding: 1rem 3%;
-}
-
-.menu_abt, .menu_contact, .menu_faq, .menu_get{
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-}
-
-.menu_abt, .menu_contact{
-    margin-right: 3rem;
-}
-
-.menu_abt:hover, .menu_faq:hover, .menu_contact:hover, .menu_get:hover{
-    font-family: "Solway", serif;
-    font-weight: 700;
-}
-
-@media (max-width: 800px) {
-  .menu_abt, .menu_contact {
-    margin-right: 1rem;
-  }
-  .menu_logo{
-    width: 100%;
-    padding-right: 12%;
-  }
-  .menu_logo img{
-    width: 9%;
-  }
-}
-
-
-
-
-
-
-
-
-/* CONTENT */
-.container{
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding-top: 20vh;
-    padding-bottom: 10%;
-    width: 50%;
-}
-
-.contact_header{
-    font-family: "Solway", serif;
-    font-weight: 900;
-    font-size: clamp(2rem, 4vw, 5rem);
-    text-align: center;
-    letter-spacing: -0.2rem;
-}
-
-.contact_desc{
-    padding: 4% 0 4% 0;
-    font-size: 1.3rem;
-    text-align: center;
-}
-
-
-
-
-
-
-/* CONTACT FORM */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-row {
-    display: flex;
-    gap: 1rem;    
-}
-
-.form-row .form-group {
-    flex: 1;
-}
-
-label {
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    font-family: "Solway", serif;
-    font-weight: 700;
-    font-size: 1.7rem;
-    text-align: center;
-    padding-top: 5%;
-}
-
-input, textarea {
-    padding: 1rem;
-    border: 2px solid;
-    border-radius: 4px;
-    font-size: 1rem;
-    outline: none;
-    font-family: "Solway", serif;
-    font-size: 1rem;
-}
-
-input:focus, textarea:focus {
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
-.invalid-feedback, .empty-feedback {
-    display: none;
-    font-size: 0.85rem;
-    color: #dc2626;
-    margin-top: 0.25rem;
-}
-
-.was-validated :placeholder-shown:invalid ~ .empty-feedback {
-    display: block;
-}
-
-.was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
-    display: block;
-}
-
-.was-validated select:invalid ~ .empty-feedback {
-  display: block;
-}
-
-.is-invalid, .was-validated :invalid, .was-validated select:invalid {
-    border-color: #dc2626;
-}
-
-button {
-    font-family: "Solway", serif;
-    font-size: 1rem;
-    margin-top: 5%;
-    padding: 1rem;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    border: 2px solid black;
-}
-
-button:hover {
-    background-color: #ffde4c;
-    color: black;
-}
-
-#result {
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 1rem;
-}
-
-select{
-    height: 3rem;
-    border: 2px solid;
-    padding: 1%;
-    font-family: "Solway", serif;
-    font-size: 1rem;
-
-    /* edit the arrow under the dropdown */
-    appearance: none;
-    -webkit-appearance: none; 
-    -moz-appearance: none;
-    background-image: url(/static/images/dropdown.png);
-    background-position: right 1rem center;
-    background-repeat: no-repeat;
-    background-size: 1rem;
-}
-
-select:focus {
-  outline: none;
-  border-color: inherit;
-  box-shadow: none;
-}
-
-select:hover{
-    cursor: pointer;
-}
-
-@media (max-width: 800px){
-    .container{
-        width: 85%;
-    }
-    .contact_desc{
-        padding-top: 7%;
-    }
-    .name{
-        flex-wrap: wrap;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-/* FOOTER */
-.footer{
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-    color: white;
-    padding: 3% 0;
-    list-style-type: none;
-}
-
-.footer_logo{
-    text-align: left;
-    font-family: "Solway", serif;
-    font-weight: 900;
-    font-style: normal;
-    font-size: 2rem;
-    padding-bottom: 1.5%;
-    color: #ffd000;
-}
-
-.footer_content_left, .footer_content_right{
-    font-family: "Solway", serif;
+    /* top padding clears the fixed site header and its drips */
+    padding: 180px 5vw 90px;
+    box-sizing: border-box;
+    color: var(--ct-ink);
+    font-family: "Fredoka", system-ui, sans-serif;
     font-weight: 500;
-    font-style: normal;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    line-height: 1.45;
 }
 
-.footer_content_left{
-    padding-left: 3%;
-    line-height: 225%;
+.ct *, .ct *::before, .ct *::after{
+    box-sizing: border-box;
 }
 
-.footer_contact{
-    display: flex;
-    text-align: left;
+.ct :focus-visible{
+    outline: 4px solid #3B6FE0;
+    outline-offset: 3px;
 }
 
-.footer_contact img{
-  width: 7%;
-  height: auto;
-  padding-right: 2%;
+/* the intro spans the full page width; the form card below stays narrower */
+.ct_intro{
+    text-align: center;
 }
 
-.footer_content_right{
-    display: flex;
-    justify-content: space-between;
-    margin-right: 10%;
-    width: 30%;
-    line-height: 275%;
-    text-align: left;
+.ct_title{
+    margin: 0 0 20px;
+    font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -.01em;
 }
 
-.footer_content_left li:hover, .footer_content_right li:hover{
-  text-decoration: underline;
+.ct_intro p{
+    max-width: 58ch;
+    margin: 0 auto 14px;
+    font-size: 1.3rem;
 }
 
-.fb{
-    line-height: 10%;
+.ct_wrapcard{
+    position: relative;
+    justify-self: center;
+    width: 100%;
+    max-width: 800px;
+    /* the mouse is 150 wide x 80 tall; padding matches its height (minus a hair) so it always sits on the card's edge */
+    --peek: 150px;
+    padding-top: calc(var(--peek) * 80 / 150 - 2px);
 }
 
-.footer_link{
-  color: white;
+.ct_peek{
+    position: absolute;
+    top: 0;
+    right: 9%;
+    z-index: 2;
+    width: var(--peek);
+    height: auto;
+}
+
+.ct_card{
+    position: relative;
+    z-index: 3;
+    padding: 34px clamp(20px, 4vw, 44px) 38px;
+    background: var(--ct-cream);
+    border: 4px solid var(--ct-ink);
+    border-radius: 30px;
+    box-shadow: 10px 10px 0 var(--ct-ink);
+    transform: rotate(.6deg);
+}
+
+.ct_hidden{
+    display: none;
+}
+
+.ct_f{
+    margin: 0 0 22px;
+}
+
+.ct_two{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.ct label{
+    display: block;
+    margin: 0 0 6px;
+    font-weight: 600;
+    font-size: 1.15rem;
+}
+
+.ct input, .ct select, .ct textarea{
+    width: 100%;
+    padding: 13px 16px;
+    background: #fff;
+    border: 3px solid var(--ct-ink);
+    border-radius: 16px;
+    color: var(--ct-ink);
+    font: inherit;
+    font-weight: 500;
+    transition: transform .12s, box-shadow .12s, background .12s;
+}
+
+.ct input::placeholder, .ct textarea::placeholder{
+    color: #8a7f76;
+}
+
+.ct select{
+    appearance: none;
+    cursor: pointer;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='14' viewBox='0 0 20 14'%3E%3Cpath d='M2 2l8 9 8-9' fill='none' stroke='%232A2220' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center;
+}
+
+.ct textarea{
+    min-height: 170px;
+    resize: vertical;
+}
+
+.ct input:focus, .ct select:focus, .ct textarea:focus{
+    outline: none;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 #E8C24A, 5px 5px 0 2px var(--ct-ink);
+}
+
+.ct_bad input, .ct_bad select, .ct_bad textarea{
+    background: #FBE1D9;
+    border-color: #B3341C;
+}
+
+.ct_err{
+    display: none;
+    margin-top: 6px;
+    color: #B3341C;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.ct_bad .ct_err{
+    display: block;
+}
+
+.ct_send{
+    width: 100%;
+    padding: 16px;
+    background: var(--ct-ink);
+    border: 0;
+    border-radius: 99px;
+    box-shadow: 5px 5px 0 #E9A93A;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .12s;
+}
+
+.ct_send:hover{
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #E9A93A;
+}
+
+.ct_send:active{
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 #E9A93A;
+}
+
+.ct_send:disabled{
+    opacity: .7;
+    cursor: wait;
+}
+
+.ct_hint{
+    margin: 14px 0 0;
+    text-align: center;
+    font-size: .98rem;
+    color: #6b5f55;
+}
+
+.ct_hint_err{
+    color: #B3341C;
+    font-weight: 600;
+}
+
+.ct_done{
+    display: none;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.ct_done h2{
+    margin: 8px 0;
+    font-size: 2.4rem;
+    line-height: 1.05;
+}
+
+.ct_done p{
+    margin: 0 0 20px;
+}
+
+.ct_sent .ct_done{
+    display: block;
+}
+
+.ct_sent form{
+    display: none;
+}
+
+.ct_again{
+    padding: 8px 22px;
+    background: var(--ct-yellow);
+    border: 3px solid var(--ct-ink);
+    border-radius: 99px;
+    box-shadow: 3px 3px 0 var(--ct-ink);
+    font: inherit;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 900px){
+    .ct{
+        gap: 24px;
+    }
+    .ct_two{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .ct_wrapcard{
+        --peek: 120px;
+    }
+}
+
+/* the shared header stacks into two rows on small screens, so leave more room */
+@media (max-width: 720px){
+    .ct{
+        padding-top: 230px;
+    }
 }

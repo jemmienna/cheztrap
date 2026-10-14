@@ -1,150 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>cheztrap</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The story of Cheztrap</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='chrome.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/svg+xml" href="/static/images/favicon/cheese.svg">
         <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
         <link rel="manifest" href="/static/images/favicon/site.webmanifest">
     </head>
 
     <body>
-        
-        <!--MENU HEADER-->
-        <div class="menu_logo">
-            <a href="/">
-                <img src="/static/images/logo.svg">
-                <span class="logo">Cheztrap</span>
-            </a>
-        </div>
 
-        <div class="menu">
-            <div class="menu_left">
-                <span class="menu_abt"><a href="/about">About</a></span>
-                <span class="menu_faq"><a href="{{ url_for('home') }}#faq">FAQ</a></span>
-            </div>
-            <div class="menu_right">
-                <span class="menu_contact"><a href="/contact">Contact</a></span>
-                <span class="menu_get"><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Get Now!</a></span>
-            </div>
-        </div>
-        
+        {% include 'partials/header.html' %}
 
+        <!--shared drawing pieces: wobble filter, small mouse, and three cheese shapes-->
+        <svg class="ab_defs" aria-hidden="true"><defs>
+            <filter id="ab_wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter>
+            <symbol id="ab_m" viewBox="0 0 40 34">
+                <circle cx="10" cy="9" r="8" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/><circle cx="30" cy="9" r="8" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/>
+                <circle cx="10" cy="9" r="4" fill="#E8A5A5"/><circle cx="30" cy="9" r="4" fill="#E8A5A5"/>
+                <ellipse cx="20" cy="22" rx="16" ry="12" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/>
+                <circle cx="14" cy="20" r="2.6" fill="#2A2220"/><circle cx="26" cy="20" r="2.6" fill="#2A2220"/><ellipse cx="20" cy="27" rx="3.2" ry="2.4" fill="#E27F86"/>
+            </symbol>
+            <symbol id="ab_cw" viewBox="0 0 100 100"><g stroke="#2A2220" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 90C0 50 18 12 54 10C86 10 98 46 90 80Z" fill="#F3D663"/><circle cx="36" cy="32" r="5" fill="none"/><circle cx="64" cy="40" r="6" fill="none"/><circle cx="40" cy="58" r="8" fill="none"/><circle cx="72" cy="66" r="4" fill="none"/><circle cx="22" cy="72" r="4" fill="none"/></g></symbol>
+            <symbol id="ab_cb" viewBox="0 0 100 100"><g stroke="#2A2220" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38L50 12L94 30L52 58Z" fill="#F3D663"/><path d="M8 38L52 58V92L12 72Z" fill="#F3D663"/><path d="M52 58L94 30L92 66L52 92Z" fill="#2A2220"/><circle cx="40" cy="34" r="5" fill="#2A2220"/><circle cx="64" cy="32" r="4" fill="none"/><circle cx="30" cy="68" r="4" fill="#2A2220"/></g></symbol>
+            <symbol id="ab_cr" viewBox="0 0 100 100"><g stroke="#2A2220" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 44V68C6 86 28 94 50 94S94 86 94 68V44Z" fill="#F3D663"/><path d="M6 44C6 26 28 14 50 14S94 26 94 44S72 62 50 62S6 62 6 44Z" fill="#F3D663"/><path d="M58 32L78 52L66 62" fill="none"/><ellipse cx="28" cy="40" rx="6" ry="3" fill="#2A2220"/><ellipse cx="44" cy="30" rx="5" ry="2.5" fill="#2A2220"/><circle cx="34" cy="76" r="4" fill="#2A2220"/><circle cx="66" cy="82" r="5" fill="#2A2220"/></g></symbol>
+        </defs></svg>
 
+        <main class="ab">
+            <section class="ab_hero">
+                <!--cheese spots-->
+                <span class="ab_dot abd_h1"></span>
+                <span class="ab_dot abd_h2"></span>
+                <span class="ab_dot abd_h3"></span>
+                <h1><small>The story of</small><span>Cheztrap</span></h1>
+                <svg class="ab_city" viewBox="0 0 1400 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g id="ab_city" filter="url(#ab_wob)" stroke-linecap="round" stroke-linejoin="round" fill="none"></g></svg>
+            </section>
 
-        <!--ABOUT US STARTS HERE-->
-        <div class="container">
-            <div class="head_container">
-                <div class="abt_header">The Story of</div>
-                <div class="abt_logo">Cheztrap</div>   
-            </div>
-        </div>
-
-        <!--container with jiena in it-->
-        <div class="abt_box">
-            <div class="abt_container1">
-                <div class="abt_text1">It all began in 2022, with the popular video game Minecraft. Following the rise of online activity during the 2020 pandemic, more people started playing Minecraft. However, this also increased the number of hacked accounts. These hacks ranged from unknowingly installing malware that would “improve gameplay", entering their login information on Discord to "receive a prize”, or trusting emails from a "real" account.</div>
-                    
-                <div class="me">
-                    <div class="me_desc1">
-                            <img src="/static/images/me_desc1.svg">
+            <section class="ab_sec ab_cream">
+                <!--cheese spots-->
+                <span class="ab_dot abd_a1"></span>
+                <span class="ab_dot abd_a2"></span>
+                <span class="ab_dot abd_a3"></span>
+                <span class="ab_dot abd_a4"></span>
+                <div class="ab_split">
+                    <div class="ab_txt">
+                        <h2>It started with Minecraft.</h2>
+                        <p>In 2022, I noticed something happening around Minecraft. As more people moved online during the 2020 pandemic, more of them started playing, and hacked accounts rose with them.</p>
+                        <p>The scams were disguised as things players wanted, such as mods that promised to "improve gameplay," a Discord link to “claim a prize,” or an email from a "real," "trusted" account that wasn't real at all.</p>
                     </div>
-                        
-                    <div class="me_box"></div>
-                            
-                    <div class="me_desc2">
-                        <img src="/static/images/me_desc2.svg">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-            
-        <!--container with jaelen in it-->
-        <div class="abt_box">
-                <div class="abt_container2">
-                    
-                <div class="jaelen">
-                    <div class="jaelen_desc1">
-                        <img src="/static/images/jaelen_desc1.svg">
-                    </div>
-                        
-                    <div class="jaelen_box"></div>
-                            
-                    <div class="jaelen_desc2">
-                        <img src="/static/images/jaelen_desc2.svg">
+                    <div class="ab_art">
+                        <div class="ab_frame">
+                            <svg viewBox="0 0 200 200" role="img" aria-label="Cheztrap's mouse mascot" filter="url(#ab_wob)" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="48" cy="62" r="30" fill="#8B7D74" stroke="#2A2220" stroke-width="5"/><circle cx="48" cy="62" r="16" fill="#E8A5A5"/>
+                                <circle cx="152" cy="62" r="30" fill="#8B7D74" stroke="#2A2220" stroke-width="5"/><circle cx="152" cy="62" r="16" fill="#E8A5A5"/>
+                                <path d="M34 130C30 70 66 54 100 54S170 70 166 130C164 168 130 184 100 184S36 168 34 130Z" fill="#A89A8E" stroke="#2A2220" stroke-width="5"/>
+                                <ellipse cx="74" cy="108" rx="15" ry="17" fill="#fff" stroke="#2A2220" stroke-width="4"/><ellipse cx="126" cy="108" rx="15" ry="17" fill="#fff" stroke="#2A2220" stroke-width="4"/>
+                                <circle cx="78" cy="112" r="7" fill="#2A2220"/><circle cx="122" cy="112" r="7" fill="#2A2220"/>
+                                <path d="M91 136C95 130 105 130 109 136C107 144 93 144 91 136Z" fill="#E27F86" stroke="#2A2220" stroke-width="4"/>
+                                <path d="M100 144V152M100 152C92 160 84 156 82 152M100 152C108 160 116 156 118 152" fill="none" stroke="#2A2220" stroke-width="4"/>
+                                <path d="M94 156l-1 14h14l-1-14Z" fill="#fff" stroke="#2A2220" stroke-width="3.5"/>
+                                <path d="M60 142L24 132M60 150L22 152M140 142L176 132M140 150L178 152" stroke="#2A2220" stroke-width="3" fill="none"/>
+                                <ellipse cx="58" cy="136" rx="10" ry="6" fill="#F0A9A0" opacity=".8"/><ellipse cx="142" cy="136" rx="10" ry="6" fill="#F0A9A0" opacity=".8"/>
+                            </svg>
+                        </div>
+                        <p class="ab_cap">Hi, I'm Jiena!</p>
                     </div>
                 </div>
+            </section>
 
-                <div class="abt_text2">I had to do something. My first attempt at creating a phishing detection checker relied on web scraping (automatically extracting data from other websites to my own). But my interests quickly turned to the versatility of AI, which soon became the core of detecting fraudulent emails and sites. I then created a Chrome Extension which would make checking for scams faster and more efficient, bringing my vision to life. And that's how Cheztrap was born.</div>
-            </div>
-        </div>
-        
-        <!--container with rat in it-->
-        <div class="abt_box3">
-            <div class="rat_header">We don't plan on stopping here!</div>
-            <div class="rat"></div>
-            <div class="abt_container3">
-                <div class="abt_text3">Today, I still have endless ideas that I would like to bring to life, making Cheztrap stronger and more versatile for a wider range of hacking situations. For one, I would like to add a feature that can analyze the safety of screenshots from websites, emails, and text messages. My goal is for Cheztrap to become a reliable tool that helps protect you from any phishing attempt!</div>
-            </div>
-        </div>
-
-        <!--DEFININTELY ADD A POSSIBLE DOWNLOAD SECTION!-->
-        <div class="download_container">
-            <div class="scatter-section">
-                <img src="/static/images/cheese2.png" class="scatter4 cheese_hide" style="top: 30%; left: 75%;">
-                <img src="/static/images/cheese4.png" class="scatter2 cheese_hide" style="top: 30%; left: 2%;">
-                <img src="/static/images/cheese3.png" class="scatter1" style="top: 60%; left: 65%;">
-                <img src="/static/images/cheese5.png" class="scatter1" style="top: 60%; left: 10%;">
-                <img src="/static/images/cheese1.png" class="scatter1" style="top: 73%; left: 35%;">
-                <img src="/static/images/cheese5.png" class="scatter4 cheese_hide" style="top: 70%; left: 93%;">
-                <img src="/static/images/cheese4.png" class="scatter2" style="top: 78%; left: -10%;">
-            </div>
-
-
-            <div class="dwnld_header">JOIN OUR RAT CATCHING COMMUNITY!</div>
-                    
-            <div class="btn_box">
-                <a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">
-                    <button class="dwnld_btn"><span class="btn_word">DOWNLOAD NOW</span></button>
-                </a>
-            </div>
-
-            </div>
-        </div>
-
-
-        <!--SECTION 8 footer-->
-        <div class="footer">
-            <div class="footer_content_left">
-                <div class="footer_logo">Cheztrap</div>
-                            
-                <div class="footer_contact">
-                    <div class="footer_contact_stuff">
-                        <div class="footer_email">Email: december0two@gmail.com</div>
-                        <img src="/static/images/footer_rat1.svg">
-                        <img src="/static/images/footer_rat2.svg">
-                        <img src="/static/images/footer_rat3.svg">
+            <section class="ab_sec">
+                <!--cheese spots-->
+                <span class="ab_dot abd_b1"></span>
+                <span class="ab_dot abd_b2"></span>
+                <span class="ab_dot abd_b3"></span>
+                <span class="ab_dot abd_b4"></span>
+                <div class="ab_split ab_flip">
+                    <div class="ab_art">
+                        <div class="ab_frame">
+                            <!--set mousetrap: the spring bar is raised above the cheese, hinged at the right end-->
+                            <svg viewBox="0 20 320 150" role="img" aria-label="A mousetrap with cheese" filter="url(#ab_wob)" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 122L308 119L311 160L9 163Z" fill="#D9A066" stroke="#2A2220" stroke-width="4"/>
+                                <path d="M24 138C60 134 80 142 120 138M150 152C190 148 230 154 290 148" stroke="#2A2220" stroke-opacity=".3" stroke-width="2.5" fill="none"/>
+                                <path d="M156 121h100v5h-100Z" fill="#C9CED3" stroke="#2A2220" stroke-width="3"/>
+                                <path d="M160 121L250 121L250 92Z" fill="#F3D663" stroke="#2A2220" stroke-width="4"/>
+                                <ellipse cx="226" cy="111" rx="5.5" ry="4" fill="#E8C24A" stroke="#2A2220" stroke-width="2.2"/><ellipse cx="203" cy="115" rx="3.5" ry="3" fill="#E8C24A" stroke="#2A2220" stroke-width="2.2"/>
+                                <g transform="rotate(38 290 118)"><path d="M142 112C170 110 250 114 290 112L290 124C250 126 170 122 142 124C138 120 138 116 142 112Z" fill="#C9CED3" stroke="#2A2220" stroke-width="4"/></g>
+                                <circle cx="290" cy="118" r="9" fill="#8E959C" stroke="#2A2220" stroke-width="3.5"/>
+                                <use href="#ab_m" x="40" y="80" width="70" height="60"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ab_txt">
+                        <h2>I had to do something.</h2>
+                        <p>My first attempt at a phishing checker relied on web scraping, which means automatically pulling data from other websites. It worked, but I quickly became more interested in what AI could do, and it became the core of how I analyze emails and sites.</p>
+                        <p>Then I turned it into a Chrome extension, so that checking for scams were faster and more efficient.</p>
+                        <p>And that's how Cheztrap was born.</p>
                     </div>
                 </div>
-            </div>
-            <div class="footer_content_right">
-                <div class="footer_content_right_col1">
-                    <li><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank" class="footer_link">DOWNLOAD</a></li>
-                    <li><a href="/about" class="footer_link">ABOUT</a></li>
-                    <li><a href="/contact" class="footer_link">CONTACT</a></li>
+            </section>
+
+            <section class="ab_sec ab_cream ab_future">
+                <!--cheese spots-->
+                <span class="ab_dot abd_c1"></span>
+                <span class="ab_dot abd_c2"></span>
+                <span class="ab_dot abd_c3"></span>
+                <span class="ab_dot abd_c4"></span>
+                <div class="ab_in">
+                    <h2>I don't plan on stopping here!</h2>
+                    <svg viewBox="0 0 300 270" role="img" aria-label="A mouse sitting on a wheel of cheese" filter="url(#ab_wob)"><use href="#ab_cr" x="40" y="40" width="220" height="220"/><use href="#ab_m" x="116" y="70" width="70" height="60"/></svg>
+                    <p>Today, I still have plenty of ideas that I would like to bring to life, making Cheztrap stronger and more versatile for a wider range of hacking situations. For example, I'd like to add screenshot analysis, so you can check a suspicious website, email, or text message just by uploading a picture of it.</p>
+                    <p>My goal is for Cheztrap to become a reliable tool that helps protect you from any phishing attempt!</p>
                 </div>
-                <div class="footer_content_right_col2">
-                    <li><a href="/terms" class="footer_link">TERMS</a></li>
-                    <li><a href="/privacy" class="footer_link">PRIVACY</a></li>
+            </section>
+
+            <section class="ab_join">
+                <!--cheese spots-->
+                <span class="ab_dot abd_j1"></span>
+                <span class="ab_dot abd_j2"></span>
+                <span class="ab_dot abd_j3"></span>
+                <!--on phones the cheese is placed around this wrapper (heading + button) instead of the whole section-->
+                <div class="ab_join_in">
+                    <svg class="ab_ch ab_hm ab_ch1" viewBox="0 0 100 100" filter="url(#ab_wob)" aria-hidden="true"><use href="#ab_cw"/></svg>
+                    <svg class="ab_ch ab_hm ab_ch2" viewBox="0 0 100 100" filter="url(#ab_wob)" aria-hidden="true"><use href="#ab_cr"/></svg>
+                    <svg class="ab_ch ab_ch3" viewBox="0 0 100 100" filter="url(#ab_wob)" aria-hidden="true"><use href="#ab_cb"/></svg>
+                    <svg class="ab_ch ab_ch4" viewBox="0 0 100 100" filter="url(#ab_wob)" aria-hidden="true"><use href="#ab_cb"/></svg>
+                    <svg class="ab_ch ab_hm ab_ch5" viewBox="0 0 100 100" filter="url(#ab_wob)" aria-hidden="true"><use href="#ab_cw"/></svg>
+                    <h2>Join our rat-catching community!</h2>
+                    <a class="ab_btn" href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Add to Chrome</a>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
+
+        {% include 'partials/footer.html' %}
+
+        <!--draws the hand-drawn city along the bottom of the hero-->
+        <script>
+        (function(){
+            var B = [[-10,150,170,'f'],[150,110,250,'s'],[270,95,140,'f'],[375,130,205,'g'],[515,100,120,'f'],[625,150,275,'g'],[785,125,185,'f'],[920,140,235,'s'],[1070,110,150,'g'],[1190,125,215,'f'],[1325,110,175,'g']];
+            var S = 'stroke="#2A2220" stroke-width="4.5"', BG = '#F3D663', o = '', seed = 11;
+            function r(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+            o += '<use href="#ab_m" x="' + (270 + 95 / 2 - 22) + '" y="' + (340 - 140 - 28) + '" width="44" height="37"/>';
+            B.forEach(function(b){
+                var x = b[0], w = b[1], h = b[2], t = b[3], top = 340 - h, p;
+                if (t == 'g') p = 'M' + x + ' 345V' + (top + 34) + 'L' + (x + w / 2) + ' ' + top + 'L' + (x + w) + ' ' + (top + 34) + 'V345Z';
+                else if (t == 's') p = 'M' + x + ' 345V' + top + 'H' + (x + w * .3) + 'V' + (top - 40) + 'L' + (x + w * .5) + ' ' + (top - 80) + 'L' + (x + w * .7) + ' ' + (top - 40) + 'V' + top + 'H' + (x + w) + 'V345Z';
+                else p = 'M' + x + ' 345V' + top + 'L' + (x + w) + ' ' + (top - 4) + 'V345Z';
+                o += '<path d="' + p + '" fill="' + BG + '" ' + S + '/>';
+                var cols = Math.max(2, Math.floor((w - 24) / 30)), rows = Math.floor((h - (t == 'g' ? 60 : 34)) / 42), ww = 12, gap = (w - 24 - cols * ww) / Math.max(1, cols - 1), y0 = top + (t == 'g' ? 58 : 22);
+                for (var a = 0; a < rows; a++) for (var c = 0; c < cols; c++) {
+                    var wx = x + 12 + c * (ww + gap) + (r() * 3 - 1.5), wy = y0 + a * 42 + (r() * 3 - 1.5);
+                    o += '<path d="M' + wx + ' ' + wy + 'l' + ww + ' -2 1 20 -' + ww + ' 2Z" fill="' + (r() < .25 ? '#FFFDEA' : 'none') + '" stroke="#2A2220" stroke-width="3.5"/>';
+                }
+            });
+            document.getElementById('ab_city').innerHTML = o;
+        })();
+        </script>
     </body>
-
 </html>

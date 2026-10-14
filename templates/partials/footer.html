@@ -1,0 +1,71 @@
+{# shared site footer: used by every page via {% include %} #}
+<!--SECTION 8 footer-->
+<footer class="ft">
+    <div class="ft_wrap">
+        <div class="ft_top">
+            <div>
+                <!--same logo as the header (wedge + tilted letters), recolored for the dark footer-->
+                <a class="sh_logo ft_logo" href="/" aria-label="Cheztrap home">
+                    <svg class="sh_wedge" viewBox="0 0 54 40" aria-hidden="true">
+                        <path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#F3D663" stroke="#FFFDEA" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M3 17 Q27 24 51 21" fill="none" stroke="#FFFDEA" stroke-width="3"/>
+                        <circle cx="16" cy="29" r="3" fill="#2A2220"/>
+                        <circle cx="33" cy="30" r="2.2" fill="#2A2220"/>
+                        <circle cx="40" cy="13" r="2" fill="#2A2220"/>
+                    </svg>
+                    <span class="sh_word" aria-hidden="true"><span>C</span><span>h</span><span>e</span><span>z</span><span>t</span><span>r</span><span>a</span><span>p</span></span>
+                </a>
+                <p class="ft_tag">Free cheese? Probably a trap.</p>
+                <a class="ft_mail" href="mailto:december0two@gmail.com">Say hi: december0two@gmail.com</a>
+            </div>
+            <div>
+                <h3 class="ft_head">Get it</h3>
+                <ul class="ft_list">
+                    <li><a class="ft_add" href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Add to Chrome</a></li>
+                    <li><a href="/#how-it-works">How it works</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="ft_head">Company</h3>
+                <ul class="ft_list">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="ft_head">Fine print</h3>
+                <ul class="ft_list">
+                    <li><a href="/terms">Terms</a></li>
+                    <li><a href="/privacy">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!--three mice marching toward a cheese wedge-->
+        <div class="ft_trail" aria-hidden="true">
+            <svg viewBox="0 0 1200 70">
+                <defs>
+                    <filter id="ft_wob" x="-5%" y="-10%" width="110%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter>
+                    <symbol id="ft_m" viewBox="0 0 40 34">
+                        <circle cx="10" cy="9" r="8" fill="#8B7D74" stroke="#FFFDEA" stroke-width="2.5"/><circle cx="30" cy="9" r="8" fill="#8B7D74" stroke="#FFFDEA" stroke-width="2.5"/>
+                        <circle cx="10" cy="9" r="4" fill="#E8A5A5"/><circle cx="30" cy="9" r="4" fill="#E8A5A5"/>
+                        <ellipse cx="20" cy="22" rx="16" ry="12" fill="#8B7D74" stroke="#FFFDEA" stroke-width="2.5"/>
+                        <circle cx="14" cy="20" r="2.6" fill="#2A2220"/><circle cx="26" cy="20" r="2.6" fill="#2A2220"/>
+                        <ellipse cx="20" cy="27" rx="3.2" ry="2.4" fill="#E27F86"/>
+                    </symbol>
+                </defs>
+                <g filter="url(#ft_wob)" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M250 60C400 56 520 64 700 60C860 56 980 63 1100 60" stroke="#F3D663" stroke-width="4" stroke-dasharray="2 16" fill="none"/>
+                    <g class="ft_bob"><use href="#ft_m" x="10" y="14" width="50" height="43"/></g>
+                    <g class="ft_bob"><use href="#ft_m" x="85" y="14" width="50" height="43"/></g>
+                    <g class="ft_bob"><use href="#ft_m" x="160" y="14" width="50" height="43"/></g>
+                    <path d="M1120 62L1190 62L1190 36Z" fill="#F3D663" stroke="#FFFDEA" stroke-width="3.5"/>
+                    <circle cx="1168" cy="53" r="4" fill="#E8C24A"/><circle cx="1150" cy="57" r="3" fill="#E8C24A"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="ft_bot"><span>© 2026 Cheztrap</span><span>Made with a lot of cheese.</span></div>
+    </div>
+</footer>

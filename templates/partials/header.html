@@ -1,0 +1,52 @@
+{# shared site header: used by every page via {% include %} #}
+<!--MENU HEADER-->
+<header class="site_header">
+    <a class="sh_logo" href="/" aria-label="Cheztrap home">
+        <svg class="sh_wedge" viewBox="0 0 54 40" aria-hidden="true">
+            <path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#fff3a8" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M3 17 Q27 24 51 21" fill="none" stroke="#2a211c" stroke-width="3"/>
+            <circle cx="16" cy="29" r="3" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+            <circle cx="33" cy="30" r="2.2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+            <circle cx="40" cy="13" r="2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+        </svg>
+        <span class="sh_word" aria-hidden="true"><span>C</span><span>h</span><span>e</span><span>z</span><span>t</span><span>r</span><span>a</span><span>p</span></span>
+    </a>
+    <nav class="sh_nav" aria-label="Main">
+        <a href="/about">About</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/contact">Contact</a>
+        <a class="sh_cta" href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Get Now!</a>
+    </nav>
+    <svg class="sh_drip" viewBox="0 0 1200 64" preserveAspectRatio="none" aria-hidden="true">
+        <clipPath id="sh_drip_clip"><path id="sh_drip_clip_path"/></clipPath>
+        <path class="sh_drip_fill" id="sh_drip_fill"/>
+        <path class="sh_drip_gloss" id="sh_drip_gloss" clip-path="url(#sh_drip_clip)"/>
+        <path class="sh_drip_line" id="sh_drip_line"/>
+    </svg>
+</header>
+
+<!--JAVASCRIPT FOR HEADER DRIP: bell-shaped drips of varied depth along the header edge-->
+<script>
+(function(){
+    var base = 18, depths = [30,50,36,58,32,46,28,54,38,48,30,56], n = depths.length, step = 1200 / n, w = step * .36, d = "M0," + base, gl = "";
+    // point at t along the drip's left edge, shrunk toward the drip's top-center so it sits inside the yellow
+    function dripPoint(c, y, t) {
+        var u = 1 - t, a = u * u * u, b = 3 * u * u * t, e = 3 * u * t * t, f = t * t * t;
+        var x = a * (c - w) + b * (c - w + 14) + e * (c - 12) + f * c;
+        var yy = (a + b) * base + (e + f) * y;
+        return (c + (x - c) * .55) + "," + ((base - 3) + (yy - base) * .7);
+    }
+    for (var i = 0; i < n; i++) {
+        var c = i * step + step / 2, y = depths[i];
+        d += " L" + (c - w) + "," + base + " C" + (c - w + 14) + "," + base + " " + (c - 12) + "," + y + " " + c + "," + y + " C" + (c + 12) + "," + y + " " + (c + w - 14) + "," + base + " " + (c + w) + "," + base;
+        // curved highlight: a smaller copy of the drip's left curve
+        gl += " M" + dripPoint(c, y, .05);
+        for (var t = .15; t <= .85; t += .1) gl += " L" + dripPoint(c, y, t);
+    }
+    d += " L1200," + base;
+    document.getElementById("sh_drip_line").setAttribute("d", d);
+    document.getElementById("sh_drip_fill").setAttribute("d", d + " L1200,0 L0,0 Z");
+    document.getElementById("sh_drip_clip_path").setAttribute("d", d + " L1200,0 L0,0 Z");
+    document.getElementById("sh_drip_gloss").setAttribute("d", gl);
+})();
+</script>

@@ -1,35 +1,75 @@
-<html>
-    <head>
-        <title>cheztrap</title>
-        <link rel="stylesheet" href="/static/popup.css">
-        <script src="/static/jquery.js"></script>
-        <script src="popup.js"></script>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Cheztrap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/popup.css">
+    <script src="/static/jquery.js"></script>
+    <script src="popup.js"></script>
+</head>
+<body>
+    <!--shared pieces: wobble filter, the two verdict shields, and the site's cheese wedge-->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+        <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter>
+        <symbol id="shg" viewBox="0 0 60 70"><g stroke-linecap="round" stroke-linejoin="round"><path d="M30 4L54 12V34C54 50 42 62 30 67C18 62 6 50 6 34V12Z" fill="#5DB36B" stroke="#2A2220" stroke-width="5"/><path d="M18 35L27 44L43 25" fill="none" stroke="#fff" stroke-width="7"/></g></symbol>
+        <symbol id="shb" viewBox="0 0 60 70"><g stroke-linecap="round" stroke-linejoin="round"><path d="M30 4L54 12V34C54 50 42 62 30 67C18 62 6 50 6 34V12Z" fill="#E8432B" stroke="#2A2220" stroke-width="5"/><path d="M30 20V39M30 49V50" fill="none" stroke="#fff" stroke-width="7"/></g></symbol>
+        <symbol id="wedge" viewBox="0 0 54 40">
+                <path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#fff3a8" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M3 17 Q27 24 51 21" fill="none" stroke="#2a211c" stroke-width="3"/>
+                <circle cx="16" cy="29" r="3" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+                <circle cx="33" cy="30" r="2.2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+                <circle cx="40" cy="13" r="2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+        </symbol>
+    </defs></svg>
 
-    <body>
-        <div class="popup_content">
-            <div class="container">
-                <div class="head_bar">
-                    <div class="logo_img"><img src="/static/images/logo.svg" style="width:30px; height:30px; padding-right:2px; padding-top:8%;"></div>
-                    <div class="name_bar" style="font-size: 24px;">Cheztrap</div>
-                </div>
-        
-                <div class="reaction" style="padding: 25px;padding-bottom:0;">
-                    <div id="is_safe" class="is_safe_box" style="padding-bottom:0;">
-                        <div class="load_img1"><img src="/static/images/rat_load.png"></div>
-                        <div class="load_img2"><img src="/static/images/loading.gif" style="margin-top: 10px; width: 100px"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reaction1" style="padding: 25px;padding-top: 0;padding-bottom: 0;">
-                <div id="website_name" style="text-align: center"></div>
-            </div>
+    <div class="pop">
+        <!--header: same cheese wedge as the website's header logo-->
+        <div class="hd">
+            <svg class="hd_wedge" viewBox="0 0 54 40" aria-hidden="true"><use href="#wedge"/></svg>
+            <b>Cheztrap</b>
+            <!--rounded bell drips, same shape as the website header drip (templates/partials/header.html)-->
+            <svg class="dr" viewBox="0 0 380 48" aria-hidden="true">
+                <clipPath id="dr_clip"><path d="M0,4 L6.1,4 C22,4 18.8,22 38,22 C57.2,22 54,4 69.9,4 L82.1,4 C98,4 94.8,32 114,32 C133.2,32 130,4 145.9,4 L158.1,4 C174,4 170.8,25 190,25 C209.2,25 206,4 221.9,4 L234.1,4 C250,4 246.8,35 266,35 C285.2,35 282,4 297.9,4 L310.1,4 C326,4 322.8,27 342,27 C361.2,27 358,4 373.9,4 L380,4 L380,0 L0,0 Z"/></clipPath>
+                <path class="dr_fill" d="M0,4 L6.1,4 C22,4 18.8,22 38,22 C57.2,22 54,4 69.9,4 L82.1,4 C98,4 94.8,32 114,32 C133.2,32 130,4 145.9,4 L158.1,4 C174,4 170.8,25 190,25 C209.2,25 206,4 221.9,4 L234.1,4 C250,4 246.8,35 266,35 C285.2,35 282,4 297.9,4 L310.1,4 C326,4 322.8,27 342,27 C361.2,27 358,4 373.9,4 L380,4 L380,0 L0,0 Z"/>
+                <path class="dr_gloss" d="M21.7,2.6 L23.8,3.3 L25.4,4.5 L26.8,6.1 L28,7.9 L29.2,9.7 L30.5,11.5 L32,13.1 L34,14.3 M97.7,2.6 L99.8,3.7 L101.4,5.6 L102.8,8 L104,10.8 L105.2,13.8 L106.5,16.6 L108,19 L110,20.9 M173.7,2.6 L175.8,3.4 L177.4,4.8 L178.8,6.6 L180,8.8 L181.2,10.9 L182.5,13.1 L184,14.9 L186,16.3 M249.7,2.7 L251.8,3.8 L253.4,5.9 L254.8,8.6 L256,11.7 L257.2,15 L258.5,18.1 L260,20.8 L262,22.9 M325.7,2.6 L327.8,3.5 L329.4,5 L330.8,7 L332,9.3 L333.2,11.8 L334.5,14.1 L336,16.1 L338,17.6" clip-path="url(#dr_clip)"/>
+                <path class="dr_line" d="M0,4 L6.1,4 C22,4 18.8,22 38,22 C57.2,22 54,4 69.9,4 L82.1,4 C98,4 94.8,32 114,32 C133.2,32 130,4 145.9,4 L158.1,4 C174,4 170.8,25 190,25 C209.2,25 206,4 221.9,4 L234.1,4 C250,4 246.8,35 266,35 C285.2,35 282,4 297.9,4 L310.1,4 C326,4 322.8,27 342,27 C361.2,27 358,4 373.9,4 L380,4"/>
+            </svg>
         </div>
-    </body>
+
+        <div class="body" id="body" aria-live="polite" tabindex="0">
+
+            <!--loading: website-style mouse running off with a cheese wedge-->
+            <div class="view load on" id="v-load">
+                <svg viewBox="0 0 200 140" role="img" aria-label="A mouse running with a slice of cheese" filter="url(#wob)" stroke-linecap="round" stroke-linejoin="round">
+                    <g class="dust" stroke="#2A2220" stroke-width="3.5" fill="none"><path d="M6 100h26"/><path d="M14 112h24"/><path d="M4 124h20"/></g>
+                    <g class="mz">
+                        <path d="M42 98C14 106 6 78 22 70C32 66 38 76 30 80" fill="none" stroke="#2A2220" stroke-width="4"/>
+                        <path d="M40 96C32 62 70 44 104 50C134 56 140 92 124 106C100 116 56 116 40 96Z" fill="#A89A8E" stroke="#2A2220" stroke-width="4"/>
+                        <path d="M60 106C80 114 108 112 122 104C102 98 78 98 60 106Z" fill="#E4D8CE"/>
+                        <circle cx="120" cy="34" r="15" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="120" cy="34" r="7.5" fill="#E8A5A5"/>
+                        <path d="M110 60C108 38 134 30 150 44C162 56 156 78 136 80C120 82 111 72 110 60Z" fill="#A89A8E" stroke="#2A2220" stroke-width="4"/>
+                        <circle cx="150" cy="32" r="15" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="150" cy="32" r="7.5" fill="#E8A5A5"/>
+                        <ellipse cx="129" cy="56" rx="8" ry="9" fill="#fff" stroke="#2A2220" stroke-width="3"/><ellipse cx="147" cy="55" rx="8" ry="9" fill="#fff" stroke="#2A2220" stroke-width="3"/>
+                        <circle cx="132" cy="57" r="4" fill="#2A2220"/><circle cx="150" cy="56" r="4" fill="#2A2220"/>
+                        <path d="M154 67C158 63 164 66 162 71C159 74 153 72 154 67Z" fill="#E27F86" stroke="#2A2220" stroke-width="2.5"/>
+                        <use href="#wedge" x="136" y="80" width="40" height="30"/>
+                        <ellipse cx="138" cy="96" rx="8" ry="5" fill="#8B7D74" stroke="#2A2220" stroke-width="3"/>
+                    </g>
+                    <ellipse class="f1" cx="68" cy="120" rx="10" ry="5" fill="#8B7D74" stroke="#2A2220" stroke-width="3.5"/>
+                    <ellipse class="f2" cx="104" cy="118" rx="10" ry="5" fill="#8B7D74" stroke="#2A2220" stroke-width="3.5"/>
+                </svg>
+                <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <p class="msg" id="msg">Sniffing out the site...</p>
+                <p class="msg2">This only takes a moment.</p>
+            </div>
+
+            <!--result: filled in by popup.js-->
+            <div class="view" id="v-result"></div>
+
+        </div>
+    </div>
+</body>
 </html>

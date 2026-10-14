@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>cheztrap</title>
+        <title>Contact Cheztrap</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='chrome.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/svg+xml" href="/static/images/favicon/cheese.svg">
         <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
         <link rel="manifest" href="/static/images/favicon/site.webmanifest">
@@ -14,84 +16,100 @@
 
     <body>
         
-        <!--MENU HEADER-->
-        <div class="menu_logo">
-            <a href="/">
-                <img src="/static/images/logo.svg">
-                <span class="logo">Cheztrap</span>
-            </a>
-        </div>
-
-        <div class="menu">
-            <div class="menu_left">
-                <span class="menu_abt"><a href="/about">About</a></span>
-                <span class="menu_faq"><a href="{{ url_for('home') }}#faq">FAQ</a></span>
-            </div>
-            <div class="menu_right">
-                <span class="menu_contact"><a href="/contact">Contact</a></span>
-                <span class="menu_get"><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank">Get Now!</a></span>
-            </div>
-        </div>
+        {% include 'partials/header.html' %}
         
 
  
 
-        <!--CONTACT CONTENT STARTS HERE-->
-        <div class="container">
-            <!--TITLE-->
-            <div class="contact_header">Questions or Feedback?<br> We're Listening!</div>
-            <div class="contact_desc">Please don't hesitate to reach out! We're happy to answer any questions you have. Your feedback helps make Cheztrap even stronger, and we truly appreciate every suggestion.</div>
-            
-
-            <!--CONTACT FORM CODE-->
-            <form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation" novalidate>
-                <input type="hidden" name="access_key" value="84cf2b10-0abb-460d-bc42-9abf81be21b5">
-                <input type="hidden" name="subject" value="New Submission from Web3Forms">
-                <input type="checkbox" name="botcheck" style="display:none;">
-
-
-                <div class="form-group">
-                    <label for="topic">Topic *</label>
-                    <select name="topic" id="topic" required>
-                        <option value="">Question/Feedback</option>
-                        <option value="question">Question</option>
-                        <option value="feedback">Feedback</option>
-                    </select>
-                    <div class="empty-feedback">Please select a topic.</div>
-                </div>
-                
-
-                <div class="form-group">
-                    <label for="message">Question/Feedback *</label>
-                    <textarea rows="10" name="message" id="message" placeholder="Your Message" required></textarea>
-                    <div class="empty-feedback">Please enter your message.</div>
+        <!--full-width layer: cheese spots behind the page content-->
+        <div class="ct_page">
+            <span class="ct_dot ct_dot1"></span>
+            <span class="ct_dot ct_dot2"></span>
+            <span class="ct_dot ct_dot3"></span>
+            <span class="ct_dot ct_dot4"></span>
+            <span class="ct_dot ct_dot5"></span>
+            <span class="ct_dot ct_dot6"></span>
+            <!--CONTACT CONTENT STARTS HERE-->
+            <main class="ct">
+                <div class="ct_intro">
+                    <h1 class="ct_title">Questions or feedback? We're listening.</h1>
+                    <p>Ask us anything about Cheztrap. Your feedback makes it stronger, and we read every message.</p>
+                    <p>Got a site Cheztrap got wrong? Pick "Wrong verdict" and tell us the address.</p>
                 </div>
 
-                <div class="form-row name">
-                    <div class="form-group"> 
-                        <label for="first_name">First Name *</label>
-                        <input type="text" name="name" id="first_name" placeholder="John" required>
-                        <div class="empty-feedback">Please provide your first name.</div>
+                <div class="ct_wrapcard" id="ct_wc">
+                    <!--mouse peeking over the card; its pupils follow the cursor-->
+                    <svg class="ct_peek" viewBox="0 0 150 80" aria-hidden="true" filter="url(#ct_wob)" stroke-linecap="round" stroke-linejoin="round">
+                        <defs><filter id="ct_wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter></defs>
+                        <circle cx="34" cy="26" r="20" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="34" cy="26" r="10" fill="#E8A5A5"/>
+                        <circle cx="112" cy="24" r="20" fill="#8B7D74" stroke="#2A2220" stroke-width="4"/><circle cx="112" cy="24" r="10" fill="#E8A5A5"/>
+                        <path d="M18 80C14 44 42 28 74 28C108 28 134 44 130 80Z" fill="#A89A8E" stroke="#2A2220" stroke-width="4"/>
+                        <ellipse cx="55" cy="52" rx="11" ry="12" fill="#fff" stroke="#2A2220" stroke-width="3"/><ellipse cx="93" cy="52" rx="11" ry="12" fill="#fff" stroke="#2A2220" stroke-width="3"/>
+                        <circle id="ct_pl" cx="55" cy="53" r="5" fill="#2A2220"/><circle id="ct_pr" cx="93" cy="53" r="5" fill="#2A2220"/>
+                        <path d="M66 66C70 62 78 62 82 66C80 72 68 72 66 66Z" fill="#E27F86" stroke="#2A2220" stroke-width="3"/>
+                    </svg>
+
+                    <div class="ct_card">
+                        <!--submits to Web3Forms, which emails the message to us-->
+                        <form id="ct_form" novalidate>
+                            <input type="hidden" name="access_key" value="84cf2b10-0abb-460d-bc42-9abf81be21b5">
+                            <input type="hidden" name="subject" value="New Submission from Web3Forms">
+                            <input type="checkbox" name="botcheck" class="ct_hidden" tabindex="-1" autocomplete="off">
+
+                            <div class="ct_f" id="ct_f-topic">
+                                <label for="topic">What's this about?</label>
+                                <select id="topic" name="topic" required>
+                                    <option value="">Pick a topic</option>
+                                    <option>Question</option>
+                                    <option>Feedback</option>
+                                    <option>Wrong verdict on a site</option>
+                                    <option>Bug report</option>
+                                    <option>Something else</option>
+                                </select>
+                                <div class="ct_err">Pick a topic so we know where to send this.</div>
+                            </div>
+                            <div class="ct_two">
+                                <div class="ct_f" id="ct_f-first">
+                                    <label for="first">First name</label>
+                                    <input id="first" name="name" placeholder="John" autocomplete="given-name">
+                                    <div class="ct_err">What should we call you?</div>
+                                </div>
+                                <div class="ct_f" id="ct_f-last">
+                                    <label for="last">Last name</label>
+                                    <input id="last" name="last_name" placeholder="Doe" autocomplete="family-name">
+                                    <div class="ct_err">Add your last name.</div>
+                                </div>
+                            </div>
+                            <div class="ct_f" id="ct_f-email">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+                                <div class="ct_err">Add a valid email so we can reply.</div>
+                            </div>
+                            <div class="ct_f" id="ct_f-msg">
+                                <label for="msg">Your message</label>
+                                <textarea id="msg" name="message" placeholder="Tell us what's on your mind"></textarea>
+                                <div class="ct_err">Write a short message first.</div>
+                            </div>
+                            <button class="ct_send" type="submit">Send message</button>
+                            <p class="ct_hint" id="ct_hint">All fields are required.</p>
+                        </form>
+
+                        <div class="ct_done" role="status" aria-live="polite">
+                            <!--same cheese wedge as the header logo-->
+                            <svg width="96" height="71" viewBox="0 0 54 40" aria-hidden="true">
+                                <path d="M3 17 L33 4 Q49 8 51 21 L51 33 Q51 36 48 36 L8 36 Q3 36 3 31 Z" fill="#fff3a8" stroke="#2a211c" stroke-width="3" stroke-linejoin="round"/>
+                                <path d="M3 17 Q27 24 51 21" fill="none" stroke="#2a211c" stroke-width="3"/>
+                                <circle cx="16" cy="29" r="3" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+                                <circle cx="33" cy="30" r="2.2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+                                <circle cx="40" cy="13" r="2" fill="#e8a92c" stroke="#2a211c" stroke-width="2"/>
+                            </svg>
+                            <h2>Message sent!</h2>
+                            <p>Thank you for your reply!</p>
+                            <button class="ct_again" type="button" id="ct_again">Send another</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name *</label>
-                        <input type="text" name="last_name" id="lname" placeholder="Doe" required>
-                        <div class="empty-feedback">Please provide your last name.</div>
-                    </div>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" name="email" id="email" placeholder="example@gmail.com" required>
-                        <div class="empty-feedback">Please provide your email address.</div>
-                        <div class="invalid-feedback">Please provide a valid email address.</div>
-                    </div>
-                </div>
-
-                <button type="submit">Click to Submit!</button>
-                <p id="result"></p>
-                </form>
+            </main>
         </div>
 
 
@@ -99,32 +117,7 @@
 
 
 
-        <!--SECTION 8 footer-->
-        <div class="footer">
-            <div class="footer_content_left">
-                <div class="footer_logo">Cheztrap</div>
-                            
-                <div class="footer_contact">
-                    <div class="footer_contact_stuff">
-                        <div class="footer_email">Email: december0two@gmail.com</div>
-                        <img src="/static/images/footer_rat1.svg">
-                        <img src="/static/images/footer_rat2.svg">
-                        <img src="/static/images/footer_rat3.svg">
-                    </div>
-                </div>
-            </div>
-            <div class="footer_content_right">
-                <div class="footer_content_right_col1">
-                    <li><a href="https://chromewebstore.google.com/detail/cheztrap/nekhbkmakcoobbhgckdjakflhcdhpjjk" target="_blank" class="footer_link">DOWNLOAD</a></li>
-                    <li><a href="/about" class="footer_link">ABOUT</a></li>
-                    <li><a href="/contact" class="footer_link">CONTACT</a></li>
-                </div>
-                <div class="footer_content_right_col2">
-                    <li><a href="/terms" class="footer_link">TERMS</a></li>
-                    <li><a href="/privacy" class="footer_link">PRIVACY</a></li>
-                </div>
-            </div>
-        </div>
+        {% include 'partials/footer.html' %}
 
 
 
@@ -134,65 +127,80 @@
 
     <!--JAVASCRIPT-->
     <script>
-        (function () {
-      "use strict";
-      const forms = document.querySelectorAll(".needs-validation");
-      const result = document.getElementById("result");
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener(
-          "submit",
-          function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-              form.querySelectorAll(":invalid")[0].focus();
-            } else {
-              const formData = new FormData(form);
-              event.preventDefault();
-              event.stopPropagation();
-              const object = {};
-              formData.forEach((value, key) => {
-                object[key] = value;
-              });
-              const json = JSON.stringify(object);
-              result.innerHTML = "Please wait...";
-              result.style.color = "#6b7280";
+    (function(){
+        // mouse pupils follow the cursor
+        var pl = document.getElementById('ct_pl'), pr = document.getElementById('ct_pr'), svg = document.querySelector('.ct_peek');
+        document.addEventListener('mousemove', function(e){
+            var r = svg.getBoundingClientRect(), k = r.width / 150, dx = e.clientX - (r.left + 74 * k), dy = e.clientY - (r.top + 53 * k), d = Math.hypot(dx, dy) || 1, m = Math.min(4, d / 50);
+            pl.setAttribute('cx', 55 + dx / d * m); pl.setAttribute('cy', 53 + dy / d * m);
+            pr.setAttribute('cx', 93 + dx / d * m); pr.setAttribute('cy', 53 + dy / d * m);
+        });
 
-              fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json"
-                },
-                body: json
-              })
-                .then(async (response) => {
-                  let json = await response.json();
-                  if (response.status == 200) {
-                    result.innerHTML = json.message;
-                    result.style.color = "#16a34a";
-                  } else {
-                    result.innerHTML = json.message;
-                    result.style.color = "#dc2626";
-                  }
+        var form = document.getElementById('ct_form'), wc = document.getElementById('ct_wc'),
+            send = form.querySelector('.ct_send'), hint = document.getElementById('ct_hint');
+        var rules = {
+            topic: function(v){ return v; },
+            first: function(v){ return v.trim(); },
+            last: function(v){ return v.trim(); },
+            email: function(v){ return /^\S+@\S+\.\S+$/.test(v.trim()); },
+            msg: function(v){ return v.trim().length > 2; }
+        };
+        function run(id){
+            var el = document.getElementById(id), ok = !!rules[id](el.value), f = document.getElementById('ct_f-' + id);
+            f.classList.toggle('ct_bad', !ok);
+            el.setAttribute('aria-invalid', !ok);
+            return ok;
+        }
+        Object.keys(rules).forEach(function(id){
+            var el = document.getElementById(id);
+            el.addEventListener('blur', function(){ if (el.value) run(id); });
+            el.addEventListener('input', function(){ if (document.getElementById('ct_f-' + id).classList.contains('ct_bad')) run(id); });
+        });
+
+        function setHint(text, isError){
+            hint.textContent = text;
+            hint.classList.toggle('ct_hint_err', !!isError);
+        }
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var bad = Object.keys(rules).filter(function(id){ return !run(id); });
+            if (bad.length) { document.getElementById(bad[0]).focus(); return; }
+
+            var data = {};
+            new FormData(form).forEach(function(value, key){ data[key] = value; });
+            send.disabled = true;
+            send.textContent = 'Sending...';
+            setHint('All fields are required.');
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(function(response){
+                    return response.json().then(function(json){
+                        if (response.status !== 200) throw new Error(json.message || 'send failed');
+                    });
                 })
-                .catch((error) => {
-                  result.innerHTML = "Something went wrong!";
-                  result.style.color = "#dc2626";
+                .then(function(){
+                    // only show the success card once Web3Forms has accepted the message
+                    wc.classList.add('ct_sent');
                 })
-                .then(function () {
-                  form.reset();
-                  form.classList.remove("was-validated");
-                  setTimeout(() => {
-                    result.style.display = "none";
-                  }, 5000);
+                .catch(function(){
+                    setHint("That didn't send. Try again, or email us at december0two@gmail.com.", true);
+                })
+                .then(function(){
+                    send.disabled = false;
+                    send.textContent = 'Send message';
                 });
-            }
-            form.classList.add("was-validated");
-          },
-          false
-        );
-      });
+        });
+
+        document.getElementById('ct_again').addEventListener('click', function(){
+            form.reset();
+            wc.classList.remove('ct_sent');
+            document.getElementById('topic').focus();
+        });
     })();
     </script>
     </body>

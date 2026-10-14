@@ -59,10 +59,25 @@ def check_result_gmail():
     return output
     # return render_template('/check_result_gmail.html', is_safe_in_chatgpt=is_safe_in_chatgpt)
     
+# our own site: always safe, no need to ask chatgpt or urlvoid
+OWN_DOMAIN = "cheztrap.com"
+
+def is_own_site(stripped_url):
+   host = stripped_url.lower().split(':')[0].rstrip('.')
+   return host == OWN_DOMAIN or host.endswith('.' + OWN_DOMAIN)
+
 @app.route('/api/check/website', methods=['POST'])
 def check_website():
    url = request.form.get('url')
    stripped_url = strip_scheme(url)
+
+   if is_own_site(stripped_url):
+       return {
+           'is_safe': True,
+           'reason': "This is Cheztrap's own website! It's the home of the Cheztrap scam checker, so you're in safe paws here.",
+           'website_type': 'Online safety tool',
+           'fun_fact': 'Cheztrap is a cheesy mix of "cheese" and "trap": the cheese lures the rats (scams) so you can stay safe.',
+       }
 
    # asks chatgpt if the website is trustable or not
    prompt = build_prompt(stripped_url)
