@@ -14,7 +14,6 @@ CORS(app)
 #grabs openai api from .env into home.py
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
-urlvoid_api_key = os.getenv("URLVOID_API_KEY")
 
 def get_completion(prompt, model="gpt-4o"):
    # Prepare the messages for the API call
@@ -59,7 +58,7 @@ def check_result_gmail():
     return output
     # return render_template('/check_result_gmail.html', is_safe_in_chatgpt=is_safe_in_chatgpt)
     
-# our own site: always safe, no need to ask chatgpt or urlvoid
+# our own site: always safe, no need to ask chatgpt
 OWN_DOMAIN = "cheztrap.com"
 
 def is_own_site(stripped_url):
@@ -92,21 +91,6 @@ def check_website():
    reason_in_chatgpt = data.get('reason')
    print(data)
    print(type(data))
-
-   urlvoid_endpoint = f"https://endpoint.apivoid.com/domainbl/v1/pay-as-you-go/?key={urlvoid_api_key}&host={stripped_url}"
-   response = requests.get(urlvoid_endpoint)
-   urlvoid_data = response.json()
-
-   # retrieving detection count in urlvoid api
-   detection_count = urlvoid_data['data']['report']['blacklists']['detections']
-
-   # if score = 2, it means its super safe. score = 0 means dangerous
-   score = 0
-   if is_safe_in_chatgpt:
-       score += 1
-   if detection_count == 0 or detection_count == 1:
-       score += 1
-   print("website safety score", score)
 
    output = data
    return output
