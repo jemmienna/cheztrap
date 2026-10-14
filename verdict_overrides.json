@@ -1,0 +1,9 @@
+{
+  "_how_to_use": "Corrections for wrong verdicts. After checking a 'Wrong verdict?' report, add the site or sender below with is_safe true or false (reason is optional and shown in the popup). Sites cover their subdomains. Senders can be a domain like github.com (covers its subdomains) or a full address like scammer@gmail.com; free email domains like gmail.com only work as full addresses. A sender marked safe only counts when the email passes the sender check, since anyone can fake the From line. Changes apply right away, no restart needed.",
+  "_example": {
+    "sites": { "example.com": { "is_safe": true, "reason": "We've checked example.com by hand, and it's safe." } },
+    "senders": { "scammer@gmail.com": { "is_safe": false } }
+  },
+  "sites": {},
+  "senders": {}
+}

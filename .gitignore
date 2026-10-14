@@ -1,4 +1,6 @@
 .env
-.pem
+*.pem
 .DS_Store
 venv
+__pycache__/
+cheztrap-*.zip
