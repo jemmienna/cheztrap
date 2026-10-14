@@ -37,51 +37,73 @@
 
                 <div class="privacy_div_content">
                     <p class="privacy_text2">
-                        This Privacy Policy explains how we collect, use, and share your personal information when you visit Cheztrap.com or use the Cheztrap Google Chrome Extension.
+                        This Privacy Policy explains what information Cheztrap uses, why, and where it goes when you visit Cheztrap.com or use the Cheztrap Google Chrome Extension.
+                        In short: Cheztrap only looks at a website or email when you ask it to, sends it to our server to be checked, and does not save it, sell it, or use it for ads.
                     </p>
                     <p class="privacy_title">1. Information We Collect</p>
                     <p class="privacy_text2">
-                        Cheztrap does not collect, store, or share any personal information from users. 
-                        We do not gather data about your browsing activity, personal identifiers, or any other private information.
+                        Cheztrap has no accounts, ads, or analytics, and it does nothing in the background. Information is only collected when you click the extension (or use the checker on our website), and only about the page or email you are checking:
+                        <li class="privacy_text2">Websites: the page's address, title, and description, and the first part of the visible text on the page (up to about 4,000 characters). Anything you type into forms on the page is not included.</li>
+                        <li class="privacy_text2">Gmail emails: the open email's subject, the sender's name and address, the body text, where its links go, the names of any attachments, and two technical headers from the email (the sender verification results known as SPF, DKIM, and DMARC, and the Reply-To address). We do not read your other emails or your inbox.</li>
+                        <li class="privacy_text2">Emails that are mostly pictures: a screenshot of the email as it appears on your screen, and the web addresses of up to four of the email's images, so the pictures can be read.</li>
+                        <li class="privacy_text2">Contact form: if you contact us or report a wrong verdict, the name, email address, and message you choose to send. The "Wrong verdict?" link fills in the site or sender that was checked so you don't have to type it, and nothing is sent until you submit the form.</li>
                     </p>
                     <p class="privacy_title">2. How We Use Your Data</p>
                     <p class="privacy_text2">
-                        Since we do not collect personal data, we do not use or process personal information in any way. 
-                        The extension operates locally and performs its functions without sending any data to external servers.
+                        We use this information only to check whether the website or email is safe and to show you the result.
+                        It is not used for advertising, profiling, or any purpose unrelated to scam detection, and it is never sold.
+                        We do not save the pages or emails you check in a database. Our server may keep short-term technical logs, which can include the result of a check, to help us fix problems.
+                        If you report a wrong verdict and we agree, we may add that website or sender address to a list of corrected verdicts so other users get the right answer.
                     </p>
                     <p class="privacy_title">3. Data Sharing</p>
                     <p class="privacy_text2">
-                        Cheztrap does not share any user data with third parties. 
-                        There are no external parties with whom user data is shared as we do not collect or handle personal information.
+                        To produce a result, the information above is sent from the extension to our server at Cheztrap.com, which passes it to the service providers listed in section 6.
+                        We do not share user data with anyone else, and we do not sell or rent it.
+                        The use of information received by the Cheztrap extension adheres to the Chrome Web Store User Data Policy, including the Limited Use requirements.
                     </p>
                     <p class="privacy_title">4. Permissions Used</p>
                     <p class="privacy_text2">
                         Cheztrap requires certain permissions to function properly:
-                        <li class="privacy_text2">`activeTab`: It is used to give cheztrap a temporary access to the current tab (URL) the user is currently viewing. This gives the chrome extension permission to check its safety.</li>
-                        <li class="privacy_text2">`scripting`: It gives cheztrap permission to inject and manage JavaScript and CSS into chrome. It also analyzes gmail contents which allows the extension to determine its safety.</li>
+                        <li class="privacy_text2">`activeTab`: Gives Cheztrap temporary access to the tab you are viewing, only when you click the extension, so it can check that website or email.</li>
+                        <li class="privacy_text2">`scripting`: Lets Cheztrap read the open Gmail email (sender, links, and headers) or the visible text of the current page when you click the extension.</li>
+                        <li class="privacy_text2">`storage`: Saves your "Rats caught" counter on your own device (see section 5).</li>
                     </p>
-                    <p class="privacy_title">5. Data Security</p>
+                    <p class="privacy_title">5. Data Stored on Your Device</p>
                     <p class="privacy_text2">
-                        Since Cheztrap does not handle personal data, there is no data to secure or store. 
-                        However, we adhere to industry-standard practices to ensure that any information processed is handled securely.
+                        The "Rats caught" counter shows how many risky sites and emails Cheztrap has flagged for you. It is stored only in your browser using Chrome's local storage and is never sent to us or anyone else.
+                        To avoid counting the same site or email twice, it keeps a one-way code (a SHA-256 hash) of the last 500 items it counted, never the actual web addresses, email addresses, or email contents.
+                        You can reset the counter at any time from the extension, and it is deleted when you remove the extension.
                     </p>
                     <p class="privacy_title">6. Third-Party Services</p>
                     <p class="privacy_text2">
-                        Cheztrap does not integrate with or use third-party services that collect personal data. 
-                        Our extension functions independently and does not transmit user data to external entities.
+                        Cheztrap uses these services to work:
+                        <li class="privacy_text2">OpenAI: the information described in section 1 is sent to OpenAI's API to be analyzed. OpenAI processes it under its own <a href="https://openai.com/policies/privacy-policy">privacy policy</a> and, according to its API policies, does not use API data to train its models by default.</li>
+                        <li class="privacy_text2">Public domain records (RDAP): the name of the website or email domain being checked (for example, example.com) is looked up in public registration records to see how long it has existed.</li>
+                        <li class="privacy_text2">Google: for emails that are mostly pictures, our server downloads those pictures through Gmail's own image service.</li>
+                        <li class="privacy_text2">Cloudflare: Cheztrap.com runs behind Cloudflare, which handles the connection between your browser and our server.</li>
+                        <li class="privacy_text2">Web3Forms: delivers messages sent through our contact form to our email.</li>
                     </p>
-                    <p class="privacy_title">7. Changes to This Privacy Policy</p>
+                    <p class="privacy_title">7. Data Security</p>
                     <p class="privacy_text2">
-                        We may update this privacy policy occasionally to reflect changes in our practices or for other operational, legal, or regulatory reasons. 
-                        Any updates will be posted on this page with the revised effective date.
+                        Everything sent between the extension, our server, and our service providers travels over encrypted connections (HTTPS).
+                        Because we don't keep the pages or emails you check, there is very little information to protect in the first place.
                     </p>
-                    <p class="privacy_title">8. Contact Us</p>
+                    <p class="privacy_title">8. Children's Privacy</p>
+                    <p class="privacy_text2">
+                        Cheztrap is not directed at children under 13, and we do not knowingly collect information from them.
+                    </p>
+                    <p class="privacy_title">9. Changes to This Privacy Policy</p>
+                    <p class="privacy_text2">
+                        We may update this privacy policy occasionally to reflect changes in our practices or for other operational, legal, or regulatory reasons.
+                        Any updates will be posted on this page with the revised date.
+                    </p>
+                    <p class="privacy_title">10. Contact Us</p>
                     <p class="privacy_text2">
                         If you have any questions or concerns about this privacy policy or the operation of our extension, please contact us by email at december0two@gmail.com.
                     </p>
                     <p class="privacy_text1">
                         EFFECTIVE DATE: August 25, 2024<br>
-                        LAST UPDATED: June 25, 2025
+                        LAST UPDATED: October 14, 2026
                     </p>
                 </div>
             </div>
