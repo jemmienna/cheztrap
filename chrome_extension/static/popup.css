@@ -243,8 +243,8 @@ body{
 
 .facts div{
     display: grid;
-    grid-template-columns: 116px 1fr;
-    gap: 10px;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
     padding: 9px 14px;
     border-bottom: 2px dashed #D9D0AE;
 }
@@ -261,6 +261,151 @@ body{
 .facts dd{
     margin: 0;
     font-weight: 600;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* checklist: ✓ pass, ⚠ warn (or couldn't check), ✗ fail in front of each row */
+.checks{
+    margin: 0;
+    padding: 4px 14px;
+    list-style: none;
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+}
+
+.checks li{
+    position: relative;
+    padding: 9px 0 9px 32px;
+    border-bottom: 2px dashed #D9D0AE;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.checks li:last-child{
+    border-bottom: 0;
+}
+
+.checks li::before{
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 21px;
+    height: 21px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    font-size: .85rem;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    color: #fff;
+}
+
+.checks li.pass::before{ content: "✓"; background: #5DB36B; }
+.checks li.warn::before{ content: "!"; background: #E9A93A; }
+.checks li.fail::before{ content: "✕"; background: #E8432B; }
+.checks li.info::before{ content: ""; background: #D9D0AE; }
+
+.checks b{
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.checks span{
+    overflow-wrap: anywhere;
+}
+
+.todo{
+    margin: 0;
+    padding: 10px 14px;
+    background: var(--yellow);
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* "See details": closed for safe emails so the popup stays short, open for risky ones */
+.more{
+    margin-top: 16px;
+}
+
+.more summary{
+    padding: 6px 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+
+/* evidence table: label on the left, a status dot (✓ ! ✕) and the answer on the right */
+.evidence{
+    margin-bottom: 16px;
+}
+
+.evidence dd{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.evidence dd::before{
+    position: relative;
+    top: 1px;
+    flex: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    font-size: .6rem;
+    font-weight: 700;
+    line-height: 12px;
+    text-align: center;
+    color: #fff;
+    content: "";
+    background: #D9D0AE;
+}
+
+.evidence .pass dd::before{ content: "✓"; background: #5DB36B; }
+.evidence .warn dd::before{ content: "!"; background: #E9C24A; color: var(--ink); }
+.evidence .fail dd::before{ content: "✕"; background: #E26A57; }
+
+.more h3{
+    margin: 12px 0 6px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.more summary + h3{
+    margin-top: 6px;
+}
+
+.about{
+    margin: 0;
+    padding: 10px 14px;
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.checks small{
+    display: block;
+    margin-top: 3px;
+    font-size: .85rem;
+    line-height: 1.35;
+    color: var(--muted);
+}
+
+.note{
+    margin: 14px 0 0;
+    font-size: .95rem;
+    color: var(--muted);
+    text-align: center;
 }
 
 .fun{
@@ -325,6 +470,124 @@ body{
     color: var(--muted);
 }
 
+/* "Rats caught" counter, just above "Wrong verdict?" */
+.rats{
+    margin-top: 18px;
+    text-align: center;
+}
+
+.rat-pill{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 16px 5px 10px;
+    background: var(--cream);
+    border: 3px solid var(--ink);
+    border-radius: 99px;
+    box-shadow: 3px 3px 0 var(--ink);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.rat-pill:active{
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+.rat-pill svg{
+    flex: none;
+    width: 30px;
+    height: auto;
+}
+
+.rat-pill.bounce{
+    animation: rat-bounce .55s ease-out;
+}
+
+@keyframes rat-bounce{
+    0%{ transform: scale(1); }
+    30%{ transform: scale(1.15) rotate(-3deg); }
+    60%{ transform: scale(.96) rotate(1deg); }
+    100%{ transform: scale(1); }
+}
+
+.rat-plus{
+    position: absolute;
+    top: -6px;
+    right: -4px;
+    color: #E8432B;
+    font-weight: 700;
+    pointer-events: none;
+    animation: rat-float 1.2s ease-out forwards;
+}
+
+@keyframes rat-float{
+    from{ opacity: 1; transform: translateY(0); }
+    to{ opacity: 0; transform: translateY(-30px); }
+}
+
+.rat-more p{
+    margin: 8px 0 0;
+    font-size: .95rem;
+}
+
+.rat-split{
+    font-weight: 600;
+}
+
+.rat-link{
+    margin-top: 4px;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: var(--muted);
+    font: inherit;
+    font-size: .9rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.rat-milestone{
+    display: table;
+    margin: 10px auto 0;
+    padding: 4px 12px;
+    background: var(--yellow);
+    border: 2.5px solid var(--ink);
+    border-radius: 99px;
+    font-size: .95rem;
+    font-weight: 700;
+}
+
+/* "Rat caught!" tag that pops onto the unsafe banner, then fades */
+.ver{
+    position: relative;
+}
+
+.ver .caught{
+    position: absolute;
+    top: -13px;
+    right: 14px;
+    padding: 2px 10px;
+    background: var(--yellow);
+    border: 2.5px solid var(--ink);
+    border-radius: 99px;
+    font-size: .9rem;
+    font-weight: 700;
+    animation: caught 2.6s ease-out forwards;
+}
+
+@keyframes caught{
+    0%{ opacity: 0; transform: scale(.6); }
+    12%{ opacity: 1; transform: scale(1.1); }
+    20%, 80%{ opacity: 1; transform: scale(1); }
+    100%{ opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce){
-    .mz, .f1, .f2, .dust, .dots i{ animation: none; }
+    .mz, .f1, .f2, .dust, .dots i, .rat-pill.bounce{ animation: none; }
+    .rat-plus{ display: none; }
 }

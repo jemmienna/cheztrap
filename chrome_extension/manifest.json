@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Cheztrap",
-  "description": "Automatically determine the safety of Gmails and websites.",
-  "version": "2.0",
+  "description": "Checks websites and emails for scams and phishing, then explains why they look safe or risky.",
+  "version": "3.0",
   "icons": {
     "16": "static/images/favicon/favicon-16x16.png",
-    "32": "static/images/favicon/favicon-32x32.png"
+    "32": "static/images/favicon/favicon-32x32.png",
+    "128": "static/images/favicon/favicon-128.png"
   },
   "action": {
     "default_icon": {
@@ -14,18 +15,9 @@
     },
     "default_popup": "popup.html"
   },
-  "background": {
-  "service_worker": "background.js"
-  },
   "permissions": [
   "activeTab",
-  "scripting"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "run_at": "document_start"
-    }
+  "scripting",
+  "storage"
   ]
 }

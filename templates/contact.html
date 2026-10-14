@@ -63,6 +63,7 @@
                                     <option>Question</option>
                                     <option>Feedback</option>
                                     <option>Wrong verdict on a site</option>
+                                    <option>Wrong verdict on an email</option>
                                     <option>Bug report</option>
                                     <option>Something else</option>
                                 </select>
@@ -151,6 +152,11 @@
             el.setAttribute('aria-invalid', !ok);
             return ok;
         }
+        // the extension's "Wrong verdict?" link fills in the topic and what was checked, e.g. ?topic=...&message=...
+        var params = new URLSearchParams(location.search), topic = document.getElementById('topic');
+        if (Array.prototype.some.call(topic.options, function(o){ return o.value === params.get('topic'); })) topic.value = params.get('topic');
+        if (params.get('message')) document.getElementById('msg').value = params.get('message').slice(0, 2000);
+
         Object.keys(rules).forEach(function(id){
             var el = document.getElementById(id);
             el.addEventListener('blur', function(){ if (el.value) run(id); });
