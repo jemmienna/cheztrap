@@ -43,7 +43,7 @@
                     <p class="privacy_title">1. Information We Collect</p>
                     <p class="privacy_text2">
                         Cheztrap has no accounts, ads, or analytics, and it does nothing in the background. Information is only collected when you click the extension (or use the checker on our website), and only about the page or email you are checking:
-                        <li class="privacy_text2">Websites: the page's address, title, and description, and the first part of the visible text on the page (up to about 4,000 characters). Anything you type into forms on the page is not included.</li>
+                        <li class="privacy_text2">Websites: the page's address, title, and description, the first part of the visible text on the page (up to about 4,000 characters), and where the page's forms send their data. Anything you type into forms on the page is not included.</li>
                         <li class="privacy_text2">Gmail emails: the open email's subject, the sender's name and address, the body text, where its links go, the names of any attachments, and two technical headers from the email (the sender verification results known as SPF, DKIM, and DMARC, and the Reply-To address). We do not read your other emails or your inbox.</li>
                         <li class="privacy_text2">Emails that are mostly pictures: a screenshot of the email as it appears on your screen, and the web addresses of up to four of the email's images, so the pictures can be read.</li>
                         <li class="privacy_text2">Contact form: if you contact us or report a wrong verdict, the name, email address, and message you choose to send. The "Wrong verdict?" link fills in the site or sender that was checked so you don't have to type it, and nothing is sent until you submit the form.</li>
@@ -77,7 +77,7 @@
                     <p class="privacy_title">6. Third-Party Services</p>
                     <p class="privacy_text2">
                         Cheztrap uses these services to work:
-                        <li class="privacy_text2">OpenAI: the information described in section 1 is sent to OpenAI's API to be analyzed. OpenAI processes it under its own <a href="https://openai.com/policies/privacy-policy">privacy policy</a> and, according to its API policies, does not use API data to train its models by default.</li>
+                        <li class="privacy_text2">OpenAI: the information described in section 1 is sent to OpenAI's API to be analyzed. For websites, our server first removes personal details: the address is cut down to its site and path, with codes, email addresses, long numbers, and the values in the address's settings removed, and email addresses and long numbers are removed from the page text. OpenAI processes it under its own <a href="https://openai.com/policies/privacy-policy">privacy policy</a> and, according to its API policies, does not use API data to train its models by default.</li>
                         <li class="privacy_text2">Public domain records (RDAP): the name of the website or email domain being checked (for example, example.com) is looked up in public registration records to see how long it has existed.</li>
                         <li class="privacy_text2">Google: for emails that are mostly pictures, our server downloads those pictures through Gmail's own image service.</li>
                         <li class="privacy_text2">Cloudflare: Cheztrap.com runs behind Cloudflare, which handles the connection between your browser and our server.</li>

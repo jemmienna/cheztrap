@@ -162,13 +162,22 @@ jQuery(document).ready(function () {
     return { authResults: gmailAuth.slice(0, 2000), replyTo: (header("Reply-To")[0] || "").slice(0, 300) };
   }
 
-  // runs in the site's tab: its title, description and visible text (not anything typed into forms)
+  // runs in the site's tab: its title, description, visible text, and where its forms send data
+  // (never anything typed into them)
   function readPage() {
     const meta = document.querySelector('meta[name="description"]');
+    // read attributes directly: a field named "action" would shadow the form's own property
+    const absolute = function (v) {
+      try { return new URL(v || "", location.href).href; } catch (e) { return String(v || ""); }
+    };
+    const forms = Array.from(document.querySelectorAll("form")).slice(0, 10).map(function (f) {
+      return { action: absolute(f.getAttribute("action")), has_password: !!f.querySelector("input[type=password]") };
+    });
     return {
       pageTitle: document.title.slice(0, 200),
       pageDescription: meta ? (meta.getAttribute("content") || "").slice(0, 300) : "",
       pageText: (document.body ? document.body.innerText : "").replace(/\s+/g, " ").trim().slice(0, 4000),
+      pageForms: JSON.stringify(forms),
     };
   }
 
@@ -362,7 +371,7 @@ jQuery(document).ready(function () {
     if (!hosts.length) {
       rows.push({ label: "Links", status: "pass", text: "No links", short: "No links" });
     } else if (!elsewhere.length || sites.length === 1) {
-      const text = count(hosts.length, "link") + ", all go to " + sites[0];
+      const text = hosts.length === 1 ? "1 link, goes to " + sites[0] : hosts.length + " links, all go to " + sites[0];
       rows.push({ label: "Links", status: elsewhere.length ? "warn" : "pass", text: text, short: text });
     } else {
       rows.push({

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Cheztrap",
   "description": "Checks websites and emails for scams and phishing, then explains why they look safe or risky.",
-  "version": "3.0",
+  "version": "3.1",
   "icons": {
     "16": "static/images/favicon/favicon-16x16.png",
     "32": "static/images/favicon/favicon-32x32.png",
